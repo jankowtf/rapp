@@ -86,7 +86,6 @@ setMethod(
 #' @template author
 #' @template references
 #' @export
-#' @import rapp.core.condition
 setMethod(
   f = "setLibrary", 
   signature = signature(

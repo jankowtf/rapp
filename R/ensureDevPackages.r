@@ -134,18 +134,18 @@ setMethod(
   }
   
   ## Ensure packages //
-  if (isPackageProject()) {
-    no_require <- devtools::as.package(".")$package %in% 
-        c("rapp.core.examples", "rapp.core.repos")
-  } else {
-    no_require <- FALSE
-  }
-  if (!no_require) {
-    base::require("rapp.core.examples", lib.loc = lib)
-  }
-  if (!no_require) {
-    base::require("rapp.core.repos", lib.loc = lib)
-  }
+#   if (isPackageProject()) {
+#     no_require <- devtools::as.package(".")$package %in% 
+#         c("rapp.core.examples", "rapp.core.repos")
+#   } else {
+#     no_require <- FALSE
+#   }
+#   if (!no_require) {
+#     base::require("rapp.core.examples", lib.loc = lib)
+#   }
+#   if (!no_require) {
+#     base::require("rapp.core.repos", lib.loc = lib)
+#   }
   base::require("testthat", lib.loc = lib)
   
   return(TRUE)

@@ -46,7 +46,6 @@ setGeneric(
 #' @template author
 #' @template references
 #' @export
-#' @import rapp.core.condition
 setMethod(
   f = "getRappHome", 
   signature = signature(

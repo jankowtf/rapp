@@ -80,7 +80,6 @@ setMethod(
 #' @template author
 #' @template references
 #' @export
-#' @import rapp.core.condition
 setMethod(
   f = "ensureRappHome", 
   signature = signature(

@@ -88,7 +88,6 @@ setMethod(
 #' @template author
 #' @template references
 #' @export
-#' @import rapp.core.condition
 setMethod(
   f = "setRuntimeStage", 
   signature = signature(

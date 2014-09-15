@@ -92,7 +92,6 @@ setGeneric(
 #' @template author
 #' @template references
 #' @export
-#' @import rapp.core.condition
 setMethod(
   f = "setRappOption", 
   signature = signature(

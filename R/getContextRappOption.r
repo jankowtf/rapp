@@ -61,7 +61,6 @@ setGeneric(
 #' @template author
 #' @template references
 #' @export
-#' @import rapp.core.condition
 setMethod(
   f = "getContextRappOption", 
   signature = signature(
@@ -97,7 +96,6 @@ setMethod(
 #' @template author
 #' @template references
 #' @export
-#' @import rapp.core.condition
 setMethod(
   f = "getContextRappOption", 
   signature = signature(
@@ -133,7 +131,6 @@ setMethod(
 #' @template author
 #' @template references
 #' @export
-#' @import rapp.core.condition
 setMethod(
   f = "getContextRappOption", 
   signature = signature(

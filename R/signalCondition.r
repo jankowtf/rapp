@@ -55,8 +55,8 @@
 #' 		\code{\link{error}}.
 #' @example inst/examples/signalCondition.r
 #' @seealso \code{
-#' 		\link[rapp.core.condition]{signalCondition-character-method},
-#'   	\link[rapp.core.condition]{signalCondition-missing-method},
+#' 		\link[rapp.core.rte]{signalCondition-character-method},
+#'   	\link[rapp.core.rte]{signalCondition-missing-method},
 #' 		\link[base]{condition}
 #' }
 #' @template author

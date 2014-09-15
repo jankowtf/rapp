@@ -54,7 +54,7 @@ setMethod(
     ...
   ) {
   
-  return(getRappOption(id = ".rte/lib"))
+  return(getRappOption(id = ".rte/lib", ...))
     
   }
 )

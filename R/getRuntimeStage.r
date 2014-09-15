@@ -54,7 +54,7 @@ setMethod(
     ...
   ) {
   
-  return(getRappOption(id = ".rte/runtime_stage"))
+  return(getRappOption(id = ".rte/runtime_stage", ...))
     
   }
 )

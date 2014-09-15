@@ -22,7 +22,7 @@ setGeneric(
     "path"
   ),
   def = function(
-    path = file.path(getRappOption(".rte/rapp_home", strict = TRUE), "rapp"),
+    path = getRappHome(strict = TRUE),
     ...
   ) {
     standardGeneric("ensureRappHome")       
@@ -104,6 +104,9 @@ setMethod(
   
   ## Ensure //
   dir.create(path, recursive = TRUE, showWarnings = FALSE)
+  
+  ## Components //
+  dir.create(file.path(path, "contexts"), recursive = TRUE, showWarnings = FALSE)
   
   return(TRUE)
     

@@ -3,6 +3,8 @@ test_that("getContextRappOption", {
 
   opts_old <- getOption(".rapp")
   
+  ensureInitialRappOptions()
+  setRappHome(tempdir())
   ensureContextRappOptions(ctx = "test")
   setContextRappOption(ctx = "test")
   expect_is(res <- getContextRappOption(ctx = "test"), "environment")

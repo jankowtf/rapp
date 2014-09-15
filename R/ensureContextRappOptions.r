@@ -91,10 +91,21 @@ setMethod(
     ...
   ) {
   
-  return(setRappOption(
+  out <- NULL    
+  out <- c(out, setRappOption(
     id = ctx,
     value = new.env()
   ))
+  
+  value <- file.path(getRappHome(strict = TRUE), "contexts", ctx)
+  dir.create(value, recursive = TRUE, showWarnings = FALSE)
+  
+  out <- c(out, setRappOption(
+    id = file.path(ctx, "context_home"),
+    value = value
+  ))
+  
+  return(out)
     
   }
 )

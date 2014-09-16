@@ -18,9 +18,12 @@ test_that("hasOptionFile", {
     setwd(wd_0)
   }
   
+  wd_0 <- setwd(file.path(path_0, "test"))
   expect_true(hasOptionFile())
   expect_false(hasOptionFile(path = "abcde"))
   expect_error(hasOptionFile(path = "abcde", strict = TRUE))
+  
+  setwd(wd_0)
   
   }
 )

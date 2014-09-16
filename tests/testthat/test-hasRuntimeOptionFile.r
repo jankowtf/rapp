@@ -18,9 +18,12 @@ test_that("hasRuntimeOptionFile", {
     setwd(wd_0)
   }
   
+  wd_0 <- setwd(file.path(path_0, "test"))
   expect_true(hasRuntimeOptionFile())
   expect_false(hasRuntimeOptionFile(path = "abcde"))
   expect_error(hasRuntimeOptionFile(path = "abcde", strict = TRUE))
+  
+  setwd(wd_0)
   
   }
 )

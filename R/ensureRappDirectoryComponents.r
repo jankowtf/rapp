@@ -55,13 +55,15 @@ setMethod(
     
   if (isPackageProject()) {
     ## Private function //
+    
     .formatOptionFile <- function(x, name) {
       expr <- unlist(strsplit(deparse(x, control = NULL), split = ","))
       expr <- gsub("^\\s*$|(^\\s*(?=\\w))", "", expr, perl = TRUE)
       expr <- expr[(expr != "")]
-      expr <- unlist(strsplit(expr, split = "\\(|\\)", perl = TRUE))
+      expr <- unlist(strsplit(expr, split = "(?<=list)\\(|\\)$", perl = TRUE))
       expr <- paste0(name, " <- ", expr[1], 
          "(\n\t", paste(expr[2:length(expr)], collapse=",\n\t"), "\n)")
+      expr
     }
     
     dirs <- c(
@@ -73,10 +75,15 @@ setMethod(
     )
     sapply(dirs, dir.create, recursive = TRUE, showWarnings = FALSE)
     
-    options_runtime <- list(
-      rapp_home = file.path(Sys.getenv("HOME"), "rapp"),
+    options_runtime <- substitute(
+      list(
+      rapp_home = RAPP_HOME,
       runtime_mode = "dev",
       lib = .libPaths()[1]
+      ),
+      list(
+        RAPP_HOME = file.path(Sys.getenv("HOME"), "rapp")
+      )
     )
 #     write(deparse(options_runtime, control = NULL), file = "test.r")
 #     formatR::tidy_source(
@@ -91,6 +98,7 @@ setMethod(
       "rapp/options/options_runtime.r",
       "rapp/apps/test/options/options_runtime.r"
     ) 
+#     sapply(fpaths, file.exists)
     sapply(fpaths, function(ii) {
       write(
         .formatOptionFile(x = options_runtime, name = "options_runtime"), 

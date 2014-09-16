@@ -1,3 +1,21 @@
+# CHANGES IN rapp.core.rte VERSION 0.1.0.7
+
+## NEW FEATURES
+
+## BUG FIXES
+
+## MAJOR CHANGES
+
+## MINOR CHANGES
+
+- `ensureRappDirectoryComponents()`:
+  option file content is a bit more generic (`lib = .libPaths()[1]` instead
+  of explicit file path)
+
+## MISC 
+
+-----
+
 # CHANGES IN rapp.core.rte VERSION 0.1.0.6
 
 ## NEW FEATURES

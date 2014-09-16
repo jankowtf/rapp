@@ -1,3 +1,43 @@
+# CHANGES IN rapp.core.rte VERSION 0.1.0.9
+
+## NEW FEATURES
+
+## BUG FIXES
+
+## MAJOR CHANGES
+
+- renamed: `*RappHome()` to `*RappGlobal()`
+
+## MINOR CHANGES
+
+- `ensureNamespaceRappOptions()`:
+  Changed option `context_home` to `ns_global` for consistency reasons
+- rename: `ns_home` in `ns_global`  
+- rename: `rapp_global` in `rapp_global`  
+- Directory `contexts` in `rapp_global` directory renamed to `ns` for 
+  consistency reasons
+
+## MISC 
+
+-----
+
+# CHANGES IN rapp.core.rte VERSION 0.1.0.8
+
+## NEW FEATURES
+
+## BUG FIXES
+
+- `ensureRappDirectoryComponents()`:
+  Option files are only written they don't exist yet
+
+## MAJOR CHANGES
+
+## MINOR CHANGES
+
+## MISC 
+
+-----
+
 # CHANGES IN rapp.core.rte VERSION 0.1.0.7
 
 ## NEW FEATURES
@@ -65,12 +105,12 @@ throughout the package
 ## MINOR CHANGES
 
 - `ensureNamespaceRappOptions()`:
-  - ensured that context directory is created below `<rapp_home>/contexts/`
-- `ensureRappHome()`:
-  - ensured that root directory for context data is created: `<rapp_home>/contexts/`
+  - ensured that context directory is created below `<rapp_global>/contexts/`
+- `ensureRappGlobal()`:
+  - ensured that root directory for context data is created: `<rapp_global>/contexts/`
 - `getLibrary()`: 
   - enabled pass-through of `...` arguments 
-- `getRappHome()`: 
+- `getRappGlobal()`: 
   - enabled pass-through of `...` arguments 
 - `getRuntimeMode()`: 
   - enabled pass-through of `...` arguments 

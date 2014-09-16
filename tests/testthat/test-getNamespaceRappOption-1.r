@@ -4,7 +4,7 @@ test_that("getNamespaceRappOption", {
   opts_old <- getOption(".rapp")
   
   ensureInitialRappOptions()
-  setRappHome(tempdir())
+  setRappGlobal(tempdir())
   ensureNamespaceRappOptions(ns = "test")
   setNamespaceRappOption(ns = "test")
   expect_is(res <- getNamespaceRappOption(ns = "test"), "environment")

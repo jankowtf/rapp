@@ -116,11 +116,15 @@ setMethod(
     value = new.env()
   ))
   
-  value <- file.path(getRappHome(strict = TRUE), "contexts", ns)
+  value <- file.path(getRappGlobal(strict = TRUE), "ns", ns)
   dir.create(value, recursive = TRUE, showWarnings = FALSE)
   
   out <- c(out, setRappOption(
-    id = file.path(ns, "context_home"),
+    id = file.path(ns, "ns"),
+    value = ns
+  ))
+  out <- c(out, setRappOption(
+    id = file.path(ns, "ns_global"),
     value = value
   ))
   

@@ -77,12 +77,12 @@ setMethod(
     
     options_runtime <- substitute(
       list(
-      rapp_home = RAPP_HOME,
+      rapp_global = rapp_global,
       runtime_mode = "dev",
       lib = .libPaths()[1]
       ),
       list(
-        RAPP_HOME = file.path(Sys.getenv("HOME"), "rapp")
+        rapp_global = file.path(Sys.getenv("HOME"), "rapp")
       )
     )
 #     write(deparse(options_runtime, control = NULL), file = "test.r")
@@ -98,13 +98,15 @@ setMethod(
       "rapp/options/options_runtime.r",
       "rapp/apps/test/options/options_runtime.r"
     ) 
-#     sapply(fpaths, file.exists)
-    sapply(fpaths, function(ii) {
-      write(
-        .formatOptionFile(x = options_runtime, name = "options_runtime"), 
-        file = ii
-      )
-    })
+    idx <- which(!sapply(fpaths, file.exists))
+    if (length(idx)) {
+      sapply(fpaths[idx], function(ii) {
+        write(
+          .formatOptionFile(x = options_runtime, name = "options_runtime"), 
+          file = ii
+        )
+      })
+    }
 
     options_app <- list(
       ns = rapp.core.package::asPackage(x = ".")$package,
@@ -115,12 +117,16 @@ setMethod(
       "rapp/options/options.r",
       "rapp/apps/test/options/options.r"
     ) 
-    sapply(fpaths, function(ii) {
-      write(
-        .formatOptionFile(x = options_app, name = "options"), 
-        file = ii
-      )
-    })
+    idx <- which(!sapply(fpaths, file.exists))
+    if (length(idx)) {
+      sapply(fpaths[idx], function(ii) {
+        write(
+          .formatOptionFile(x = options_app, name = "options"), 
+          file = ii
+        )
+      })
+    }
+    
     out <- TRUE
   } else {
     out <- FALSE

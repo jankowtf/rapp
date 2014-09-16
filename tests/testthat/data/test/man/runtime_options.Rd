@@ -11,7 +11,7 @@
 \format{
   The format is:
 List of 3
- $ rapp_home    : chr "C:/Users/rappster_admin/Documents/rapp"
+ $ rapp_global    : chr "C:/Users/rappster_admin/Documents/rapp"
  $ runtime_stage: chr "dev"
  $ lib          : chr "Q:/home/apps/rapptools/apps/r/R-3.1.1/library"
 }

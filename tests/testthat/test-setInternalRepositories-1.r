@@ -3,7 +3,7 @@ test_that("setInternalRepositories", {
 
   opts_old <- getOption(".rapp")
   
-  setRappHome("q:/home/rapp")
+  setRappGlobal("q:/home/rapp")
   expect_is(res <- setInternalRepositories(), "logical")
   expect_true(all(c("repos_root", "repos_dev_global", "repos_test_global", 
     "repos_live_global", "repos_dev_pkgs", "repos_test_pkgs", "repos_live_pkgs",

@@ -4,11 +4,11 @@
 opts_old <- getOption(".rapp")
 
 ## Set //
-setRappHome()
-getRappHome() 
-
-setRappHome(value = "test")
-getRappHome()
+setRappGlobal()
+getRappOption(".rte/rapp_global") 
+  
+setRappGlobal(value = "test")
+getRappOption(".rte/rapp_global")
 
 ## Clean up //
 on.exit(options(".rapp" = opts_old))

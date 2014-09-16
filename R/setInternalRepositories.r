@@ -10,7 +10,7 @@
 #' value for \code{repos_root}. This will trigger the default behavior of 
 #' placing the repository root under \code{<rapp-home>/repos/r} with 
 #' \code{<rapp-home>} being the \code{rapp HOME} directory as set by 
-#' \code{\link[rapp.core.rte]{ensureRappHome}}. 
+#' \code{\link[rapp.core.rte]{ensureRappGlobal}}. 
 #' Any deviation from the default behavior might lead to inconsistencies in 
 #' the runtime environment at this point.
 #'   	
@@ -35,7 +35,7 @@ setGeneric(
     "repos_root"
   ),
   def = function(
-    repos_root = file.path(getRappOption(".rte/rapp_home", strict = TRUE), 
+    repos_root = file.path(getRappOption(".rte/rapp_global", strict = TRUE), 
                            "repos/r"),
     runtime_mode = c("dev", "test", "live"),
     pkg = ifelse(isPackageProject(), devtools::as.package(x = ".")$package,

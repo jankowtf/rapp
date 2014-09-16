@@ -11,7 +11,7 @@ test_that("processRepositoryData", {
   
   ## Create example content //
   ensureRappOptionsContainer(overwrite = TRUE)
-  setRappHome("q:/home/rapp")
+  setRappGlobal("q:/home/rapp")
   setInternalRepositories()
 
   expect_true(res <- processRepositoryData())

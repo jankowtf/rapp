@@ -38,11 +38,11 @@
 #'        }
 #'     }
 #' In case a file \code{options_runtime.r} exists in \code{/rapp/options/},
-#' then it is parsed and if any of \code{rapp_home}, \code{runtime_mode} 
+#' then it is parsed and if any of \code{rapp_global}, \code{runtime_mode} 
 #' or \code{lib} is specified, the default values from the generic function
 #' are overwritten. Else the default values are used.
 #'   	
-#' @param rapp_home \strong{Signature argument}.
+#' @param rapp_global \strong{Signature argument}.
 #'    Object containing rapp HOME directory information.
 #' @param repos_root \code{\link{character}}.
 #'    Directory path of the local package repository \strong{root} directory,
@@ -69,10 +69,10 @@
 setGeneric(
   name = "ensureRappRuntimeEnvironment",
   signature = c(
-    "rapp_home"
+    "rapp_global"
   ),
   def = function(
-    rapp_home = file.path(Sys.getenv("HOME"), "rapp"),
+    rapp_global = file.path(Sys.getenv("HOME"), "rapp"),
     runtime_mode = c("dev", "test", "live"),
     lib = .libPaths()[1],
     pkg = ifelse(isPackageProject(), devtools::as.package(x = ".")$package,
@@ -93,12 +93,12 @@ setGeneric(
 #' 
 #' @details
 #' In case a file \code{options_runtime.r} exists in \code{/rapp/options/},
-#' then it is parsed and if any of \code{rapp_home}, \code{runtime_mode} 
+#' then it is parsed and if any of \code{rapp_global}, \code{runtime_mode} 
 #' or \code{lib} is specified, the default values from the generic function
 #' are overwritten. Else the default values are used.
 #'      
 #' @inheritParams ensureRappRuntimeEnvironment
-#' @param rapp_home \code{\link{missing}}. Default rapp HOME directory location.
+#' @param rapp_global \code{\link{missing}}. Default rapp HOME directory location.
 #' @return \code{\link{logical}}. \code{TRUE}.
 #' @example inst/examples/ensureRappRuntimeEnvironment.r
 #' @seealso \code{
@@ -110,10 +110,10 @@ setGeneric(
 setMethod(
   f = "ensureRappRuntimeEnvironment", 
   signature = signature(
-    rapp_home = "missing"
+    rapp_global = "missing"
   ), 
   definition = function(
-    rapp_home,
+    rapp_global,
     runtime_mode,
     lib,
     pkg,
@@ -125,8 +125,8 @@ setMethod(
   fpath <- "rapp/options/options_runtime.r"
   opts <- readRuntimeOptionFile(path = fpath, strict = FALSE)
   if (length(opts)) {
-    if ("rapp_home" %in% names(opts)) {
-      rapp_home <- opts$rapp_home
+    if ("rapp_global" %in% names(opts)) {
+      rapp_global <- opts$rapp_global
     }
     if ("runtime_mode" %in% names(opts)) {
       runtime_mode <- opts$runtime_mode
@@ -137,7 +137,7 @@ setMethod(
   }
     
   return(ensureRappRuntimeEnvironment(
-    rapp_home = rapp_home,
+    rapp_global = rapp_global,
     runtime_mode = runtime_mode, 
     lib = lib,
     pkg = pkg,
@@ -154,7 +154,7 @@ setMethod(
 #' See generic: \code{\link[rapp.core.rte]{ensureRappRuntimeEnvironment}}
 #'   	 
 #' @inheritParams ensureRappRuntimeEnvironment
-#' @param rapp_home \code{\link{character}}. Default rapp_home.
+#' @param rapp_global \code{\link{character}}. Default rapp_global.
 #' @return \code{\link{logical}}. \code{TRUE}.
 #' @example inst/examples/ensureRappRuntimeEnvironment.r
 #' @seealso \code{
@@ -166,10 +166,10 @@ setMethod(
 setMethod(
   f = "ensureRappRuntimeEnvironment", 
   signature = signature(
-    rapp_home = "character"
+    rapp_global = "character"
   ), 
   definition = function(
-    rapp_home,
+    rapp_global,
     runtime_mode,
     lib,
     pkg,
@@ -192,15 +192,15 @@ setMethod(
     
   ensureInitialRappOptions()  
     
-  setRappHome(value = rapp_home, update_dependent = TRUE)
-#   ensureRappHome()
+  setRappGlobal(value = rapp_global, update_dependent = TRUE)
+#   ensureRappGlobal()
   setInternalRepositories(pkg = pkg, vsn = vsn)
   setRuntimeMode(value = runtime_mode)
   setLibrary(value = lib)
   
   ## Ensure development packages //
   ensureDevPackages(
-    rapp_home = rapp_home,
+    rapp_global = rapp_global,
     runtime_mode = runtime_mode,
     lib = lib
   )

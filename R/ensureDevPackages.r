@@ -9,11 +9,11 @@
 #' If you want to fully comply with the convenvtions of the \code{rapp} framework
 #' and its associated packages and applications, to not provide an explicit
 #' value for \code{repos_home}. This will trigger the default behavior of 
-#' using the value previously set by \code{\link[rapp.core.rte]{ensureRappHome}}. 
+#' using the value previously set by \code{\link[rapp.core.rte]{ensureRappGlobal}}. 
 #' Any deviation from the default behavior might lead to inconsistencies in 
 #' the runtime environment at this point.
 #'   	
-#' @param rapp_home \strong{Signature argument}.
+#' @param rapp_global \strong{Signature argument}.
 #'    Object containing rapp home directory information.
 #' @param runtime_mode \code{\link{character}}. 
 #'    Development stage as returned by \code{\link{getRuntimeMode}}.
@@ -31,10 +31,10 @@
 setGeneric(
   name = "ensureDevPackages",
   signature = c(
-    "rapp_home"
+    "rapp_global"
   ),
   def = function(
-    rapp_home = getRappOption(".rte/rapp_home", strict = TRUE),
+    rapp_global = getRappOption(".rte/rapp_global", strict = TRUE),
     runtime_mode = getRappOption(".rte/runtime_mode", strict = TRUE),
     lib = getRappOption(".rte/lib", strict = TRUE),
     ...
@@ -44,13 +44,13 @@ setGeneric(
 )
 
 #' @title
-#' Ensure Rapp Options for Specific rapp_home
+#' Ensure Rapp Options for Specific rapp_global
 #'
 #' @description 
 #' See generic: \code{\link[rapp.core.rte]{ensureDevPackages}}
 #'   	 
 #' @inheritParams ensureDevPackages
-#' @param rapp_home \code{\link{missing}}. Default rapp_home.
+#' @param rapp_global \code{\link{missing}}. Default rapp_global.
 #' @return See method
 #'    \code{\link[rapp.core.rte]{ensureDevPackages-character-method}}
 #' @example inst/examples/ensureDevPackages.r
@@ -63,17 +63,17 @@ setGeneric(
 setMethod(
   f = "ensureDevPackages", 
   signature = signature(
-    rapp_home = "missing"
+    rapp_global = "missing"
   ), 
   definition = function(
-    rapp_home,
+    rapp_global,
     runtime_mode,
     lib,
     ...
   ) {
   
   return(ensureDevPackages(
-    rapp_home = rapp_home,
+    rapp_global = rapp_global,
     runtime_mode = runtime_mode,
     lib = lib,
     ...
@@ -83,13 +83,13 @@ setMethod(
 )
 
 #' @title
-#' Ensure Rapp Options for Specific rapp_home
+#' Ensure Rapp Options for Specific rapp_global
 #'
 #' @description 
 #' See generic: \code{\link[rapp.core.rte]{ensureDevPackages}}
 #'      
 #' @inheritParams ensureDevPackages
-#' @param rapp_home \code{\link{character}}. Default rapp_home.
+#' @param rapp_global \code{\link{character}}. Default rapp_global.
 #' @return \code{\link{logical}}. \code{TRUE}.
 #' @example inst/examples/ensureDevPackages.r
 #' @seealso \code{
@@ -101,10 +101,10 @@ setMethod(
 setMethod(
   f = "ensureDevPackages", 
   signature = signature(
-    rapp_home = "character"
+    rapp_global = "character"
   ), 
   definition = function(
-    rapp_home,
+    rapp_global,
     runtime_mode,
     lib,
     ...
@@ -112,7 +112,7 @@ setMethod(
   
   runtime_mode <- match.arg(runtime_mode, c("dev", "test", "live"))    
   
-  ensureRappHome(path = rapp_home)    
+  ensureRappGlobal(path = rapp_global)    
   setInternalRepositories()
   repos_global <- switch(
     runtime_mode,

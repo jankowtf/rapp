@@ -8,24 +8,24 @@
 #' @param path \strong{Signature argument}.
 #'    Object containing path information.
 #' @template threedot
-#' @example inst/examples/ensureRappHome.r
+#' @example inst/examples/ensureRappGlobal.r
 #' @seealso \code{
-#'   	\link[rapp.core.rte]{ensureRappHome-missing-method}
+#'   	\link[rapp.core.rte]{ensureRappGlobal-missing-method}
 #' }
 #' @template author
 #' @template references
 #' @export 
 #' @import rapp.core.package
 setGeneric(
-  name = "ensureRappHome",
+  name = "ensureRappGlobal",
   signature = c(
     "path"
   ),
   def = function(
-    path = getRappHome(strict = TRUE),
+    path = getRappGlobal(strict = TRUE),
     ...
   ) {
-    standardGeneric("ensureRappHome")       
+    standardGeneric("ensureRappGlobal")       
   }
 )
 
@@ -33,21 +33,21 @@ setGeneric(
 #' Ensure Rapp Home
 #'
 #' @description 
-#' See generic: \code{\link[rapp.core.rte]{ensureRappHome}}
+#' See generic: \code{\link[rapp.core.rte]{ensureRappGlobal}}
 #'   	 
-#' @inheritParams ensureRappHome
+#' @inheritParams ensureRappGlobal
 #' @param path \code{\link{missing}}. Default path.
 #' @return See method
-#'    \code{\link[rapp.core.rte]{ensureRappHome-character-method}}
-#' @example inst/examples/ensureRappHome.r
+#'    \code{\link[rapp.core.rte]{ensureRappGlobal-character-method}}
+#' @example inst/examples/ensureRappGlobal.r
 #' @seealso \code{
-#'    \link[rapp.core.rte]{ensureRappHome}
+#'    \link[rapp.core.rte]{ensureRappGlobal}
 #' }
 #' @template author
 #' @template references
 #' @export
 setMethod(
-  f = "ensureRappHome", 
+  f = "ensureRappGlobal", 
   signature = signature(
     path = "missing"
   ), 
@@ -56,7 +56,7 @@ setMethod(
     ...
   ) {
   
-  return(ensureRappHome(
+  return(ensureRappGlobal(
     path = path,
     ...
   ))
@@ -68,20 +68,20 @@ setMethod(
 #' Ensure Rapp Home
 #'
 #' @description 
-#' See generic: \code{\link[rapp.core.rte]{ensureRappHome}}
+#' See generic: \code{\link[rapp.core.rte]{ensureRappGlobal}}
 #'      
-#' @inheritParams ensureRappHome
+#' @inheritParams ensureRappGlobal
 #' @param path \code{\link{character}}. Default path.
 #' @return \code{\link{logical}}. \code{TRUE}
-#' @example inst/examples/ensureRappHome.r
+#' @example inst/examples/ensureRappGlobal.r
 #' @seealso \code{
-#'    \link[rapp.core.rte]{ensureRappHome}
+#'    \link[rapp.core.rte]{ensureRappGlobal}
 #' }
 #' @template author
 #' @template references
 #' @export
 setMethod(
-  f = "ensureRappHome", 
+  f = "ensureRappGlobal", 
   signature = signature(
     path = "character"
   ), 
@@ -106,7 +106,7 @@ setMethod(
   dir.create(path, recursive = TRUE, showWarnings = FALSE)
   
   ## Components //
-  dir.create(file.path(path, "contexts"), recursive = TRUE, showWarnings = FALSE)
+  dir.create(file.path(path, "ns"), recursive = TRUE, showWarnings = FALSE)
   
   return(TRUE)
     

@@ -9,16 +9,16 @@
 #' @param ns \strong{Signature argument}.
 #'    Object containing namespace information.
 #' @template threedot
-#' @example inst/examples/getRappHome.r
+#' @example inst/examples/getRappGlobal.r
 #' @seealso \code{
-#'   	\link[rapp.core.rte]{getRappHome-missing-method}
+#'   	\link[rapp.core.rte]{getRappGlobal-missing-method}
 #' }
 #' @template author
 #' @template references
 #' @export 
 #' @import rapp.core.package
 setGeneric(
-  name = "getRappHome",
+  name = "getRappGlobal",
   signature = c(
     "ns"
   ),
@@ -26,7 +26,7 @@ setGeneric(
     ns,
     ...
   ) {
-    standardGeneric("getRappHome")       
+    standardGeneric("getRappGlobal")       
   }
 )
 
@@ -34,20 +34,20 @@ setGeneric(
 #' Get Rapp Home
 #'
 #' @description 
-#' See generic: \code{\link[rapp.core.rte]{getRappHome}}
+#' See generic: \code{\link[rapp.core.rte]{getRappGlobal}}
 #'      
-#' @inheritParams getRappHome
+#' @inheritParams getRappGlobal
 #' @param ns \code{\link{missing}}. Default ns.
 #' @return \code{\link{character}}. Option value.
-#' @example inst/examples/getRappHome.r
+#' @example inst/examples/getRappGlobal.r
 #' @seealso \code{
-#'    \link[rapp.core.rte]{getRappHome}
+#'    \link[rapp.core.rte]{getRappGlobal}
 #' }
 #' @template author
 #' @template references
 #' @export
 setMethod(
-  f = "getRappHome", 
+  f = "getRappGlobal", 
   signature = signature(
     ns = "missing"
   ), 
@@ -56,7 +56,7 @@ setMethod(
     ...
   ) {
   
-  return(getRappOption(id = ".rte/rapp_home", ...))
+  return(getRappOption(id = ".rte/rapp_global", ...))
     
   }
 )

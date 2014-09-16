@@ -3,7 +3,7 @@
 #'
 #' @description 
 #' Sets the home directory associated to the \code{rapp}
-#' framework and its associated packages to \code{.rte/rapp_home}.
+#' framework and its associated packages to \code{.rte/rapp_global}.
 #'   	
 #' @param value \strong{Signature argument}.
 #'    Object containing value information.
@@ -11,16 +11,16 @@
 #'    \code{TRUE}: update dependent options; \code{FALSE}: dependent options 
 #'    are not updated.
 #' @template threedot
-#' @example inst/examples/setRappHome.r
+#' @example inst/examples/setRappGlobal.r
 #' @seealso \code{
-#'   	\link[rapp.core.rte]{setRappHome-missing-method}
+#'   	\link[rapp.core.rte]{setRappGlobal-missing-method}
 #' }
 #' @template author
 #' @template references
 #' @export 
 #' @import rapp.core.package
 setGeneric(
-  name = "setRappHome",
+  name = "setRappGlobal",
   signature = c(
     "value"
   ),
@@ -29,7 +29,7 @@ setGeneric(
     update_dependent = FALSE,
     ...
   ) {
-    standardGeneric("setRappHome")       
+    standardGeneric("setRappGlobal")       
   }
 )
 
@@ -37,21 +37,21 @@ setGeneric(
 #' Set Rapp Home
 #'
 #' @description 
-#' See generic: \code{\link[rapp.core.rte]{setRappHome}}
+#' See generic: \code{\link[rapp.core.rte]{setRappGlobal}}
 #'   	 
-#' @inheritParams setRappHome
+#' @inheritParams setRappGlobal
 #' @param value \code{\link{missing}}. Default value (see generic).
 #' @return See method
-#'    \code{\link[rapp.core.rte]{setRappHome-character-method}}
-#' @example inst/examples/setRappHome.r
+#'    \code{\link[rapp.core.rte]{setRappGlobal-character-method}}
+#' @example inst/examples/setRappGlobal.r
 #' @seealso \code{
-#'    \link[rapp.core.rte]{setRappHome}
+#'    \link[rapp.core.rte]{setRappGlobal}
 #' }
 #' @template author
 #' @template references
 #' @export
 setMethod(
-  f = "setRappHome", 
+  f = "setRappGlobal", 
   signature = signature(
     value = "missing"
   ), 
@@ -61,7 +61,7 @@ setMethod(
     ...
   ) {
   
-  return(setRappHome(
+  return(setRappGlobal(
     value = value,
     update_dependent = update_dependent,
     ...
@@ -74,21 +74,21 @@ setMethod(
 #' Set Rapp Home
 #'
 #' @description 
-#' See generic: \code{\link[rapp.core.rte]{setRappHome}}
+#' See generic: \code{\link[rapp.core.rte]{setRappGlobal}}
 #'      
-#' @inheritParams setRappHome
+#' @inheritParams setRappGlobal
 #' @param value \code{\link{character}}. Default value.
 #' @return \code{\link{logical}}. Return value of 
 #'    \code{\link[rapp.core.rte]{setRappOption}}.
-#' @example inst/examples/setRappHome.r
+#' @example inst/examples/setRappGlobal.r
 #' @seealso \code{
-#'    \link[rapp.core.rte]{setRappHome}
+#'    \link[rapp.core.rte]{setRappGlobal}
 #' }
 #' @template author
 #' @template references
 #' @export
 setMethod(
-  f = "setRappHome", 
+  f = "setRappGlobal", 
   signature = signature(
     value = "character"
   ), 
@@ -100,14 +100,14 @@ setMethod(
   
   ## Set option //
   out <- setRappOption(
-    id = ".rte/rapp_home",
+    id = ".rte/rapp_global",
     value = value,
     branch_gap = TRUE
   )
   
   ## Update dependent options //
   if (update_dependent) {
-    ensureRappHome(path = value)
+    ensureRappGlobal(path = value)
   }
   
   return(out)

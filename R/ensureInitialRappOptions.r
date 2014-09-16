@@ -6,8 +6,8 @@
 #' associated packages. The options are stored as \code{".rapp"} in 
 #' \code{\link[base]{options}}.
 #'   	
-#' @param ctx \strong{Signature argument}.
-#'    Object containing context information.
+#' @param ns \strong{Signature argument}.
+#'    Object containing namespace information.
 #' @template threedot
 #' @example inst/examples/ensureInitialRappOptions.r
 #' @seealso \code{
@@ -19,10 +19,10 @@
 setGeneric(
   name = "ensureInitialRappOptions",
   signature = c(
-    "ctx"
+    "ns"
   ),
   def = function(
-    ctx,
+    ns,
     ...
   ) {
     standardGeneric("ensureInitialRappOptions")       
@@ -36,7 +36,7 @@ setGeneric(
 #' See generic: \code{\link[rapp.core.rte]{ensureInitialRappOptions}}
 #'   	 
 #' @inheritParams ensureInitialRappOptions
-#' @param ctx \code{\link{missing}}. Default context.
+#' @param ns \code{\link{missing}}. Default namespace.
 #' @return \code{\link{environment}}. The options container as stored in 
 #'    \code{options(".rapp")}.
 #' @example inst/examples/ensureInitialRappOptions.r
@@ -49,17 +49,17 @@ setGeneric(
 setMethod(
   f = "ensureInitialRappOptions", 
   signature = signature(
-    ctx = "missing"
+    ns = "missing"
   ), 
   definition = function(
-    ctx,
+    ns,
     ...
   ) {
     
   container <- ensureRappOptionsContainer(overwrite = TRUE)
   
   setRappOption(
-    id = ".rte/runtime_stage",
+    id = ".rte/runtime_mode",
     value = "dev",
     branch_gap = TRUE
   )

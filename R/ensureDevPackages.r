@@ -15,8 +15,8 @@
 #'   	
 #' @param rapp_home \strong{Signature argument}.
 #'    Object containing rapp home directory information.
-#' @param runtime_stage \code{\link{character}}. 
-#'    Development stage as returned by \code{\link{getRuntimeStage}}.
+#' @param runtime_mode \code{\link{character}}. 
+#'    Development stage as returned by \code{\link{getRuntimeMode}}.
 #' @param lib \code{\link{character}}.
 #'    Library to be used. Defaults to return value of \ode{\link{getLibrary}}.
 #' @template threedot
@@ -35,7 +35,7 @@ setGeneric(
   ),
   def = function(
     rapp_home = getRappOption(".rte/rapp_home", strict = TRUE),
-    runtime_stage = getRappOption(".rte/runtime_stage", strict = TRUE),
+    runtime_mode = getRappOption(".rte/runtime_mode", strict = TRUE),
     lib = getRappOption(".rte/lib", strict = TRUE),
     ...
   ) {
@@ -67,14 +67,14 @@ setMethod(
   ), 
   definition = function(
     rapp_home,
-    runtime_stage,
+    runtime_mode,
     lib,
     ...
   ) {
   
   return(ensureDevPackages(
     rapp_home = rapp_home,
-    runtime_stage = runtime_stage,
+    runtime_mode = runtime_mode,
     lib = lib,
     ...
   ))
@@ -105,17 +105,17 @@ setMethod(
   ), 
   definition = function(
     rapp_home,
-    runtime_stage,
+    runtime_mode,
     lib,
     ...
   ) {
   
-  runtime_stage <- match.arg(runtime_stage, c("dev", "test", "live"))    
+  runtime_mode <- match.arg(runtime_mode, c("dev", "test", "live"))    
   
   ensureRappHome(path = rapp_home)    
   setInternalRepositories()
   repos_global <- switch(
-    runtime_stage,
+    runtime_mode,
     "dev" = getRappOption(".rte/repos_dev_global"),
     "test" = getRappOption(".rte/repos_test_global"),
     "live" = getRappOption(".rte/repos_live_global")

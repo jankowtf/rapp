@@ -20,7 +20,7 @@ test_that("isRappOptionSet", {
   )
   
   expect_true(res <- isRappOptionSet(id = ".rte/is_set"))
-  expect_true(res <- isRappOptionSet(id = ".rte/runtime_stage"))
+  expect_true(res <- isRappOptionSet(id = ".rte/runtime_mode"))
   expect_false(res <- isRappOptionSet(id = ".rte/is_not_set_1"))
   expect_false(res <- isRappOptionSet(id = ".rte/is_not_set_2"))
   

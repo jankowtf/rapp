@@ -4,7 +4,7 @@ test_that("ensureDevPackages", {
   opts_old <- getOption(".rapp")
   
   setRappHome("q:/home/rapp")
-  setRuntimeStage("dev")
+  setRuntimeMode("dev")
   setLibrary(.libPaths()[1])
   expect_is(res <- ensureDevPackages(), "logical")
                

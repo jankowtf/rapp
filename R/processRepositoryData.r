@@ -10,8 +10,8 @@
 #' valid repositories exist and that the information is carried over to the
 #' R option \code{option("repos")}.
 #'   	
-#' @param ctx \strong{Signature argument}.
-#'    Object containing information.
+#' @param ns \strong{Signature argument}.
+#'    Object containing namespace information.
 #' @template threedot
 #' @example inst/examples/processRepositoryData.r
 #' @seealso \code{
@@ -23,10 +23,10 @@
 setGeneric(
   name = "processRepositoryData",
   signature = c(
-    "ctx"
+    "ns"
   ),
   def = function(
-    ctx,
+    ns,
     ...
   ) {
     standardGeneric("processRepositoryData")       
@@ -40,7 +40,7 @@ setGeneric(
 #' See generic: \code{\link[rapp.core.rte]{processRepositoryData}}
 #'      
 #' @inheritParams processRepositoryData
-#' @param ctx  \code{\link{missing}}. 
+#' @param ns  \code{\link{missing}}. 
 #' @return \code{\link{logical}}. \code{TRUE}.
 #' @example inst/examples/processRepositoryData.r
 #' @seealso \code{
@@ -52,10 +52,10 @@ setGeneric(
 setMethod(
   f = "processRepositoryData", 
   signature = signature(
-    ctx = "missing"
+    ns = "missing"
   ), 
   definition = function(
-    ctx,
+    ns,
     ...
   ) {
   

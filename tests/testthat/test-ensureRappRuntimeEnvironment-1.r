@@ -1,5 +1,5 @@
-context("ensureContextRappOptions-1")
-test_that("ensureContextRappOptions", {
+context("ensureNamespaceRappOptions-1")
+test_that("ensureNamespaceRappOptions", {
 
   if (basename(getwd()) == "testthat") {
     is_testthat <- TRUE
@@ -13,7 +13,7 @@ test_that("ensureContextRappOptions", {
   
   ensureRappRuntimeEnvironment(
     rapp_home = "q:/home/rapp",
-    runtime_stage = "dev"
+    runtime_mode = "dev"
   )
 #   print(ls(getOption(".rapp"), all.names=TRUE))
 #   ls(getOption(".rapp")$.rte, all.names=TRUE)
@@ -29,7 +29,7 @@ test_that("ensureContextRappOptions", {
       "repos_global", "repos_live_global", "repos_live_pkg", 
       "repos_live_pkgs", "repos_pkg", "repos_pkgs", "repos_root", 
       "repos_test_global", "repos_test_pkg", "repos_test_pkgs", 
-      "runtime_stage") %in% 
+      "runtime_mode") %in% 
       ls(getOption(".rapp")$.rte, all.names=TRUE)))
   
   on.exit(options(".rapp" = opts_old))

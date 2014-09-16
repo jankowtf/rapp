@@ -6,8 +6,8 @@
 #' associated to the \code{rapp}
 #' framework and its associated packages.
 #'   	
-#' @param ctx \strong{Signature argument}.
-#'    Object containing context information.
+#' @param ns \strong{Signature argument}.
+#'    Object containing namespace information.
 #' @template threedot
 #' @example inst/examples/getRappHome.r
 #' @seealso \code{
@@ -20,10 +20,10 @@
 setGeneric(
   name = "getRappHome",
   signature = c(
-    "ctx"
+    "ns"
   ),
   def = function(
-    ctx,
+    ns,
     ...
   ) {
     standardGeneric("getRappHome")       
@@ -37,7 +37,7 @@ setGeneric(
 #' See generic: \code{\link[rapp.core.rte]{getRappHome}}
 #'      
 #' @inheritParams getRappHome
-#' @param ctx \code{\link{missing}}. Default ctx.
+#' @param ns \code{\link{missing}}. Default ns.
 #' @return \code{\link{character}}. Option value.
 #' @example inst/examples/getRappHome.r
 #' @seealso \code{
@@ -49,10 +49,10 @@ setGeneric(
 setMethod(
   f = "getRappHome", 
   signature = signature(
-    ctx = "missing"
+    ns = "missing"
   ), 
   definition = function(
-    ctx,
+    ns,
     ...
   ) {
   

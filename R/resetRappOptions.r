@@ -5,8 +5,8 @@
 #' Resets options as expected by the \code{rapp} framework and its associated
 #' packages.
 #'   	
-#' @param ctx \strong{Signature argument}.
-#'    Object containing ctx information.
+#' @param ns \strong{Signature argument}.
+#'    Object containing namespace information.
 #' @template threedot
 #' @example inst/examples/resetRappOptions.r
 #' @seealso \code{
@@ -18,10 +18,10 @@
 setGeneric(
   name = "resetRappOptions",
   signature = c(
-    "ctx"
+    "ns"
   ),
   def = function(
-    ctx,
+    ns,
     ...
   ) {
     standardGeneric("resetRappOptions")       
@@ -35,7 +35,7 @@ setGeneric(
 #' See generic: \code{\link[rapp.core.rte]{resetRappOptions}}
 #'   	 
 #' @inheritParams resetRappOptions
-#' @param ctx \code{\link{missing}}. Default context.
+#' @param ns \code{\link{missing}}. Default namespace.
 #' @return \code{\link{environment}}. The options container as stored in 
 #'    \code{options(".rapp")}.
 #' @example inst/examples/resetRappOptions.r
@@ -48,10 +48,10 @@ setGeneric(
 setMethod(
   f = "resetRappOptions", 
   signature = signature(
-    ctx = "missing"
+    ns = "missing"
   ), 
   definition = function(
-    ctx,
+    ns,
     ...
   ) {
   

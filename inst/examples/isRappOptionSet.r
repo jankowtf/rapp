@@ -20,7 +20,7 @@ setRappOption(
 )
 
 isRappOptionSet(id = ".rte/is_set")
-isRappOptionSet(id = ".rte/runtime_stage")
+isRappOptionSet(id = ".rte/runtime_mode")
 isRappOptionSet(id = ".rte/is_not_set_1")
 isRappOptionSet(id = ".rte/is_not_set_2")
 

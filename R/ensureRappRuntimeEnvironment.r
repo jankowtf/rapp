@@ -12,10 +12,10 @@
 #'        \item{Set development stage variable}: } {
 #'          Let's the developer choose the development stage: \emph{dev},
 #'          \code{test} or \code{live}. The choice is stored in variable 
-#'          \code{runtime_stage} which in turn is stored in 
+#'          \code{runtime_mode} which in turn is stored in 
 #'          the option environment \code{.DEVENV} associated to 
 #'          option \code{".rapp"} (i.e. access via 
-#'          \code{getOption(".rapp")$.RAPPDEVENV$.RAPPDEVENV_runtime_stage}).
+#'          \code{getOption(".rapp")$.RAPPDEVENV$.RAPPDEVENV_runtime_mode}).
 #'          The variable currently only controls the exact file path to the
 #'          package repository root directory (\code{"*/repos_dev"},
 #'          \code{"*/repos_test"} or \code{"*/repos_dev"}).
@@ -37,6 +37,10 @@
 #'          directories for unit tests (\code{tests/testthat/data}) 
 #'        }
 #'     }
+#' In case a file \code{options_runtime.r} exists in \code{/rapp/options/},
+#' then it is parsed and if any of \code{rapp_home}, \code{runtime_mode} 
+#' or \code{lib} is specified, the default values from the generic function
+#' are overwritten. Else the default values are used.
 #'   	
 #' @param rapp_home \strong{Signature argument}.
 #'    Object containing rapp HOME directory information.
@@ -69,7 +73,7 @@ setGeneric(
   ),
   def = function(
     rapp_home = file.path(Sys.getenv("HOME"), "rapp"),
-    runtime_stage = c("dev", "test", "live"),
+    runtime_mode = c("dev", "test", "live"),
     lib = .libPaths()[1],
     pkg = ifelse(isPackageProject(), devtools::as.package(x = ".")$package,
       character()),
@@ -86,9 +90,15 @@ setGeneric(
 #'
 #' @description 
 #' See generic: \code{\link[rapp.core.rte]{ensureRappRuntimeEnvironment}}
+#' 
+#' @details
+#' In case a file \code{options_runtime.r} exists in \code{/rapp/options/},
+#' then it is parsed and if any of \code{rapp_home}, \code{runtime_mode} 
+#' or \code{lib} is specified, the default values from the generic function
+#' are overwritten. Else the default values are used.
 #'      
 #' @inheritParams ensureRappRuntimeEnvironment
-#' @param rapp_home \code{\link{missing}}. Default rapp_home.
+#' @param rapp_home \code{\link{missing}}. Default rapp HOME directory location.
 #' @return \code{\link{logical}}. \code{TRUE}.
 #' @example inst/examples/ensureRappRuntimeEnvironment.r
 #' @seealso \code{
@@ -104,16 +114,31 @@ setMethod(
   ), 
   definition = function(
     rapp_home,
-    runtime_stage,
+    runtime_mode,
     lib,
     pkg,
     vsn,
     ...
   ) {
   
+  ## Overwrite if option file exists //
+  fpath <- "rapp/options/options_runtime.r"
+  opts <- readRuntimeOptionFile(path = fpath, strict = FALSE)
+  if (length(opts)) {
+    if ("rapp_home" %in% names(opts)) {
+      rapp_home <- opts$rapp_home
+    }
+    if ("runtime_mode" %in% names(opts)) {
+      runtime_mode <- opts$runtime_mode
+    }
+    if ("lib" %in% names(opts)) {
+      lib <- opts$lib
+    }
+  }
+    
   return(ensureRappRuntimeEnvironment(
     rapp_home = rapp_home,
-    runtime_stage = runtime_stage, 
+    runtime_mode = runtime_mode, 
     lib = lib,
     pkg = pkg,
     vsn = vsn
@@ -145,7 +170,7 @@ setMethod(
   ), 
   definition = function(
     rapp_home,
-    runtime_stage,
+    runtime_mode,
     lib,
     pkg,
     vsn,
@@ -155,14 +180,14 @@ setMethod(
 #   require("base")
 #   require("utils")
 #   if (interactive()) {
-#     runtime_stage <- select.list(
+#     runtime_mode <- select.list(
 #       choices = c("dev", "test", "live"),
 #       preselect = "dev",
 #       title = "Select development stage",
 #       graphics = TRUE
 #     )
 #   } else {
-#     runtime_stage <- "live"
+#     runtime_mode <- "live"
 #   }
     
   ensureInitialRappOptions()  
@@ -170,25 +195,23 @@ setMethod(
   setRappHome(value = rapp_home, update_dependent = TRUE)
 #   ensureRappHome()
   setInternalRepositories(pkg = pkg, vsn = vsn)
-  setRuntimeStage(value = runtime_stage)
+  setRuntimeMode(value = runtime_mode)
   setLibrary(value = lib)
   
   ## Ensure development packages //
   ensureDevPackages(
     rapp_home = rapp_home,
-    runtime_stage = runtime_stage,
+    runtime_mode = runtime_mode,
     lib = lib
   )
   
   ## Project components //
-  if (isPackageProject()) {
-    rapp.core.examples::ensureExamplesDirectory()
-    base::dir.create("man-roxygen", showWarnings = FALSE)
-    base::dir.create("tests/testthat/data", recursive = TRUE, showWarnings = FALSE)
-    base::dir.create("rapp", recursive = TRUE, showWarnings = FALSE)
-    
-    rapp.core.rte::ensureContextRappOptions()
-  }
+  ensureProjectComponents()
+
+  ## Ensure namespace option container project options //
+  if (isPackageProject() || hasOptionFile()) {
+    ensureNamespaceRappOptions()
+  } 
 
   ## Process repository data //
   processRepositoryData()

@@ -1,3 +1,41 @@
+# CHANGES IN rapp.core.rte VERSION 0.1.0.6
+
+## NEW FEATURES
+
+- Ensured the creation of certain project components via 
+  `ensureProjectComponents()` and `ensureRappDirectoryComponents()`.
+- Config files for options: `rapp/options_runtime.r` (runtime specific options) and `rapp/options.r` (package project specific options)
+- Added `rapp/apps` directory with a demo app `test`. Each app directory has
+  the following structure: 
+  - `./options`: contains `options_runtime.r` and `options.r`
+  - `./R`: R scripts
+- `ensureRappRuntimeEnvironment()` is now able to read options from 
+  `/rapp/options/options_runtime.r` (see method for signature `missing`)
+- new: `hasOptionFile()`: checks for existence of `options.r`
+- new: `hasRuntimeOptionFile()`: checks for existence of `options_runtime.r`
+- new: `readRuntimeOptionFile()`: reads option file content
+
+## BUG FIXES
+
+## MAJOR CHANGES
+
+- What previously was called a *context*  is now referred to as a *namespace* 
+throughout the package
+- Rename: `ensureContextRappOptions()` --> `ensureNamespaceRappOptions()`
+- Rename: `setContextRappOption()` --> `setNamespaceRappOption()`
+- Rename: `getContextRappOption()` --> `getNamespaceRappOption()`
+- Rename: `setRuntimeStage()` --> `setRuntimeMode()`
+- Rename: `getRuntimeStage()` --> `getRuntimeMode()`
+- Argument `ctx` changed to `ns` in various functions/methods
+- Argument `runtime_stage` changed to `runtime_mode` in various functions/methods
+- Ensure creation of `vignettes` subdirectory in `ensureRappRuntimeEnvironment()`
+
+## MINOR CHANGES
+  
+## MISC 
+
+-----
+
 # CHANGES IN rapp.core.rte VERSION 0.1.0.5
 
 ## NEW FEATURES
@@ -8,7 +46,7 @@
 
 ## MINOR CHANGES
 
-- `ensureContextRappOptions()`:
+- `ensureNamespaceRappOptions()`:
   - ensured that context directory is created below `<rapp_home>/contexts/`
 - `ensureRappHome()`:
   - ensured that root directory for context data is created: `<rapp_home>/contexts/`
@@ -16,12 +54,10 @@
   - enabled pass-through of `...` arguments 
 - `getRappHome()`: 
   - enabled pass-through of `...` arguments 
-- `getRuntimeStage()`: 
+- `getRuntimeMode()`: 
   - enabled pass-through of `...` arguments 
   
 ## MISC 
-
-- first release candidate
 
 -----
 

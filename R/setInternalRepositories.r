@@ -16,7 +16,7 @@
 #'   	
 #' @param repos_root \strong{Signature argument}.
 #'    Object containing repos_root information.
-#' @param runtime_stage \code{\link{character}}.
+#' @param runtime_mode \code{\link{character}}.
 #'    Development stage. Any of \code{c("dev", "test", "live")}.
 #' @param pkg \code{\link{character}}. Package name.
 #' @param vsn \code{\link{character}}. Package version.
@@ -37,7 +37,7 @@ setGeneric(
   def = function(
     repos_root = file.path(getRappOption(".rte/rapp_home", strict = TRUE), 
                            "repos/r"),
-    runtime_stage = c("dev", "test", "live"),
+    runtime_mode = c("dev", "test", "live"),
     pkg = ifelse(isPackageProject(), devtools::as.package(x = ".")$package,
       character()),
     vsn = ifelse(isPackageProject(), devtools::as.package(x = ".")$version,
@@ -75,7 +75,7 @@ setMethod(
   ), 
   definition = function(
     repos_root,
-    runtime_stage,
+    runtime_mode,
     pkg, 
     vsn,
     ...
@@ -83,7 +83,7 @@ setMethod(
   
   return(setInternalRepositories(
     repos_root = repos_root,
-    runtime_stage = runtime_stage,
+    runtime_mode = runtime_mode,
     pkg = pkg,
     vsn = vsn,
     ...
@@ -116,15 +116,15 @@ setMethod(
   ), 
   definition = function(
     repos_root,
-    runtime_stage,
+    runtime_mode,
     pkg,
     vsn,
     ...
   ) {
   
-  runtime_stages <- c("dev", "test", "live")  
-  runtime_stage <- match.arg(runtime_stage, runtime_stages)
-  repos_list_0 <- file.path(repos_root, runtime_stages)
+  runtime_modes <- c("dev", "test", "live")  
+  runtime_mode <- match.arg(runtime_mode, runtime_modes)
+  repos_list_0 <- file.path(repos_root, runtime_modes)
   repos_list <- file.path("file://", repos_list_0)
   repos_list_global <- file.path(repos_list, "global")  
   repos_list_pkgs <- file.path(repos_list, "packages")  
@@ -190,7 +190,7 @@ setMethod(
   
   ## Global repository to be used //
   repos_global <- switch(
-    runtime_stage,
+    runtime_mode,
     "dev" = getRappOption(".rte/repos_dev_global"),
     "test" = getRappOption(".rte/repos_test_global"),
     "live" = getRappOption(".rte/repos_live_global")
@@ -217,7 +217,7 @@ setMethod(
     ))  
     
     repos_pkg <- switch(
-      runtime_stage,
+      runtime_mode,
       "dev" = getRappOption(".rte/repos_dev_pkg"),
       "test" = getRappOption(".rte/repos_test_pkg"),
       "live" = getRappOption(".rte/repos_live_pkg")

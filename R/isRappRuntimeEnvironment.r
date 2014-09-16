@@ -5,8 +5,8 @@
 #' Checks if the \code{rapp} runtime environment as established by 
 #' \code{\link[rapp.core.rte]{ensureRappRuntimeEnvironment}} is enabled.
 #'   	
-#' @param ctx \strong{Signature argument}.
-#'    Object containing context information.
+#' @param ns \strong{Signature argument}.
+#'    Object containing namespace information.
 #' @template threedot
 #' @example inst/examples/isRappRuntimeEnvironment.r
 #' @seealso \code{
@@ -19,10 +19,10 @@
 setGeneric(
   name = "isRappRuntimeEnvironment",
   signature = c(
-    "ctx"
+    "ns"
   ),
   def = function(
-    ctx,
+    ns,
     ...
   ) {
     standardGeneric("isRappRuntimeEnvironment")       
@@ -36,7 +36,7 @@ setGeneric(
 #' See generic: \code{\link[rapp.core.rte]{isRappRuntimeEnvironment}}
 #'   	 
 #' @inheritParams isRappRuntimeEnvironment
-#' @param ctx \code{\link{missing}}.
+#' @param ns \code{\link{missing}}.
 #' @return \code{\link{logical}}. \code{TRUE}: runtime enabled; \code{FALSE}:
 #'    runtime not enabled.
 #' @example inst/examples/isRappRuntimeEnvironment.r
@@ -49,10 +49,10 @@ setGeneric(
 setMethod(
   f = "isRappRuntimeEnvironment", 
   signature = signature(
-    ctx = "missing"
+    ns = "missing"
   ), 
   definition = function(
-    ctx,
+    ns,
     ...
   ) {
   

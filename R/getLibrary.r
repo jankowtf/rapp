@@ -4,8 +4,8 @@
 #' @description 
 #' Retrieves the library option.
 #'   	
-#' @param ctx \strong{Signature argument}.
-#'    Object containing context information.
+#' @param ns \strong{Signature argument}.
+#'    Object containing namespace information.
 #' @template threedot
 #' @example inst/examples/getLibrary.r
 #' @seealso \code{
@@ -18,10 +18,10 @@
 setGeneric(
   name = "getLibrary",
   signature = c(
-    "ctx"
+    "ns"
   ),
   def = function(
-    ctx,
+    ns,
     ...
   ) {
     standardGeneric("getLibrary")       
@@ -35,7 +35,7 @@ setGeneric(
 #' See generic: \code{\link[rapp.core.rte]{getLibrary}}
 #'      
 #' @inheritParams getLibrary
-#' @param ctx \code{\link{missing}}. Default ctx.
+#' @param ns \code{\link{missing}}. Default namespace.
 #' @return \code{\link{character}}. Option value.
 #' @example inst/examples/getLibrary.r
 #' @seealso \code{
@@ -47,10 +47,10 @@ setGeneric(
 setMethod(
   f = "getLibrary", 
   signature = signature(
-    ctx = "missing"
+    ns = "missing"
   ), 
   definition = function(
-    ctx,
+    ns,
     ...
   ) {
   

@@ -84,10 +84,11 @@ setMethod(
     }
   } else {
     container <- getOption(".rapp")
+    envir_name <- "container"
     
-    path <- gsub("/", "$", id)
-    expr <- paste0("container$", path)
-    out <- eval(parse(text = expr))  
+    path <- paste0("[[\"", gsub("/", "\"]][[\"", id), "\"]]")
+    expr <- paste0(envir_name, path)
+    out <- eval(parse(text = expr))
     if (is.null(out)) {
       if (!strict) {
         out <- out
@@ -103,6 +104,9 @@ setMethod(
         )
       }
     }
+    
+    ## Handler //
+    out <- handleRappOptionReturn(value = out)
   }
   
   return(out)

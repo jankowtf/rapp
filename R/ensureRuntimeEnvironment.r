@@ -60,7 +60,7 @@
 #' @param vsn \code{\link{character}}. Package version.
 #' @param opts \code{\link{list}}.
 #'    Optional possibility to pass along options as returned by 
-#'    \code{\link[rapp.core.rte]{readRuntimeOptionFile}}.
+#'    \code{\link[rapp.core.rte]{readRappOptionFile}}.
 #'    Certain, but not all values, are stored in the options (has to to with
 #'    explicit vs. implicit values). This feature has not reached release stage,
 #'    so use with caution or not at all. 
@@ -130,7 +130,7 @@ setMethod(
   
   ## Overwrite if option file exists //
   path <- "rapp/options/options_runtime.r"
-  opts <- readRuntimeOptionFile(path = path, strict = FALSE)
+  opts <- readRappOptionFile(path = path, strict = FALSE)
   if (length(opts)) {
     if ("rapp_global" %in% names(opts)) {
       rapp_global <- opts$rapp_global
@@ -224,7 +224,7 @@ setMethod(
 
   ## Ensure namespace option container project options //
   if (isPackageProject() || hasOptionFile()) {
-    ensureNamespaceRappOptions()
+    mergeNamespaceRappOptions()
   } 
 
   ## Process repository data //

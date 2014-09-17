@@ -80,11 +80,6 @@ setMethod(
     id = ".rte/repos_pkgs",
     value = NA_character_
   )
-  setRappOption(
-    id = ".rte/path_app",
-    value = getwd(),
-    branch_gap = TRUE
-  )
 
   return(container)
     

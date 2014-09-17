@@ -10,16 +10,16 @@
 #'    \code{TRUE}: error if file does not exist;
 #'    \code{FALSE}: empty list if file does not exist.
 #' @template threedot
-#' @example inst/examples/readRuntimeOptionFile.r
+#' @example inst/examples/readRappOptionFile.r
 #' @seealso \code{
-#'   	\link[rapp.core.rte]{readRuntimeOptionFile-character-method}
+#'   	\link[rapp.core.rte]{readRappOptionFile-character-method}
 #' }
 #' @template author
 #' @template references
 #' @export 
 #' @import rapp.core.package
 setGeneric(
-  name = "readRuntimeOptionFile",
+  name = "readRappOptionFile",
   signature = c(
     "path"
   ),
@@ -28,7 +28,7 @@ setGeneric(
     strict = FALSE,
     ...
   ) {
-    standardGeneric("readRuntimeOptionFile")       
+    standardGeneric("readRappOptionFile")       
   }
 )
 
@@ -36,21 +36,21 @@ setGeneric(
 #' Read Runtime Options
 #'
 #' @description 
-#' See generic: \code{\link[rapp.core.rte]{readRuntimeOptionFile}}
+#' See generic: \code{\link[rapp.core.rte]{readRappOptionFile}}
 #'   	 
-#' @inheritParams readRuntimeOptionFile
+#' @inheritParams readRappOptionFile
 #' @param path \code{\link{missing}}. Default path.
 #' @return See method
-#'    \code{\link[rapp.core.rte]{readRuntimeOptionFile-character-method}}
-#' @example inst/examples/readRuntimeOptionFile.r
+#'    \code{\link[rapp.core.rte]{readRappOptionFile-character-method}}
+#' @example inst/examples/readRappOptionFile.r
 #' @seealso \code{
-#'    \link[rapp.core.rte]{readRuntimeOptionFile}
+#'    \link[rapp.core.rte]{readRappOptionFile}
 #' }
 #' @template author
 #' @template references
 #' @export
 setMethod(
-  f = "readRuntimeOptionFile", 
+  f = "readRappOptionFile", 
   signature = signature(
     path = "missing"
   ), 
@@ -60,7 +60,7 @@ setMethod(
     ...
   ) {
   
-  return(readRuntimeOptionFile(
+  return(readRappOptionFile(
     path = path,
     strict = strict,
     ...
@@ -73,20 +73,20 @@ setMethod(
 #' Read Runtime Options
 #'
 #' @description 
-#' See generic: \code{\link[rapp.core.rte]{readRuntimeOptionFile}}
+#' See generic: \code{\link[rapp.core.rte]{readRappOptionFile}}
 #'      
-#' @inheritParams readRuntimeOptionFile
+#' @inheritParams readRappOptionFile
 #' @param path \code{\link{character}}. Default path.
 #' @return \code{\link{list}}. Options as name-value pairs.
-#' @example inst/examples/readRuntimeOptionFile.r
+#' @example inst/examples/readRappOptionFile.r
 #' @seealso \code{
-#'    \link[rapp.core.rte]{readRuntimeOptionFile}
+#'    \link[rapp.core.rte]{readRappOptionFile}
 #' }
 #' @template author
 #' @template references
 #' @export
 setMethod(
-  f = "readRuntimeOptionFile", 
+  f = "readRappOptionFile", 
   signature = signature(
     path = "character"
   ), 

@@ -49,6 +49,11 @@ try(setRappOption(id = "a/b/c/d", value = TRUE, branch_gap = TRUE, strict = TRUE
 setRappOption(id = "a/b/c/d", value = TRUE, branch_gap = TRUE, force_branch = TRUE)
 getRappOption(id = "a/b/c/d")
 
+## Numerical names //
+resetRappOptions()
+setRappOption(id = "20140101", value = "hello world!")
+getRappOption(id = "20140101")
+
 ## Clean up //
 on.exit(options(".rapp" = opts_old))
 

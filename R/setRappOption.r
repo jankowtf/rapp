@@ -111,6 +111,7 @@ setMethod(
     
   out <- TRUE
   container <- ensureRappOptionsContainer()
+  envir_name <- "container"
   
   ## Adjustments //
   if (match_class) {
@@ -140,10 +141,11 @@ setMethod(
       expr_set <- NULL
       for (ii in 1:length(id_branch_spl)) {
         expr_get <- c(expr_get, 
-          paste0("container$", paste(id_branch_spl[1:ii], collapse = "$")))
+          paste0(envir_name, "[[\"", paste(id_branch_spl[1:ii], collapse = "\"]][[\""),
+             "\"]]"))
         expr_set <- c(expr_set, 
-          paste0("container$", paste(id_branch_spl[1:ii], collapse = "$"),
-                 " <- new.env()"))
+          paste0(envir_name, "[[\"", paste(id_branch_spl[1:ii], collapse = "\"]][[\""),
+          "\"]] <- new.env()"))
         id_branch_tree <- c(id_branch_tree, paste(id_branch_spl[1:ii], collapse = "/"))
       }
       
@@ -234,7 +236,8 @@ setMethod(
   ## Parent is no environment //
   if (!inherits(value_branch, "environment")) {
     if (force_branch) {
-      expr_set <- paste0("container$", gsub("/", "$", id_branch), " <- new.env()")
+      expr_set <- paste0(envir_name, "$", gsub("/", 
+        "$", id_branch), " <- new.env()")
       eval(parse(text = expr_set))
     } else {
       if (!strict) {
@@ -307,8 +310,8 @@ setMethod(
     return(out)
   }
 
-  path <- gsub("/", "$", id)
-  expr <- paste0("container$", path, " <- value")
+  path <- paste0("[[\"", gsub("/", "\"]][[\"", id), "\"]]")
+  expr <- paste0(envir_name, path, " <- value")
   eval(parse(text = expr))  
   return(out)
   

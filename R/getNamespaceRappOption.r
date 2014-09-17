@@ -4,7 +4,7 @@
 #' @description 
 #' Retrieves namespace-specific \code{rapp} options. These are usually 
 #' options associated to package projects or applications. 
-#' See \code{\link[rapp.core.rte]{ensureNamespaceRappOptions}}.
+#' See \code{\link[rapp.core.rte]{mergeNamespaceRappOptions}}.
 #' 
 #' @details
 #' Providing a value for \code{ns} but none for \code{id} retrieves the 
@@ -101,6 +101,41 @@ setMethod(
   signature = signature(
     ns = "character",
     id = "missing"
+  ), 
+  definition = function(
+    ns,
+    id,
+    ...
+  ) {
+  
+  return(getNamespaceRappOption(ns = ns, id = id, ...))
+    
+  }
+)
+
+#' @title
+#' Get Context-Specific Rapp Options
+#'
+#' @description 
+#' See generic: \code{\link[rapp.core.rte]{getNamespaceRappOption}}
+#'      
+#' @inheritParams getNamespaceRappOption
+#' @param ns \code{\link{missing}}.
+#' @param id \code{\link{character}}. 
+#' @return See method 
+#'   \code{\link[rapp.core.rte]{getNamespaceRappOption-character-character-method}}
+#' @example inst/examples/getNamespaceRappOption.r
+#' @seealso \code{
+#'    \link[rapp.core.rte]{getNamespaceRappOption}
+#' }
+#' @template author
+#' @template references
+#' @export
+setMethod(
+  f = "getNamespaceRappOption", 
+  signature = signature(
+    ns = "missing",
+    id = "character"
   ), 
   definition = function(
     ns,

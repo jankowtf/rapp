@@ -1,3 +1,30 @@
+# CHANGES IN rapp.core.rte VERSION 0.1.0.13
+
+## NEW FEATURES
+
+- added `initializeNamespaceRappOptions()`
+
+## BUG FIXES
+
+## MAJOR CHANGES
+
+- rename: `ensureNamespaceRappOptions()` --> `mergeNamespaceRappOptions()`.
+  This better reflects the purpose of merging initial namespace options and the ones specified in the option file `/options/options.r`.
+- rename: `renameRuntimeOptionFile()` --> `renameRappOptionFile()`.
+  This is more consistent with the overall naming conventions used.
+- improved: `setRappOption()`.
+  Numerical option names can handled (e.g. `20140101`).  
+- improved: `getRappOption()`.
+  Numerical option names can now be handled (e.g. `20140101`)
+
+## MINOR CHANGES
+
+- added namespace option `path_app` (`initializeNamespaceRappOptions()`) and removed the respective system option (`initializeRappOptions()`)
+
+## MISC 
+
+-----
+
 # CHANGES IN rapp.core.rte VERSION 0.1.0.12
 
 ## NEW FEATURES
@@ -74,7 +101,7 @@ Not fully elaborated yet.
 
 ## MINOR CHANGES
 
-- `ensureNamespaceRappOptions()`:
+- `mergeNamespaceRappOptions()`:
   Changed option `context_home` to `ns_global` for consistency reasons
 - rename: `ns_home` in `ns_global`  
 - rename: `rapp_global` in `rapp_global`  
@@ -135,7 +162,7 @@ Not fully elaborated yet.
   `/rapp/options/options_runtime.r` (see method for signature `missing`)
 - new: `hasOptionFile()`: checks for existence of `options.r`
 - new: `hasRuntimeOptionFile()`: checks for existence of `options_runtime.r`
-- new: `readRuntimeOptionFile()`: reads option file content
+- new: `readRappOptionFile()`: reads option file content
 
 ## BUG FIXES
 
@@ -143,7 +170,7 @@ Not fully elaborated yet.
 
 - What previously was called a *context*  is now referred to as a *namespace* 
 throughout the package
-- Rename: `ensureContextRappOptions()` --> `ensureNamespaceRappOptions()`
+- Rename: `ensureContextRappOptions()` --> `mergeNamespaceRappOptions()`
 - Rename: `setContextRappOption()` --> `setNamespaceRappOption()`
 - Rename: `getContextRappOption()` --> `getNamespaceRappOption()`
 - Rename: `setRuntimeStage()` --> `setRuntimeMode()`
@@ -168,7 +195,7 @@ throughout the package
 
 ## MINOR CHANGES
 
-- `ensureNamespaceRappOptions()`:
+- `mergeNamespaceRappOptions()`:
   - ensured that context directory is created below `<rapp_global>/contexts/`
 - `ensureRappGlobal()`:
   - ensured that root directory for context data is created: `<rapp_global>/contexts/`

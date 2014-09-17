@@ -4,16 +4,20 @@
 opts_old <- getOption(".rapp")
 
 ## Create example content //
-container <- initializeRappOptions()
-cont_this <- getRappOption(id = ".rte")
+resetRappOptions()
+getRappOption(id = ".rte")
 
+## Set and get values //
 setRappOption(id = ".rte/test", value = TRUE)
-
 getRappOption(id = ".rte/test")
 getRappOption(id = ".rte/abcd")
 getRappOption(id = ".rte/abcd", strict = TRUE)
 
+## Numerical names //
+setRappOption(id = "20140101", value = "hello world!")
+getRappOption(id = "20140101")
+
 ## Clean up //
-on.exit(options(".rapp" = opts_old))
+options(".rapp" = opts_old)
 
 }

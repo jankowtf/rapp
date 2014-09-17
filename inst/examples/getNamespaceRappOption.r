@@ -3,7 +3,7 @@
 ## Save current option state //  
 opts_old <- getOption(".rapp")
 
-ensureNamespaceRappOptions(context = "test")
+mergeNamespaceRappOptions(context = "test")
 setNamespaceRappOption(ns = "test")
 
 ## Set an empty option container //

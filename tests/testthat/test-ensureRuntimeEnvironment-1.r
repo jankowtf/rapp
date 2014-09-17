@@ -1,5 +1,5 @@
-context("ensureNamespaceRappOptions-1")
-test_that("ensureNamespaceRappOptions", {
+context("mergeNamespaceRappOptions-1")
+test_that("mergeNamespaceRappOptions", {
 
   .cleanTempDir <- function(x) {
     if (grepl(basename(tempdir()), x)) {

@@ -63,6 +63,11 @@ test_that("setRappOption", {
      force_branch = TRUE))
   expect_equal(res <- getRappOption(id = "a/b"), TRUE)
   
+  ## Numerical names //
+  container <- initializeRappOptions()
+  expect_true(setRappOption(id = "20140101", value = TRUE))
+  expect_equal(res <- getRappOption(id = "20140101"), TRUE)
+  
   on.exit(options(".rapp" = opts_old))
   
   }

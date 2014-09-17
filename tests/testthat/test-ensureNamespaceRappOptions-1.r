@@ -3,7 +3,7 @@ test_that("ensureNamespaceRappOptions", {
 
   opts_old <- getOption(".rapp")
   
-  ensureInitialRappOptions()
+  initializeRappOptions()
   setRappGlobal(tempdir())
   expect_is(res <- ensureNamespaceRappOptions(), "logical")
   expect_equal(ls(getOption(".rapp"), all.names=TRUE), c(".rte", "rapp.core.rte"))

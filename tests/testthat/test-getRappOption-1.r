@@ -4,7 +4,7 @@ test_that("getRappOption", {
   opts_old <- getOption(".rapp")
   
   ## Create example content //
-  container <- ensureInitialRappOptions()
+  container <- initializeRappOptions()
   expect_is(cont_this <- getRappOption(id = ".rte"), "environment")
   
   setRappOption(

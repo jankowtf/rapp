@@ -1,3 +1,26 @@
+# CHANGES IN rapp.core.rte VERSION 0.1.0.10
+
+## NEW FEATURES
+
+- added `tidySource()` which is mainly used to write `/options/options.r` and `/options/options_runtime.r`
+## BUG FIXES
+
+- `ensureRuntimeEnvironment()` takes care of ensuring the existence of the default `rapp_global` directory.
+
+## MAJOR CHANGES
+
+- rename: `ensureRuntimeEnvironment()` --> `ensureRuntimeEnvironment()`
+- rename: `initializeRappOptions()` --> `initializeRappOptions()`
+- added `overwrite` argument to `ensureProjectComponents()`
+- added `overwrite` argument to `ensureRappDirectoryComponents()`
+- changed the way option templates are created in `ensureRappDirectoryComponents()` (`tidySource`).
+
+## MINOR CHANGES
+
+## MISC 
+
+-----
+
 # CHANGES IN rapp.core.rte VERSION 0.1.0.9
 
 ## NEW FEATURES
@@ -67,7 +90,7 @@
   the following structure: 
   - `./options`: contains `options_runtime.r` and `options.r`
   - `./R`: R scripts
-- `ensureRappRuntimeEnvironment()` is now able to read options from 
+- `ensureRuntimeEnvironment()` is now able to read options from 
   `/rapp/options/options_runtime.r` (see method for signature `missing`)
 - new: `hasOptionFile()`: checks for existence of `options.r`
 - new: `hasRuntimeOptionFile()`: checks for existence of `options_runtime.r`
@@ -86,7 +109,7 @@ throughout the package
 - Rename: `getRuntimeStage()` --> `getRuntimeMode()`
 - Argument `ctx` changed to `ns` in various functions/methods
 - Argument `runtime_stage` changed to `runtime_mode` in various functions/methods
-- Ensure creation of `vignettes` subdirectory in `ensureRappRuntimeEnvironment()`
+- Ensure creation of `vignettes` subdirectory in `ensureRuntimeEnvironment()`
 
 ## MINOR CHANGES
   

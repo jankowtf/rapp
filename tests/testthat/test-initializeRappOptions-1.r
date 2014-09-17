@@ -1,9 +1,9 @@
-context("ensureInitialRappOptions-1")
-test_that("ensureInitialRappOptions", {
+context("initializeRappOptions-1")
+test_that("initializeRappOptions", {
 
   opts_old <- getOption(".rapp")
   
-  expect_is(res <- ensureInitialRappOptions(), "environment")
+  expect_is(res <- initializeRappOptions(), "environment")
   expect_equal(ls(res, all.names=TRUE), ".rte")
   expected <- sort(c(
     "runtime_mode",

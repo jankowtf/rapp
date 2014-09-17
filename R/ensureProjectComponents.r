@@ -8,6 +8,9 @@
 #'   	
 #' @param ns \strong{Signature argument}.
 #'    Object containing namespace information.
+#' @param overwrite \code{\link{logical}}.
+#'    \code{TRUE}: overwrite existing directory components;
+#'    \code{FALSE}: do not overwrite existing directory components.
 #' @template threedot
 #' @example inst/examples/ensureProjectComponents.r
 #' @seealso \code{
@@ -22,6 +25,7 @@ setGeneric(
   ),
   def = function(
     ns,
+    overwrite = FALSE,
     ...
   ) {
     standardGeneric("ensureProjectComponents")       
@@ -51,6 +55,7 @@ setMethod(
   ), 
   definition = function(
     ns,
+    overwrite,
     ...
   ) {
     
@@ -60,7 +65,7 @@ setMethod(
     rapp.core.examples::ensureExamplesDirectory()
     base::dir.create("man-roxygen", showWarnings = FALSE)
     ## TODO 2014-09-16: create dummy roxygen templates as well
-    ensureRappDirectoryComponents()
+    ensureRappDirectoryComponents(overwrite = overwrite)
     base::dir.create("tests/testthat/data", recursive = TRUE, showWarnings = FALSE)
     ## TODO 2014-09-16: check what other components might make sense (dummy test files)
     ## TODO 2014-09-16: develop 'rapp.core.test' for ensuring unit tests

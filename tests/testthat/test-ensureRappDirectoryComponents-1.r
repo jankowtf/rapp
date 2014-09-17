@@ -12,12 +12,16 @@ test_that("ensureRappDirectoryComponents", {
     path = tempdir(),
     force = TRUE
   )
-  wd_0 <- setwd(file.path(tempdir(), "test"))
+  path <- file.path(tempdir(), "test")
+  wd_0 <- setwd(path)
   expect_true(res <- ensureRappDirectoryComponents())
+  expect_true(file.exists("rapp/options/options.r"))
+  expect_true(file.exists("rapp/options/options_runtime.r"))
+  expect_true(res <- ensureRappDirectoryComponents(overwrite = TRUE))
   
+  setwd(wd_0)
   on.exit({
-    setwd(wd_0)
-    .cleanTempDir(x = tempdir())
+    .cleanTempDir(x = path)
   })
   
   }

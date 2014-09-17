@@ -3,7 +3,7 @@
 #'
 #' @description 
 #' Checks if the \code{rapp} runtime environment as established by 
-#' \code{\link[rapp.core.rte]{ensureRappRuntimeEnvironment}} is enabled.
+#' \code{\link[rapp.core.rte]{ensureRuntimeEnvironment}} is enabled.
 #'   	
 #' @param ns \strong{Signature argument}.
 #'    Object containing namespace information.
@@ -11,7 +11,7 @@
 #' @example inst/examples/isRappRuntimeEnvironment.r
 #' @seealso \code{
 #'   	\link[rapp.core.rte]{isRappRuntimeEnvironment-character-method},
-#'    \link[rapp.core.rte]{ensureRappRuntimeEnvironment}
+#'    \link[rapp.core.rte]{ensureRuntimeEnvironment}
 #' }
 #' @template author
 #' @template references

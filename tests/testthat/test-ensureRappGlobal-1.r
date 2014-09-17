@@ -3,7 +3,7 @@ test_that("ensureRappGlobal", {
 
   opts_old <- getOption(".rapp")
   
-  ensureInitialRappOptions()
+  initializeRappOptions()
   setRappGlobal("q:/home/rapp")
   expect_true(res <- ensureRappGlobal())
   expect_true("rapp_global" %in% ls(getOption(".rapp")$.rte, all.names=TRUE))

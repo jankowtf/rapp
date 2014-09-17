@@ -1,5 +1,5 @@
 #' @title
-#' Ensure Initial Rapp Options
+#' Initialize Rapp Options
 #'
 #' @description 
 #' Ensures initial options as expected by the \code{rapp} framework and its 
@@ -9,15 +9,15 @@
 #' @param ns \strong{Signature argument}.
 #'    Object containing namespace information.
 #' @template threedot
-#' @example inst/examples/ensureInitialRappOptions.r
+#' @example inst/examples/initializeRappOptions.r
 #' @seealso \code{
-#'   	\link[rapp.core.rte]{ensureInitialRappOptions-missing-method}
+#'   	\link[rapp.core.rte]{initializeRappOptions-missing-method}
 #' }
 #' @template author
 #' @template references
 #' @export 
 setGeneric(
-  name = "ensureInitialRappOptions",
+  name = "initializeRappOptions",
   signature = c(
     "ns"
   ),
@@ -25,29 +25,29 @@ setGeneric(
     ns,
     ...
   ) {
-    standardGeneric("ensureInitialRappOptions")       
+    standardGeneric("initializeRappOptions")       
   }
 )
 
 #' @title
-#' Ensure Initial Rapp Options
+#' Initialize Rapp Options
 #'
 #' @description 
-#' See generic: \code{\link[rapp.core.rte]{ensureInitialRappOptions}}
+#' See generic: \code{\link[rapp.core.rte]{initializeRappOptions}}
 #'   	 
-#' @inheritParams ensureInitialRappOptions
+#' @inheritParams initializeRappOptions
 #' @param ns \code{\link{missing}}. Default namespace.
 #' @return \code{\link{environment}}. The options container as stored in 
 #'    \code{options(".rapp")}.
-#' @example inst/examples/ensureInitialRappOptions.r
+#' @example inst/examples/initializeRappOptions.r
 #' @seealso \code{
-#'    \link[rapp.core.rte]{ensureInitialRappOptions}
+#'    \link[rapp.core.rte]{initializeRappOptions}
 #' }
 #' @template author
 #' @template references
 #' @export
 setMethod(
-  f = "ensureInitialRappOptions", 
+  f = "initializeRappOptions", 
   signature = signature(
     ns = "missing"
   ), 

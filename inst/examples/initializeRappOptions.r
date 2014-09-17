@@ -4,7 +4,7 @@
 opts_old <- getOption(".rapp")
 
 ## Initialize options //
-res <- ensureInitialRappOptions()
+res <- initializeRappOptions()
 ls(res, all.names = TRUE)
 ls(res$.rte, all.names = TRUE)
 

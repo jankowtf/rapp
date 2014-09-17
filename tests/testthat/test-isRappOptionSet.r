@@ -4,7 +4,7 @@ test_that("isRappOptionSet", {
   opts_old <- getOption(".rapp")
   
   ## Create example content //
-  container <- ensureInitialRappOptions()
+  container <- initializeRappOptions()
   cont_this <- getRappOption(id = ".rte")
   setRappOption(
     id = ".rte/is_set",

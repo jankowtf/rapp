@@ -59,15 +59,15 @@
 #' @param pkg \code{\link{character}}. Package name.
 #' @param vsn \code{\link{character}}. Package version.
 #' @template threedot
-#' @example inst/examples/ensureRappRuntimeEnvironment.r
+#' @example inst/examples/ensureRuntimeEnvironment.r
 #' @seealso \code{
-#'   	\link[rapp.core.rte]{ensureRappRuntimeEnvironment-missing-method}
+#'   	\link[rapp.core.rte]{ensureRuntimeEnvironment-missing-method}
 #' }
 #' @template author
 #' @template references
 #' @export 
 setGeneric(
-  name = "ensureRappRuntimeEnvironment",
+  name = "ensureRuntimeEnvironment",
   signature = c(
     "rapp_global"
   ),
@@ -81,7 +81,7 @@ setGeneric(
       character()),
     ...
   ) {
-    standardGeneric("ensureRappRuntimeEnvironment")       
+    standardGeneric("ensureRuntimeEnvironment")       
   }
 )
 
@@ -89,7 +89,7 @@ setGeneric(
 #' Ensure Development Environment
 #'
 #' @description 
-#' See generic: \code{\link[rapp.core.rte]{ensureRappRuntimeEnvironment}}
+#' See generic: \code{\link[rapp.core.rte]{ensureRuntimeEnvironment}}
 #' 
 #' @details
 #' In case a file \code{options_runtime.r} exists in \code{/rapp/options/},
@@ -97,18 +97,18 @@ setGeneric(
 #' or \code{lib} is specified, the default values from the generic function
 #' are overwritten. Else the default values are used.
 #'      
-#' @inheritParams ensureRappRuntimeEnvironment
+#' @inheritParams ensureRuntimeEnvironment
 #' @param rapp_global \code{\link{missing}}. Default rapp HOME directory location.
 #' @return \code{\link{logical}}. \code{TRUE}.
-#' @example inst/examples/ensureRappRuntimeEnvironment.r
+#' @example inst/examples/ensureRuntimeEnvironment.r
 #' @seealso \code{
-#'    \link[rapp.core.rte]{ensureRappRuntimeEnvironment}
+#'    \link[rapp.core.rte]{ensureRuntimeEnvironment}
 #' }
 #' @template author
 #' @template references
 #' @export
 setMethod(
-  f = "ensureRappRuntimeEnvironment", 
+  f = "ensureRuntimeEnvironment", 
   signature = signature(
     rapp_global = "missing"
   ), 
@@ -122,8 +122,8 @@ setMethod(
   ) {
   
   ## Overwrite if option file exists //
-  fpath <- "rapp/options/options_runtime.r"
-  opts <- readRuntimeOptionFile(path = fpath, strict = FALSE)
+  path <- "rapp/options/options_runtime.r"
+  opts <- readRuntimeOptionFile(path = path, strict = FALSE)
   if (length(opts)) {
     if ("rapp_global" %in% names(opts)) {
       rapp_global <- opts$rapp_global
@@ -136,7 +136,7 @@ setMethod(
     }
   }
     
-  return(ensureRappRuntimeEnvironment(
+  return(ensureRuntimeEnvironment(
     rapp_global = rapp_global,
     runtime_mode = runtime_mode, 
     lib = lib,
@@ -151,20 +151,20 @@ setMethod(
 #' Ensure Development Environment
 #'
 #' @description 
-#' See generic: \code{\link[rapp.core.rte]{ensureRappRuntimeEnvironment}}
+#' See generic: \code{\link[rapp.core.rte]{ensureRuntimeEnvironment}}
 #'   	 
-#' @inheritParams ensureRappRuntimeEnvironment
+#' @inheritParams ensureRuntimeEnvironment
 #' @param rapp_global \code{\link{character}}. Default rapp_global.
 #' @return \code{\link{logical}}. \code{TRUE}.
-#' @example inst/examples/ensureRappRuntimeEnvironment.r
+#' @example inst/examples/ensureRuntimeEnvironment.r
 #' @seealso \code{
-#'    \link[rapp.core.rte]{ensureRappRuntimeEnvironment}
+#'    \link[rapp.core.rte]{ensureRuntimeEnvironment}
 #' }
 #' @template author
 #' @template references
 #' @export
 setMethod(
-  f = "ensureRappRuntimeEnvironment", 
+  f = "ensureRuntimeEnvironment", 
   signature = signature(
     rapp_global = "character"
   ), 
@@ -190,8 +190,10 @@ setMethod(
 #     runtime_mode <- "live"
 #   }
     
-  ensureInitialRappOptions()  
+  ## Initialize //    
+  initializeRappOptions()  
     
+  ## Set options //
   setRappGlobal(value = rapp_global, update_dependent = TRUE)
 #   ensureRappGlobal()
   setInternalRepositories(pkg = pkg, vsn = vsn)

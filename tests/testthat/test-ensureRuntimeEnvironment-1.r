@@ -9,9 +9,9 @@ test_that("ensureNamespaceRappOptions", {
   
   opts_old <- getOption(".rapp")
   
-  ensureInitialRappOptions()
+  initializeRappOptions()
   
-  ensureRappRuntimeEnvironment(
+  ensureRuntimeEnvironment(
     rapp_global = "q:/home/rapp",
     runtime_mode = "dev"
   )

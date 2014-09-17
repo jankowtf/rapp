@@ -55,7 +55,7 @@ setMethod(
     ...
   ) {
   
-  return(ensureInitialRappOptions())
+  return(initializeRappOptions())
     
   }
 )

@@ -4,7 +4,7 @@ test_that("setRappOption", {
   opts_old <- getOption(".rapp")
   
   ## Create example content //
-  container <- ensureInitialRappOptions()
+  container <- initializeRappOptions()
   
   expect_true(res <- setRappOption(id = "test", value = TRUE))
   expect_equal(res <- getRappOption(id = "test"), TRUE)
@@ -39,13 +39,13 @@ test_that("setRappOption", {
   ))
   expect_equal(res <- getRappOption(id = ".rte/test/a"), "hello world!")
   
-  container <- ensureInitialRappOptions()
+  container <- initializeRappOptions()
   expect_false(setRappOption(id = "a/b/c/d", value = TRUE))
   expect_error(setRappOption(id = "a/b/c/d", value = TRUE, strict = TRUE))
   expect_true(setRappOption(id = "a/b/c/d", value = TRUE, branch_gap = TRUE))
   expect_equal(res <- getRappOption(id = "a/b/c/d"), TRUE)
   
-  container <- ensureInitialRappOptions()
+  container <- initializeRappOptions()
   expect_true(setRappOption(id = "a", value = "hello world!"))
   expect_false(setRappOption(id = "a/b/c/d", value = TRUE, branch_gap = TRUE))
   expect_error(setRappOption(id = "a/b/c/d", value = TRUE, 
@@ -54,7 +54,7 @@ test_that("setRappOption", {
      branch_gap = TRUE, force_branch = TRUE))
   expect_equal(res <- getRappOption(id = "a/b/c/d"), TRUE)
   
-  container <- ensureInitialRappOptions()
+  container <- initializeRappOptions()
   expect_true(setRappOption(id = "a", value = "hello world!"))
   expect_false(setRappOption(id = "a/b", value = TRUE, branch_gap = TRUE))
   expect_error(setRappOption(id = "a/b", value = TRUE, 

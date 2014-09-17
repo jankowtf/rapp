@@ -25,7 +25,7 @@ test_that("ensureNamespaceRappOptions", {
   
   wd_0 <- setwd(path)
   
-  initializeRappOptions()
+#   initializeRappOptions()
   
   rapp_global <- file.path(tempdir(), "home")
   ensureRuntimeEnvironment(
@@ -53,6 +53,9 @@ test_that("ensureNamespaceRappOptions", {
     c("ns", "ns_global") %in% 
       ls(getOption(".rapp")$test, all.names=TRUE)
   ))
+
+  expect_equal(getRappOption(".rte/rapp_global"), rapp_global)
+  expect_equal(getRappOption(".rte/path_app"), getwd())
 
   setwd(wd_0)
   on.exit({

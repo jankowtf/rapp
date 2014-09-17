@@ -9,10 +9,14 @@ test_that("initializeRappOptions", {
     "runtime_mode",
     "repos_global",
     "repos_root",
-    "repos_pkgs"
+    "repos_pkgs",
+    "rapp_global",
+    "path_app"
   ))
   expect_equal(ls(res$.rte, all.names=TRUE), expected)
   expected_values <- list(
+    path_app = getwd(),
+    rapp_global = file.path(Sys.getenv("HOME"), "rapp"),
     repos_global = NA_character_,
     repos_pkg = NA_character_,
     repos_root = NA_character_,
@@ -22,6 +26,9 @@ test_that("initializeRappOptions", {
     res <- lapply(expected, get, envir = res$.rte),
     expected_values
   )
+  expect_equal(getRappOption(".rte/rapp_global"), 
+               file.path(Sys.getenv("HOME"), "rapp"))
+  expect_equal(getRappOption(".rte/path_app"), getwd())
   
   on.exit(options(".rapp" = opts_old))
   

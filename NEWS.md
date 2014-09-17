@@ -1,3 +1,23 @@
+# CHANGES IN rapp.core.rte VERSION 0.1.0.12
+
+## NEW FEATURES
+
+## BUG FIXES
+
+## MAJOR CHANGES
+
+- added argument `opts` to `ensureRuntimeEnvironment()`: allows to pass read options in order to transfer some runtime options to internal `.rte` options.
+Not fully elaborated yet.
+
+## MINOR CHANGES
+
+- added runtime option `rapp_global` in `initializeRappOptions()`
+- added runtime option `path_app` in `initializeRappOptions()`
+
+## MISC 
+
+-----
+
 # CHANGES IN rapp.core.rte VERSION 0.1.0.11
 
 ## NEW FEATURES

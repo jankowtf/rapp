@@ -59,6 +59,11 @@ setMethod(
   container <- ensureRappOptionsContainer(overwrite = TRUE)
   
   setRappOption(
+    id = ".rte/rapp_global",
+    value = file.path(Sys.getenv("HOME"), "rapp"),
+    branch_gap = TRUE
+  )
+  setRappOption(
     id = ".rte/runtime_mode",
     value = "dev",
     branch_gap = TRUE
@@ -74,6 +79,11 @@ setMethod(
   setRappOption(
     id = ".rte/repos_pkgs",
     value = NA_character_
+  )
+  setRappOption(
+    id = ".rte/path_app",
+    value = getwd(),
+    branch_gap = TRUE
   )
 
   return(container)

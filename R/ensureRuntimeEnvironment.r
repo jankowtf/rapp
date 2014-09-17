@@ -58,6 +58,12 @@
 #'    \code{\link[base]{.libPaths()}}.
 #' @param pkg \code{\link{character}}. Package name.
 #' @param vsn \code{\link{character}}. Package version.
+#' @param opts \code{\link{list}}.
+#'    Optional possibility to pass along options as returned by 
+#'    \code{\link[rapp.core.rte]{readRuntimeOptionFile}}.
+#'    Certain, but not all values, are stored in the options (has to to with
+#'    explicit vs. implicit values). This feature has not reached release stage,
+#'    so use with caution or not at all. 
 #' @template threedot
 #' @example inst/examples/ensureRuntimeEnvironment.r
 #' @seealso \code{
@@ -79,6 +85,7 @@ setGeneric(
       character()),
     vsn = ifelse(isPackageProject(), devtools::as.package(x = ".")$version,
       character()),
+    opts = list(),
     ...
   ) {
     standardGeneric("ensureRuntimeEnvironment")       
@@ -141,7 +148,9 @@ setMethod(
     runtime_mode = runtime_mode, 
     lib = lib,
     pkg = pkg,
-    vsn = vsn
+    vsn = vsn,
+    opts = opts,
+    ...
   ))
     
   }
@@ -174,6 +183,7 @@ setMethod(
     lib,
     pkg,
     vsn,
+    opts,
     ...
   ) {
   
@@ -193,6 +203,15 @@ setMethod(
   ## Initialize //    
   initializeRappOptions()  
     
+  ## Transfer options from option file //
+  if (length(opts)) {
+    id_0 <- "path_app"
+    if (id_0 %in% names(opts)) {
+      setRappOption(id = ".rte/path_app", value = opts[[id_0]], 
+        must_exist = TRUE, strict = TRUE)
+    }
+  }
+  
   ## Set options //
   setRappGlobal(value = rapp_global, update_dependent = TRUE)
   ensureRappGlobal()

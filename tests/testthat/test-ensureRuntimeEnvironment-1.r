@@ -1,6 +1,12 @@
 context("ensureNamespaceRappOptions-1")
 test_that("ensureNamespaceRappOptions", {
 
+  .cleanTempDir <- function(x) {
+    if (grepl(basename(tempdir()), x)) {
+      unlink(x, recursive = TRUE, force = TRUE)
+    }
+  }
+  
   if (basename(getwd()) == "testthat") {
     is_testthat <- TRUE
   } else {
@@ -9,19 +15,30 @@ test_that("ensureNamespaceRappOptions", {
   
   opts_old <- getOption(".rapp")
   
+  ## Create dummy package //
+  path <- file.path(tempdir(), "test")
+  package.skeleton(
+    name = basename(path),
+    path = dirname(path),
+    force = TRUE
+  )
+  
+  wd_0 <- setwd(path)
+  
   initializeRappOptions()
   
+  rapp_global <- file.path(tempdir(), "home")
   ensureRuntimeEnvironment(
-    rapp_global = "q:/home/rapp",
+    rapp_global = rapp_global,
     runtime_mode = "dev"
   )
 #   print(ls(getOption(".rapp"), all.names=TRUE))
-#   ls(getOption(".rapp")$.rte, all.names=TRUE)
-  if (is_testthat) {
-    expected <- ".rte"
-  } else {
-    expected <- c(".rte", "rapp.core.rte")
-  }
+#   ls(getOption(".rapp")$test, all.names=TRUE)
+#   if (is_testthat) {
+#     expected <- ".rte"
+#   } else {
+    expected <- c(".rte", "test")
+#   }
   expect_equal(ls(getOption(".rapp"), all.names=TRUE), expected)
   
   expect_true(all(
@@ -30,9 +47,18 @@ test_that("ensureNamespaceRappOptions", {
       "repos_live_pkgs", "repos_pkg", "repos_pkgs", "repos_root", 
       "repos_test_global", "repos_test_pkg", "repos_test_pkgs", 
       "runtime_mode") %in% 
-      ls(getOption(".rapp")$.rte, all.names=TRUE)))
-  
-  on.exit(options(".rapp" = opts_old))
+      ls(getOption(".rapp")$.rte, all.names=TRUE)
+  ))
+  expect_true(all(
+    c("ns", "ns_global") %in% 
+      ls(getOption(".rapp")$test, all.names=TRUE)
+  ))
+
+  setwd(wd_0)
+  on.exit({
+    options(".rapp" = opts_old)
+    .cleanTempDir(x = path)
+  })
   
   }
 )

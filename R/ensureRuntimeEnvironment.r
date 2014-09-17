@@ -135,7 +135,7 @@ setMethod(
       lib <- opts$lib
     }
   }
-    
+   
   return(ensureRuntimeEnvironment(
     rapp_global = rapp_global,
     runtime_mode = runtime_mode, 
@@ -195,17 +195,10 @@ setMethod(
     
   ## Set options //
   setRappGlobal(value = rapp_global, update_dependent = TRUE)
-#   ensureRappGlobal()
+  ensureRappGlobal()
   setInternalRepositories(pkg = pkg, vsn = vsn)
   setRuntimeMode(value = runtime_mode)
   setLibrary(value = lib)
-  
-  ## Ensure development packages //
-  ensureDevPackages(
-    rapp_global = rapp_global,
-    runtime_mode = runtime_mode,
-    lib = lib
-  )
   
   ## Project components //
   ensureProjectComponents()
@@ -220,6 +213,13 @@ setMethod(
 
   ## Library //
   .libPaths(lib)
+  
+  ## Ensure development packages //
+  ensureDevPackages(
+    rapp_global = rapp_global,
+    runtime_mode = runtime_mode,
+    lib = lib
+  )
 
   return(TRUE)
     

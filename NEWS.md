@@ -1,3 +1,24 @@
+# CHANGES IN rapp.core.rte VERSION 0.1.0.11
+
+## NEW FEATURES
+
+## BUG FIXES
+
+## MAJOR CHANGES
+
+- added `path_app` to the runtime options (`/rapp/options/options_runtime.r`)
+- changed directory structure for apps in `/rapp/apps/`: options are now located below `/rapp/apps/<app-name>/rapp/options/` in order to be consitent with respect to the structure of the `/rapp` directory in the package project's root directory.
+- changed behavior for package- and app-specific option files in `ensureRappDirectoryComponents()`. 
+
+## MINOR CHANGES
+
+- modified unit test for `ensureProjectComponents()`
+- experimented with `.onAttach()` and `onLoad()`
+
+## MISC 
+
+-----
+
 # CHANGES IN rapp.core.rte VERSION 0.1.0.10
 
 ## NEW FEATURES

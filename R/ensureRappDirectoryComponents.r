@@ -59,11 +59,9 @@ setMethod(
   ) {
     
   if (isPackageProject()) {
-    ## Private function //
-    
     dirs <- c(
       "rapp/.internal",
-      "rapp/apps/test/options",
+      "rapp/apps/test/rapp/options",
       "rapp/apps/test/R",
       "rapp/dev",
       "rapp/options"
@@ -74,12 +72,13 @@ setMethod(
       list(
         rapp_global = file.path(Sys.getenv("HOME"), "rapp"),
         runtime_mode = "dev",
-        lib = .libPaths()[1]
+        lib = .libPaths()[1],
+        path_app = getwd()
       )
     )    
     fpaths <- c(
       "rapp/options/options_runtime.r",
-      "rapp/apps/test/options/options_runtime.r"
+      "rapp/apps/test/rapp/options/options_runtime.r"
     ) 
     if (overwrite) {
       idx <- seq(along = fpaths)
@@ -94,6 +93,8 @@ setMethod(
         )
       })
     }
+    
+    ## Package options //
     expr <- substitute(
       list(
         ns = rapp.core.package::asPackage(x = ".")$package,
@@ -102,8 +103,35 @@ setMethod(
       )
     ) 
     fpaths <- c(
-      "rapp/options/options.r",
-      "rapp/apps/test/options/options.r"
+      "rapp/options/options.r"
+    ) 
+    if (overwrite) {
+      idx <- seq(along = fpaths)
+    } else {
+      idx <- which(!sapply(fpaths, file.exists))
+    }
+    if (length(idx)) {
+      sapply(fpaths[idx], function(ii) {
+        write(
+          rapp.core.rte::tidySource(input = expr, name = "options"), 
+          file = ii
+        )
+      })
+    }
+    
+    ## Application options //
+    expr <- substitute(
+      list(
+        ns = file.path(
+          rapp.core.package::asPackage(x = ".")$package,
+          "test"
+        ),
+        option_2 = "your option value here (can be any R object)",
+        option_3 = "your option value here (can be any R object)"
+      )
+    ) 
+    fpaths <- c(
+      "rapp/apps/test/rapp/options/options.r"
     ) 
     if (overwrite) {
       idx <- seq(along = fpaths)

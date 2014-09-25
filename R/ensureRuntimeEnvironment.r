@@ -37,12 +37,12 @@
 #'          directories for unit tests (\code{tests/testthat/data}) 
 #'        }
 #'     }
-#' In case a file \code{options_runtime.r} exists in \code{/rapp/options/},
-#' then it is parsed and if any of \code{rapp_global}, \code{runtime_mode} 
+#' In case a file \code{options_runtime.r} exists in \code{/options/},
+#' then it is parsed and if any of \code{global_dir}, \code{runtime_mode} 
 #' or \code{lib} is specified, the default values from the generic function
 #' are overwritten. Else the default values are used.
 #'   	
-#' @param rapp_global \strong{Signature argument}.
+#' @param global_dir \strong{Signature argument}.
 #'    Object containing rapp HOME directory information.
 #' @param repos_root \code{\link{character}}.
 #'    Directory path of the local package repository \strong{root} directory,
@@ -60,14 +60,14 @@
 #' @param vsn \code{\link{character}}. Package version.
 #' @param opts \code{\link{list}}.
 #'    Optional possibility to pass along options as returned by 
-#'    \code{\link[rapp.core.rte]{readRappOptionFile}}.
+#'    \code{\link[runtimr]{readRappOptionFile}}.
 #'    Certain, but not all values, are stored in the options (has to to with
 #'    explicit vs. implicit values). This feature has not reached release stage,
 #'    so use with caution or not at all. 
 #' @template threedot
 #' @example inst/examples/ensureRuntimeEnvironment.r
 #' @seealso \code{
-#'   	\link[rapp.core.rte]{ensureRuntimeEnvironment-missing-method}
+#'   	\link[runtimr]{ensureRuntimeEnvironment-missing-method}
 #' }
 #' @template author
 #' @template references
@@ -75,10 +75,10 @@
 setGeneric(
   name = "ensureRuntimeEnvironment",
   signature = c(
-    "rapp_global"
+    "global_dir"
   ),
   def = function(
-    rapp_global = file.path(Sys.getenv("HOME"), "rapp"),
+    global_dir = file.path(Sys.getenv("HOME"), "rapp"),
     runtime_mode = c("dev", "test", "live"),
     lib = .libPaths()[1],
     pkg = ifelse(isPackageProject(), devtools::as.package(x = ".")$package,
@@ -96,20 +96,20 @@ setGeneric(
 #' Ensure Development Environment
 #'
 #' @description 
-#' See generic: \code{\link[rapp.core.rte]{ensureRuntimeEnvironment}}
+#' See generic: \code{\link[runtimr]{ensureRuntimeEnvironment}}
 #' 
 #' @details
-#' In case a file \code{options_runtime.r} exists in \code{/rapp/options/},
-#' then it is parsed and if any of \code{rapp_global}, \code{runtime_mode} 
+#' In case a file \code{options_runtime.r} exists in \code{/options/},
+#' then it is parsed and if any of \code{global_dir}, \code{runtime_mode} 
 #' or \code{lib} is specified, the default values from the generic function
 #' are overwritten. Else the default values are used.
 #'      
 #' @inheritParams ensureRuntimeEnvironment
-#' @param rapp_global \code{\link{missing}}. Default rapp HOME directory location.
+#' @param global_dir \code{\link{missing}}. Default rapp HOME directory location.
 #' @return \code{\link{logical}}. \code{TRUE}.
 #' @example inst/examples/ensureRuntimeEnvironment.r
 #' @seealso \code{
-#'    \link[rapp.core.rte]{ensureRuntimeEnvironment}
+#'    \link[runtimr]{ensureRuntimeEnvironment}
 #' }
 #' @template author
 #' @template references
@@ -117,10 +117,10 @@ setGeneric(
 setMethod(
   f = "ensureRuntimeEnvironment", 
   signature = signature(
-    rapp_global = "missing"
+    global_dir = "missing"
   ), 
   definition = function(
-    rapp_global,
+    global_dir,
     runtime_mode,
     lib,
     pkg,
@@ -129,11 +129,11 @@ setMethod(
   ) {
   
   ## Overwrite if option file exists //
-  path <- "rapp/options/options_runtime.r"
+  path <- "options/options_runtime.r"
   opts <- readRappOptionFile(path = path, strict = FALSE)
   if (length(opts)) {
-    if ("rapp_global" %in% names(opts)) {
-      rapp_global <- opts$rapp_global
+    if ("global_dir" %in% names(opts)) {
+      global_dir <- opts$global_dir
     }
     if ("runtime_mode" %in% names(opts)) {
       runtime_mode <- opts$runtime_mode
@@ -144,7 +144,7 @@ setMethod(
   }
    
   return(ensureRuntimeEnvironment(
-    rapp_global = rapp_global,
+    global_dir = global_dir,
     runtime_mode = runtime_mode, 
     lib = lib,
     pkg = pkg,
@@ -160,14 +160,14 @@ setMethod(
 #' Ensure Development Environment
 #'
 #' @description 
-#' See generic: \code{\link[rapp.core.rte]{ensureRuntimeEnvironment}}
+#' See generic: \code{\link[runtimr]{ensureRuntimeEnvironment}}
 #'   	 
 #' @inheritParams ensureRuntimeEnvironment
-#' @param rapp_global \code{\link{character}}. Default rapp_global.
+#' @param global_dir \code{\link{character}}. Default global_dir.
 #' @return \code{\link{logical}}. \code{TRUE}.
 #' @example inst/examples/ensureRuntimeEnvironment.r
 #' @seealso \code{
-#'    \link[rapp.core.rte]{ensureRuntimeEnvironment}
+#'    \link[runtimr]{ensureRuntimeEnvironment}
 #' }
 #' @template author
 #' @template references
@@ -175,10 +175,10 @@ setMethod(
 setMethod(
   f = "ensureRuntimeEnvironment", 
   signature = signature(
-    rapp_global = "character"
+    global_dir = "character"
   ), 
   definition = function(
-    rapp_global,
+    global_dir,
     runtime_mode,
     lib,
     pkg,
@@ -212,17 +212,24 @@ setMethod(
     }
   }
   
-  ## Set options //
-  setRappGlobal(value = rapp_global, update_dependent = TRUE)
-  ensureRappGlobal()
+  ## Global directory //
+  setGlobalDirectory(value = global_dir, update_dependent = TRUE)
+  ensureGlobalDirectory()
+  
+  ## Repositories //
   setInternalRepositories(pkg = pkg, vsn = vsn)
+  
+  ## Runtime mode //
   setRuntimeMode(value = runtime_mode)
+  
+  ## Package library //
   setLibrary(value = lib)
+  .libPaths(lib)
   
   ## Project components //
   ensureProjectComponents()
 
-  ## Ensure namespace option container project options //
+  ## Ensure namespace option container for project options //
   if (isPackageProject() || hasOptionFile()) {
     mergeNamespaceRappOptions()
   } 
@@ -230,12 +237,9 @@ setMethod(
   ## Process repository data //
   processRepositoryData()
 
-  ## Library //
-  .libPaths(lib)
-  
   ## Ensure development packages //
   ensureDevPackages(
-    rapp_global = rapp_global,
+    global_dir = global_dir,
     runtime_mode = runtime_mode,
     lib = lib
   )

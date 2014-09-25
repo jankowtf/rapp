@@ -14,7 +14,7 @@
 #' @template threedot
 #' @example inst/examples/ensureProjectComponents.r
 #' @seealso \code{
-#'   	\link[rapp.core.rte]{ensureProjectComponents-missing-method}
+#'   	\link[runtimr]{ensureProjectComponents-missing-method}
 #' }
 #' @template author
 #' @template references
@@ -36,7 +36,7 @@ setGeneric(
 #' Ensure Initial Rapp Options
 #'
 #' @description 
-#' See generic: \code{\link[rapp.core.rte]{ensureProjectComponents}}
+#' See generic: \code{\link[runtimr]{ensureProjectComponents}}
 #'   	 
 #' @inheritParams ensureProjectComponents
 #' @param ns \code{\link{missing}}. Default namespace.
@@ -44,7 +44,7 @@ setGeneric(
 #'    \code{options(".rapp")}.
 #' @example inst/examples/ensureProjectComponents.r
 #' @seealso \code{
-#'    \link[rapp.core.rte]{ensureProjectComponents}
+#'    \link[runtimr]{ensureProjectComponents}
 #' }
 #' @template author
 #' @template references
@@ -65,11 +65,14 @@ setMethod(
     rapp.core.examples::ensureExamplesDirectory()
     base::dir.create("man-roxygen", showWarnings = FALSE)
     ## TODO 2014-09-16: create dummy roxygen templates as well
-    ensureRappDirectoryComponents(overwrite = overwrite)
+    
     base::dir.create("tests/testthat/data", recursive = TRUE, showWarnings = FALSE)
     ## TODO 2014-09-16: check what other components might make sense (dummy test files)
     ## TODO 2014-09-16: develop 'rapp.core.test' for ensuring unit tests
     base::dir.create("vignettes", recursive = TRUE, showWarnings = FALSE)
+    
+    ensureRappComponents(overwrite = overwrite)
+    
     out <- TRUE
   } else {
     out <- FALSE

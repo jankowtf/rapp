@@ -3,12 +3,12 @@
 #'
 #' @description 
 #' Merges initial namespace options as set by 
-#' \code{\link[rapp.core.rte]{initializeNamespaceRappOptions}} with the ones
-#' specified in option file \code{/options/options.r} and read via 
-#' \code{\link[rapp.core.rte]{readRappOptionFile}}.
+#' \code{\link[runtimr]{initializeNamespaceRappOptions}} with the ones
+#' specified in option file \code{/options/options_rapp.r} and read via 
+#' \code{\link[runtimr]{readRappOptionFile}}.
 #' 
 #' @details
-#' In case a file \code{options.r} exists in \code{/rapp/options/},
+#' In case a file \code{options.r} exists in \code{/options/},
 #' then it is parsed and if \code{ns} is specified, the default values 
 #' from the generic function are overwritten. Else the default values are used.
 #'   	
@@ -19,7 +19,7 @@
 #' @template threedot
 #' @example inst/examples/mergeNamespaceRappOptions.r
 #' @seealso \code{
-#'   	\link[rapp.core.rte]{mergeNamespaceRappOptions-missing-method}
+#'   	\link[runtimr]{mergeNamespaceRappOptions-missing-method}
 #' }
 #' @template author
 #' @template references
@@ -33,7 +33,7 @@ setGeneric(
   ),
   def = function(
     ns = rapp.core.package::asPackage(x = ".")$package,
-    path = "rapp/options/options.r",
+    path = "options/options_rapp.r",
     ...
   ) {
     standardGeneric("mergeNamespaceRappOptions")       
@@ -44,10 +44,10 @@ setGeneric(
 #' Merge Namespace Rapp Options
 #'
 #' @description 
-#' See generic: \code{\link[rapp.core.rte]{mergeNamespaceRappOptions}}
+#' See generic: \code{\link[runtimr]{mergeNamespaceRappOptions}}
 #' 
 #' @details
-#' In case a file \code{options.r} exists in \code{/rapp/options/},
+#' In case a file \code{options.r} exists in \code{/options/},
 #' then it is parsed and if \code{ns} is specified, the default values 
 #' from the generic function are overwritten. Else the default values are used.
 #'   	 
@@ -58,7 +58,7 @@ setGeneric(
 #'    \code{\link{mergeNamespaceRappOptions-character-character-method}}.
 #' @example inst/examples/mergeNamespaceRappOptions.r
 #' @seealso \code{
-#'    \link[rapp.core.rte]{mergeNamespaceRappOptions}
+#'    \link[runtimr]{mergeNamespaceRappOptions}
 #' }
 #' @template author
 #' @template references
@@ -88,10 +88,10 @@ setMethod(
 #' Merge Namespace Rapp Options
 #'
 #' @description 
-#' See generic: \code{\link[rapp.core.rte]{mergeNamespaceRappOptions}}
+#' See generic: \code{\link[runtimr]{mergeNamespaceRappOptions}}
 #' 
 #' @details
-#' In case a file \code{options.r} exists in \code{/rapp/options/},
+#' In case a file \code{options.r} exists in \code{/options/},
 #' then it is parsed and if \code{ns} is specified, the default values 
 #' from the generic function are overwritten. Else the default values are used.
 #'      
@@ -102,7 +102,7 @@ setMethod(
 #'    \code{\link{mergeNamespaceRappOptions-character-character-method}}.
 #' @example inst/examples/mergeNamespaceRappOptions.r
 #' @seealso \code{
-#'    \link[rapp.core.rte]{mergeNamespaceRappOptions}
+#'    \link[runtimr]{mergeNamespaceRappOptions}
 #' }
 #' @template author
 #' @template references
@@ -132,10 +132,10 @@ setMethod(
 #' Merge Namespace Rapp Options
 #'
 #' @description 
-#' See generic: \code{\link[rapp.core.rte]{mergeNamespaceRappOptions}}
+#' See generic: \code{\link[runtimr]{mergeNamespaceRappOptions}}
 #' 
 #' @details
-#' In case a file \code{options.r} exists in \code{/rapp/options/},
+#' In case a file \code{options.r} exists in \code{/options/},
 #' then it is parsed and if \code{ns} is specified, the default values 
 #' from the generic function are overwritten. Else the default values are used.
 #'      
@@ -146,7 +146,7 @@ setMethod(
 #'    \code{\link{mergeNamespaceRappOptions-character-character-method}}.
 #' @example inst/examples/mergeNamespaceRappOptions.r
 #' @seealso \code{
-#'    \link[rapp.core.rte]{mergeNamespaceRappOptions}
+#'    \link[runtimr]{mergeNamespaceRappOptions}
 #' }
 #' @template author
 #' @template references
@@ -176,10 +176,10 @@ setMethod(
 #' Merge Namespace Rapp Options
 #'
 #' @description 
-#' See generic: \code{\link[rapp.core.rte]{mergeNamespaceRappOptions}}
+#' See generic: \code{\link[runtimr]{mergeNamespaceRappOptions}}
 #' 
 #' @details
-#' In case a file \code{options.r} exists in \code{/rapp/options/},
+#' In case a file \code{options.r} exists in \code{/options/},
 #' then it is parsed and if \code{ns} is specified, the default values 
 #' from the generic function are overwritten. Else the default values are used.
 #'      
@@ -190,7 +190,7 @@ setMethod(
 #'    \code{options(".rapp")}.
 #' @example inst/examples/mergeNamespaceRappOptions.r
 #' @seealso \code{
-#'    \link[rapp.core.rte]{mergeNamespaceRappOptions}
+#'    \link[runtimr]{mergeNamespaceRappOptions}
 #' }
 #' @template author
 #' @template references
@@ -198,8 +198,8 @@ setMethod(
 setMethod(
   f = "mergeNamespaceRappOptions", 
   signature = signature(
-    ns = "missing",
-    path = "missing"
+    ns = "character",
+    path = "character"
   ), 
   definition = function(
     ns,
@@ -210,7 +210,7 @@ setMethod(
   ## Private function //
   .validateMergeConstellation <- function(name, value_1, value_2) {
     if (value_1 != value_2) {
-      rapp.core.rte::signalCondition(
+      runtimr::signalCondition(
         condition = "InvalidOptionMergeConstellation",
         msg = c(
           "Invalid option value constellation",
@@ -218,7 +218,7 @@ setMethod(
           "Argument value" = value_1,
           "Option file value" = value_2
         ),
-        ns = "rapp.core.rte",
+        ns = "runtimr",
         type = "error"
       )
     }
@@ -253,37 +253,39 @@ setMethod(
   }
   
   ## Special options //
-  ## Option 'ns_global': depends on 'rapp_global'
-  rapp_global <- getRappGlobal(strict = TRUE)
+  ## Option 'ns_global': depends on 'global_dir'
+  global_dir <- getGlobalDirectory(strict = TRUE)
   
   fun <- function() {
-    file.path(getRappGlobal(strict = TRUE), "ns", 
+    file.path(getGlobalDirectory(strict = TRUE), "ns", 
         getNamespaceRappOption(id = "ns"))
   }
   class(fun) <- c("RappReactiveValue", class(fun))
     
 #   dir.create(value, recursive = TRUE, showWarnings = FALSE)
   
-  setNamespaceRappOption(
-    ns = ns,
-    id = "ns_global",
-    value = fun,
-    must_exist = TRUE,
-    strict = TRUE,
-    branch_gap = TRUE
-  )
+  if (FALSE) {
+    setNamespaceRappOption(
+      ns = ns,
+      id = "ns_global",
+      value = fun,
+      must_exist = TRUE,
+      strict = TRUE,
+      branch_gap = TRUE
+    )
+  
+    getNamespaceRappOption(
+      ns = ns,
+      id = "ns_global"
+    )
+    setGlobalDirectory(value = "c:/temp")
+    getNamespaceRappOption(
+      ns = ns,
+      id = "ns_global"
+    )
+  }
 
-  getNamespaceRappOption(
-    ns = ns,
-    id = "ns_global"
-  )
-  setRappGlobal(value = "c:/temp")
-  getNamespaceRappOption(
-    ns = ns,
-    id = "ns_global"
-  )
-
-  return(out)
+  return(TRUE)
     
   }
 )

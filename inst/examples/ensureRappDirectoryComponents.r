@@ -29,7 +29,7 @@ wd_0 <- setwd(pkg_path)
 .openDirectory(pkg_path)
 
 ## Ensure additional project components //
-ensureRappDirectoryComponents()
+ensureRappComponents()
 
 ## Investigate updated project content //
 .openDirectory(pkg_path)

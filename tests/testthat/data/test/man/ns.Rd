@@ -10,7 +10,7 @@
 \usage{data("ns")}
 \format{
   The format is:
- chr "rapp.core.rte"
+ chr "runtimr"
 }
 \details{
 %%  ~~ If necessary, more details than the __description__ above ~~

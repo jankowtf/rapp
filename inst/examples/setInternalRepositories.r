@@ -4,8 +4,8 @@
 opts_old <- getOption(".rapp")
 
 ## Prerequisites //
-ensureRappGlobal()
-getRappOption(".rte/rapp_global")
+ensureGlobalDirectory()
+getRappOption(".rte/global_dir")
 
 setInternalRepositories()
 getRappOption(".rte/repos_root")

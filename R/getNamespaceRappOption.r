@@ -4,7 +4,7 @@
 #' @description 
 #' Retrieves namespace-specific \code{rapp} options. These are usually 
 #' options associated to package projects or applications. 
-#' See \code{\link[rapp.core.rte]{mergeNamespaceRappOptions}}.
+#' See \code{\link[runtimr]{mergeNamespaceRappOptions}}.
 #' 
 #' @details
 #' Providing a value for \code{ns} but none for \code{id} retrieves the 
@@ -21,7 +21,7 @@
 #' @template threedot
 #' @example inst/examples/getNamespaceRappOption.r
 #' @seealso \code{
-#'   	\link[rapp.core.rte]{getNamespaceRappOption-character-character-method}
+#'   	\link[runtimr]{getNamespaceRappOption-character-character-method}
 #' }
 #' @template author
 #' @template references
@@ -47,16 +47,16 @@ setGeneric(
 #' Get Context-Specific Rapp Options
 #'
 #' @description 
-#' See generic: \code{\link[rapp.core.rte]{getNamespaceRappOption}}
+#' See generic: \code{\link[runtimr]{getNamespaceRappOption}}
 #'      
 #' @inheritParams getNamespaceRappOption
 #' @param ns \code{\link{missing}}. Default namespace.
 #' @param id \code{\link{missing}}. Default ID.
 #' @return See method 
-#'   \code{\link[rapp.core.rte]{getNamespaceRappOption-character-character-method}}
+#'   \code{\link[runtimr]{getNamespaceRappOption-character-character-method}}
 #' @example inst/examples/getNamespaceRappOption.r
 #' @seealso \code{
-#'    \link[rapp.core.rte]{getNamespaceRappOption}
+#'    \link[runtimr]{getNamespaceRappOption}
 #' }
 #' @template author
 #' @template references
@@ -82,16 +82,16 @@ setMethod(
 #' Get Context-Specific Rapp Options
 #'
 #' @description 
-#' See generic: \code{\link[rapp.core.rte]{getNamespaceRappOption}}
+#' See generic: \code{\link[runtimr]{getNamespaceRappOption}}
 #'      
 #' @inheritParams getNamespaceRappOption
 #' @param ns \code{\link{character}}.
 #' @param id \code{\link{missing}}. 
 #' @return See method 
-#'   \code{\link[rapp.core.rte]{getNamespaceRappOption-character-character-method}}
+#'   \code{\link[runtimr]{getNamespaceRappOption-character-character-method}}
 #' @example inst/examples/getNamespaceRappOption.r
 #' @seealso \code{
-#'    \link[rapp.core.rte]{getNamespaceRappOption}
+#'    \link[runtimr]{getNamespaceRappOption}
 #' }
 #' @template author
 #' @template references
@@ -117,16 +117,16 @@ setMethod(
 #' Get Context-Specific Rapp Options
 #'
 #' @description 
-#' See generic: \code{\link[rapp.core.rte]{getNamespaceRappOption}}
+#' See generic: \code{\link[runtimr]{getNamespaceRappOption}}
 #'      
 #' @inheritParams getNamespaceRappOption
 #' @param ns \code{\link{missing}}.
 #' @param id \code{\link{character}}. 
 #' @return See method 
-#'   \code{\link[rapp.core.rte]{getNamespaceRappOption-character-character-method}}
+#'   \code{\link[runtimr]{getNamespaceRappOption-character-character-method}}
 #' @example inst/examples/getNamespaceRappOption.r
 #' @seealso \code{
-#'    \link[rapp.core.rte]{getNamespaceRappOption}
+#'    \link[runtimr]{getNamespaceRappOption}
 #' }
 #' @template author
 #' @template references
@@ -152,16 +152,16 @@ setMethod(
 #' Get Context-Specific Rapp Options
 #'
 #' @description 
-#' See generic: \code{\link[rapp.core.rte]{getNamespaceRappOption}}
+#' See generic: \code{\link[runtimr]{getNamespaceRappOption}}
 #'      
 #' @inheritParams getNamespaceRappOption
 #' @param ns \code{\link{character}}.
 #' @param id \code{\link{character}}.
 #' @return \code{\link{logical}}. Return value of 
-#'    \code{\link[rapp.core.rte]{setRappOption}}.
+#'    \code{\link[runtimr]{setRappOption}}.
 #' @example inst/examples/getNamespaceRappOption.r
 #' @seealso \code{
-#'    \link[rapp.core.rte]{getNamespaceRappOption}
+#'    \link[runtimr]{getNamespaceRappOption}
 #' }
 #' @template author
 #' @template references

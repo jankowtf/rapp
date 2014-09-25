@@ -26,7 +26,7 @@
 #' @template threedot
 #' @example inst/examples/isPackageProject.r
 #' @seealso \code{
-#'   	\link[rapp.core.rte]{isPackageProject-character-method}
+#'   	\link[runtimr]{isPackageProject-character-method}
 #' }
 #' @template author
 #' @template references
@@ -49,14 +49,14 @@ setGeneric(
 #' Is Package Project
 #'
 #' @description 
-#' See generic: \code{\link[rapp.core.rte]{isPackageProject}}
+#' See generic: \code{\link[runtimr]{isPackageProject}}
 #'      
 #' @inheritParams isPackageProject
 #' @param path  \code{\link{missing}}. 
 #' @return \code{\link{logical}}. \code{TRUE}.
 #' @example inst/examples/isPackageProject.r
 #' @seealso \code{
-#'    \link[rapp.core.rte]{isPackageProject}
+#'    \link[runtimr]{isPackageProject}
 #' }
 #' @template author
 #' @template references
@@ -85,14 +85,14 @@ setMethod(
 #' Is Package Project
 #'
 #' @description 
-#' See generic: \code{\link[rapp.core.rte]{isPackageProject}}
+#' See generic: \code{\link[runtimr]{isPackageProject}}
 #'      
 #' @inheritParams isPackageProject
 #' @param path  \code{\link{character}}. 
 #' @return \code{\link{logical}}. \code{TRUE}.
 #' @example inst/examples/isPackageProject.r
 #' @seealso \code{
-#'    \link[rapp.core.rte]{isPackageProject}
+#'    \link[runtimr]{isPackageProject}
 #' }
 #' @template author
 #' @template references
@@ -104,6 +104,7 @@ setMethod(
   ), 
   definition = function(
     path,
+    strict,
     ...
   ) {
   
@@ -112,7 +113,7 @@ setMethod(
     if (!strict) {
       return(FALSE)
     } else {
-      rapp.core.rte::signalCondition(
+      runtimr::signalCondition(
         condition = c("NegativePackageProjectCheck",
                       "InvalidDirectoryPath"),
         msg = c(
@@ -120,7 +121,7 @@ setMethod(
           Details = "directory does not exist",
           Path = path
         ),
-        ns = "rapp.core.rte",
+        ns = "runtimr",
         type = "error"
       )
     }
@@ -131,7 +132,7 @@ setMethod(
     if (!strict) {
       return(FALSE)
     } else {
-      rapp.core.rte::signalCondition(
+      runtimr::signalCondition(
         condition = c("NegativePackageProjectCheck",
                       "NotADirectory"),
         msg = c(
@@ -139,7 +140,7 @@ setMethod(
           Details = "not a directory",
           Path = path
         ),
-        ns = "rapp.core.rte",
+        ns = "runtimr",
         type = "error"
       )
     }
@@ -173,7 +174,7 @@ setMethod(
     if (!strict) {
       return(FALSE)
     } else {
-      rapp.core.rte::signalCondition(
+      runtimr::signalCondition(
         condition = c("NegativePackageProjectCheck",
                       "MissingPackageComponents"),
         msg = c(
@@ -181,7 +182,7 @@ setMethod(
           Details = "missing package components",
           Path = path
         ),
-        ns = "rapp.core.rte",
+        ns = "runtimr",
         type = "error"
       )
     }
@@ -200,7 +201,7 @@ setMethod(
     if (!strict) {
       return(FALSE)
     } else {
-      rapp.core.rte::signalCondition(
+      runtimr::signalCondition(
         condition = c("NegativePackageProjectCheck",
                       "InvalidRessourceTypes"),
         msg = c(
@@ -210,7 +211,7 @@ setMethod(
           "Missing directories" = names(idx_dirs)[!idx_dirs],
           "Missing files" = names(idx_files)[!idx_files]
         ),
-        ns = "rapp.core.rte",
+        ns = "runtimr",
         type = "error"
       )
     }
@@ -230,7 +231,7 @@ setMethod(
     if (!strict) {
       return(FALSE)
     } else {
-      rapp.core.rte::signalCondition(
+      runtimr::signalCondition(
         condition = c("NegativePackageProjectCheck",
                       "InvalidDescriptionFileContent"),
         msg = c(
@@ -238,7 +239,7 @@ setMethod(
           Details = "invalid DESCRIPTION file content",
           Path = path
         ),
-        ns = "rapp.core.rte",
+        ns = "runtimr",
         type = "error"
       )
     }

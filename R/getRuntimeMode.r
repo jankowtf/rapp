@@ -9,7 +9,7 @@
 #' @template threedot
 #' @example inst/examples/getRuntimeMode.r
 #' @seealso \code{
-#'   	\link[rapp.core.rte]{getRuntimeMode-missing-method}
+#'   	\link[runtimr]{getRuntimeMode-missing-method}
 #' }
 #' @template author
 #' @template references
@@ -32,14 +32,14 @@ setGeneric(
 #' Get Development Stage
 #'
 #' @description 
-#' See generic: \code{\link[rapp.core.rte]{getRuntimeMode}}
+#' See generic: \code{\link[runtimr]{getRuntimeMode}}
 #'      
 #' @inheritParams getRuntimeMode
 #' @param ns \code{\link{missing}}. Default namespace.
 #' @return \code{\link{character}}. Option value.
 #' @example inst/examples/getRuntimeMode.r
 #' @seealso \code{
-#'    \link[rapp.core.rte]{getRuntimeMode}
+#'    \link[runtimr]{getRuntimeMode}
 #' }
 #' @template author
 #' @template references

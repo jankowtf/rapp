@@ -1,6 +1,6 @@
 man/*
-packrat/lib*/
-packrat/src
+*packrat/lib*/
+*packrat/src
 *.dll
 *.Rhistory
 *.Rproj.user

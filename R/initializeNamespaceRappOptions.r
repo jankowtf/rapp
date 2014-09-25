@@ -11,7 +11,7 @@
 #' @template threedot
 #' @example inst/examples/initializeNamespaceRappOptions.r
 #' @seealso \code{
-#'   	\link[rapp.core.rte]{initializeNamespaceRappOptions-missing-method}
+#'   	\link[runtimr]{initializeNamespaceRappOptions-missing-method}
 #' }
 #' @template author
 #' @template references
@@ -33,7 +33,7 @@ setGeneric(
 #' Initialize Namespace Rapp Options
 #'
 #' @description 
-#' See generic: \code{\link[rapp.core.rte]{initializeNamespaceRappOptions}}
+#' See generic: \code{\link[runtimr]{initializeNamespaceRappOptions}}
 #'      
 #' @inheritParams initializeNamespaceRappOptions
 #' @param ns \code{\link{missing}}. Default namespace.
@@ -41,7 +41,7 @@ setGeneric(
 #'    \code{options(".rapp")}.
 #' @example inst/examples/initializeNamespaceRappOptions.r
 #' @seealso \code{
-#'    \link[rapp.core.rte]{initializeNamespaceRappOptions}
+#'    \link[runtimr]{initializeNamespaceRappOptions}
 #' }
 #' @template author
 #' @template references
@@ -68,7 +68,7 @@ setMethod(
 #' Initialize Namespace Rapp Options
 #'
 #' @description 
-#' See generic: \code{\link[rapp.core.rte]{initializeNamespaceRappOptions}}
+#' See generic: \code{\link[runtimr]{initializeNamespaceRappOptions}}
 #'   	 
 #' @inheritParams initializeNamespaceRappOptions
 #' @param ns \code{\link{character}}.
@@ -76,7 +76,7 @@ setMethod(
 #'    \code{options(".rapp")}.
 #' @example inst/examples/initializeNamespaceRappOptions.r
 #' @seealso \code{
-#'    \link[rapp.core.rte]{initializeNamespaceRappOptions}
+#'    \link[runtimr]{initializeNamespaceRappOptions}
 #' }
 #' @template author
 #' @template references

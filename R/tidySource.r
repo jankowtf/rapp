@@ -11,7 +11,7 @@
 #' @template threedot
 #' @example inst/examples/tidySource.r
 #' @seealso \code{
-#'   	\link[rapp.core.rte]{tidySource-ANY-character-method}
+#'   	\link[runtimr]{tidySource-ANY-character-method}
 #' }
 #' @template author
 #' @template references
@@ -36,7 +36,7 @@ setGeneric(
 #' Tidy Source Code
 #'
 #' @description 
-#' See generic: \code{\link[rapp.core.rte]{tidySource}}
+#' See generic: \code{\link[runtimr]{tidySource}}
 #'      
 #' @inheritParams tidySource
 #' @param input \code{\link{call}}.
@@ -45,7 +45,7 @@ setGeneric(
 #'    \code{\link[rapp.core.tidy]{tidySource-call-character-method}}.
 #' @example inst/examples/tidySource.r
 #' @seealso \code{
-#'    \link[rapp.core.rte]{tidySource}
+#'    \link[runtimr]{tidySource}
 #' }
 #' @template author
 #' @template references
@@ -75,7 +75,7 @@ setMethod(
 #' Tidy Source Code
 #'
 #' @description 
-#' See generic: \code{\link[rapp.core.rte]{tidySource}}
+#' See generic: \code{\link[runtimr]{tidySource}}
 #'      
 #' @inheritParams tidySource
 #' @param input \code{\link{call}}.
@@ -83,7 +83,7 @@ setMethod(
 #' @return \code{\link{character}}. Option value.
 #' @example inst/examples/tidySource.r
 #' @seealso \code{
-#'    \link[rapp.core.rte]{tidySource}
+#'    \link[runtimr]{tidySource}
 #' }
 #' @template author
 #' @template references
@@ -133,7 +133,7 @@ setMethod(
 #' Tidy Source Code
 #'
 #' @description 
-#' See generic: \code{\link[rapp.core.rte]{tidySource}}
+#' See generic: \code{\link[runtimr]{tidySource}}
 #'      
 #' @inheritParams tidySource
 #' @param input \code{\link{<-}}.
@@ -142,7 +142,7 @@ setMethod(
 #'    \code{\link[rapp.core.tidy]{tidySource-<--character-method}}.
 #' @example inst/examples/tidySource.r
 #' @seealso \code{
-#'    \link[rapp.core.rte]{tidySource}
+#'    \link[runtimr]{tidySource}
 #' }
 #' @template author
 #' @template references
@@ -172,7 +172,7 @@ setMethod(
 #' Tidy Source Code
 #'
 #' @description 
-#' See generic: \code{\link[rapp.core.rte]{tidySource}}
+#' See generic: \code{\link[runtimr]{tidySource}}
 #'      
 #' @inheritParams tidySource
 #' @param input \code{\link{<-}}.
@@ -180,7 +180,7 @@ setMethod(
 #' @return \code{\link{character}}. Option value.
 #' @example inst/examples/tidySource.r
 #' @seealso \code{
-#'    \link[rapp.core.rte]{tidySource}
+#'    \link[runtimr]{tidySource}
 #' }
 #' @template author
 #' @template references

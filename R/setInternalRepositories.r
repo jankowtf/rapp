@@ -10,7 +10,7 @@
 #' value for \code{repos_root}. This will trigger the default behavior of 
 #' placing the repository root under \code{<rapp-home>/repos/r} with 
 #' \code{<rapp-home>} being the \code{rapp HOME} directory as set by 
-#' \code{\link[rapp.core.rte]{ensureRappGlobal}}. 
+#' \code{\link[runtimr]{ensureGlobalDirectory}}. 
 #' Any deviation from the default behavior might lead to inconsistencies in 
 #' the runtime environment at this point.
 #'   	
@@ -23,7 +23,7 @@
 #' @template threedot
 #' @example inst/examples/setInternalRepositories.r
 #' @seealso \code{
-#'   	\link[rapp.core.rte]{setInternalRepositories-missing-method}
+#'   	\link[runtimr]{setInternalRepositories-missing-method}
 #' }
 #' @template author
 #' @template references
@@ -35,7 +35,7 @@ setGeneric(
     "repos_root"
   ),
   def = function(
-    repos_root = file.path(getRappOption(".rte/rapp_global", strict = TRUE), 
+    repos_root = file.path(getRappOption(".rte/global_dir", strict = TRUE), 
                            "repos/r"),
     runtime_mode = c("dev", "test", "live"),
     pkg = ifelse(isPackageProject(), devtools::as.package(x = ".")$package,
@@ -55,15 +55,15 @@ setGeneric(
 #' Sets that internal repository options are set.
 #'
 #' @description 
-#' See generic: \code{\link[rapp.core.rte]{setInternalRepositories}}
+#' See generic: \code{\link[runtimr]{setInternalRepositories}}
 #'   	 
 #' @inheritParams setInternalRepositories
 #' @param repos_root \code{\link{missing}}. Default repos_root.
 #' @return See method
-#'    \code{\link[rapp.core.rte]{setInternalRepositories-character-method}}
+#'    \code{\link[runtimr]{setInternalRepositories-character-method}}
 #' @example inst/examples/setInternalRepositories.r
 #' @seealso \code{
-#'    \link[rapp.core.rte]{setInternalRepositories}
+#'    \link[runtimr]{setInternalRepositories}
 #' }
 #' @template author
 #' @template references
@@ -96,15 +96,15 @@ setMethod(
 #' Set Rapp Options for Specific repos_root
 #'
 #' @description 
-#' See generic: \code{\link[rapp.core.rte]{setInternalRepositories}}
+#' See generic: \code{\link[runtimr]{setInternalRepositories}}
 #'      
 #' @inheritParams setInternalRepositories
 #' @param repos_root \code{\link{character}}. Default repos_root.
 #' @return \code{\link{logical}}. Vector with options settings result as 
-#'    returned by \code{\link[rapp.core.rte]{setRappOption}}.
+#'    returned by \code{\link[runtimr]{setRappOption}}.
 #' @example inst/examples/setInternalRepositories.r
 #' @seealso \code{
-#'    \link[rapp.core.rte]{setInternalRepositories}
+#'    \link[runtimr]{setInternalRepositories}
 #' }
 #' @template author
 #' @template references

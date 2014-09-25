@@ -4,7 +4,7 @@
 #' @description 
 #' Sets namespace-specific \code{rapp} options. These are usually 
 #' options associated to package projects or applications. 
-#' See \code{\link[rapp.core.rte]{mergeNamespaceRappOptions}}.
+#' See \code{\link[runtimr]{mergeNamespaceRappOptions}}.
 #'   	
 #' @details
 #' Providing a value for \code{ns} but none for \code{id} sets an empty 
@@ -22,7 +22,7 @@
 #' @template threedot
 #' @example inst/examples/setNamespaceRappOption.r
 #' @seealso \code{
-#'   	\link[rapp.core.rte]{setNamespaceRappOption-character-character-ANY-method}
+#'   	\link[runtimr]{setNamespaceRappOption-character-character-ANY-method}
 #' }
 #' @template author
 #' @template references
@@ -50,17 +50,17 @@ setGeneric(
 #' Set Namespace Rapp Option
 #'
 #' @description 
-#' See generic: \code{\link[rapp.core.rte]{setNamespaceRappOption}}
+#' See generic: \code{\link[runtimr]{setNamespaceRappOption}}
 #'   	 
 #' @inheritParams setNamespaceRappOption
 #' @param ns \code{\link{missing}}. Default namespace.
 #' @param id \code{\link{missing}}. Default ID.
 #' @param value \code{\link{ANY}}
 #' @return See method
-#'    \code{\link[rapp.core.rte]{setNamespaceRappOption-character-character-ANY-method}}
+#'    \code{\link[runtimr]{setNamespaceRappOption-character-character-ANY-method}}
 #' @example inst/examples/setNamespaceRappOption.r
 #' @seealso \code{
-#'    \link[rapp.core.rte]{setNamespaceRappOption}
+#'    \link[runtimr]{setNamespaceRappOption}
 #' }
 #' @template author
 #' @template references
@@ -93,17 +93,17 @@ setMethod(
 #' Set Namespace Rapp Option
 #'
 #' @description 
-#' See generic: \code{\link[rapp.core.rte]{setNamespaceRappOption}}
+#' See generic: \code{\link[runtimr]{setNamespaceRappOption}}
 #'      
 #' @inheritParams setNamespaceRappOption
 #' @param ns \code{\link{character}}.
 #' @param id \code{\link{missing}}.
 #' @param value \code{\link{ANY}}
 #' @return See method
-#'    \code{\link[rapp.core.rte]{setNamespaceRappOption-character-character-ANY-method}}
+#'    \code{\link[runtimr]{setNamespaceRappOption-character-character-ANY-method}}
 #' @example inst/examples/setNamespaceRappOption.r
 #' @seealso \code{
-#'    \link[rapp.core.rte]{setNamespaceRappOption}
+#'    \link[runtimr]{setNamespaceRappOption}
 #' }
 #' @template author
 #' @template references
@@ -136,17 +136,17 @@ setMethod(
 #' Set Namespace Rapp Option
 #'
 #' @description 
-#' See generic: \code{\link[rapp.core.rte]{setNamespaceRappOption}}
+#' See generic: \code{\link[runtimr]{setNamespaceRappOption}}
 #'      
 #' @inheritParams setNamespaceRappOption
 #' @param ns \code{\link{character}}. 
 #' @param id \code{\link{character}}.
 #' @param value \code{\link{ANY}}
 #' @return See method
-#'    \code{\link[rapp.core.rte]{setNamespaceRappOption-character-character-ANY-method}}
+#'    \code{\link[runtimr]{setNamespaceRappOption-character-character-ANY-method}}
 #' @example inst/examples/setNamespaceRappOption.r
 #' @seealso \code{
-#'    \link[rapp.core.rte]{setNamespaceRappOption}
+#'    \link[runtimr]{setNamespaceRappOption}
 #' }
 #' @template author
 #' @template references

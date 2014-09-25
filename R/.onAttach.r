@@ -9,8 +9,8 @@
 #' @template references
 .onAttach <- function(libname, pkgname) {
   
-vsn <- packageDescription("rapp.core.rte", field = "Version")
-msg <- paste0("Package 'rapp.core.rte' (v", vsn, ")")
+vsn <- packageDescription("runtimr", field = "Version")
+msg <- paste0("Package 'runtimr' (v", vsn, ")")
 packageStartupMessage(msg, appendLF = TRUE)
   
 }

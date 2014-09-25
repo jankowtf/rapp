@@ -2,7 +2,7 @@
 #' Check for Existence of Option File
 #'
 #' @description 
-#' Checks if file \code{/rapp/options/options.r} exists.
+#' Checks if file \code{/options/options_rapp.r} exists.
 #'   	
 #' @param path \strong{Signature argument}.
 #'    Object containing path information.
@@ -12,7 +12,7 @@
 #' @template threedot
 #' @example inst/examples/hasOptionFile.r
 #' @seealso \code{
-#'   	\link[rapp.core.rte]{hasOptionFile-character-method}
+#'   	\link[runtimr]{hasOptionFile-character-method}
 #' }
 #' @template author
 #' @template references
@@ -23,7 +23,7 @@ setGeneric(
     "path"
   ),
   def = function(
-    path = "rapp/options/options.r",
+    path = "options/options_rapp.r",
     strict = FALSE,
     ...
   ) {
@@ -35,14 +35,14 @@ setGeneric(
 #' Is Package Project
 #'
 #' @description 
-#' See generic: \code{\link[rapp.core.rte]{hasOptionFile}}
+#' See generic: \code{\link[runtimr]{hasOptionFile}}
 #'      
 #' @inheritParams hasOptionFile
 #' @param path  \code{\link{missing}}. 
 #' @return \code{\link{logical}}. \code{TRUE}.
 #' @example inst/examples/hasOptionFile.r
 #' @seealso \code{
-#'    \link[rapp.core.rte]{hasOptionFile}
+#'    \link[runtimr]{hasOptionFile}
 #' }
 #' @template author
 #' @template references
@@ -71,14 +71,14 @@ setMethod(
 #' Is Package Project
 #'
 #' @description 
-#' See generic: \code{\link[rapp.core.rte]{hasOptionFile}}
+#' See generic: \code{\link[runtimr]{hasOptionFile}}
 #'      
 #' @inheritParams hasOptionFile
 #' @param path  \code{\link{character}}. 
 #' @return \code{\link{logical}}. \code{TRUE}: exists; \code{FALSE}: does not exist.
 #' @example inst/examples/hasOptionFile.r
 #' @seealso \code{
-#'    \link[rapp.core.rte]{hasOptionFile}
+#'    \link[runtimr]{hasOptionFile}
 #' }
 #' @template author
 #' @template references
@@ -98,13 +98,13 @@ setMethod(
     if (!strict) {
       return(FALSE)
     } else {
-      rapp.core.rte::signalCondition(
+      runtimr::signalCondition(
         condition = "NegativeOptionFileCheck",
         msg = c(
           "Option file does not exist",
           Path = path
         ),
-        ns = "rapp.core.rte",
+        ns = "runtimr",
         type = "error"
       )
     }

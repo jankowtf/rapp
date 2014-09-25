@@ -8,11 +8,11 @@ test_that("hasRuntimeOptionFile", {
   }
   
   if (!file.exists(file.path(path_0, "test"))) {
-    package.skeleton(
+    suppressMessages(package.skeleton(
       name = "test",
       path = path_0,
       force = TRUE
-    )
+    ))
     wd_0 <- setwd(file.path(path_0, "test"))
     ensureProjectComponents()
     setwd(wd_0)

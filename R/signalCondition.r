@@ -55,8 +55,8 @@
 #' 		\code{\link{error}}.
 #' @example inst/examples/signalCondition.r
 #' @seealso \code{
-#' 		\link[rapp.core.rte]{signalCondition-character-method},
-#'   	\link[rapp.core.rte]{signalCondition-missing-method},
+#' 		\link[runtimr]{signalCondition-character-method},
+#'   	\link[runtimr]{signalCondition-missing-method},
 #' 		\link[base]{condition}
 #' }
 #' @template author
@@ -81,7 +81,7 @@ setGeneric(
 #' Signal Custom Condition (\code{character-method})
 #'
 #' @description 
-#' See generic: \code{\link[rapp.core.rte]{signalCondition}}.
+#' See generic: \code{\link[runtimr]{signalCondition}}.
 #' 
 #' @details
 #'   	The returned object will always inherit from class of object \code{condition}.
@@ -206,7 +206,7 @@ setMethod(
 #' Signal Custom Condition (\code{missing-method})
 #'
 #' @description 
-#' See generic: \code{\link[rapp.core.rte]{signalCondition}}.
+#' See generic: \code{\link[runtimr]{signalCondition}}.
 #'
 #' @details
 #'   	The returned object will always inherit from class of object \code{condition}.

@@ -3,15 +3,15 @@
 #'
 #' @description 
 #' Checks if the \code{rapp} runtime environment as established by 
-#' \code{\link[rapp.core.rte]{ensureRuntimeEnvironment}} is enabled.
+#' \code{\link[runtimr]{ensureRuntimeEnvironment}} is enabled.
 #'   	
 #' @param ns \strong{Signature argument}.
 #'    Object containing namespace information.
 #' @template threedot
 #' @example inst/examples/isRappRuntimeEnvironment.r
 #' @seealso \code{
-#'   	\link[rapp.core.rte]{isRappRuntimeEnvironment-character-method},
-#'    \link[rapp.core.rte]{ensureRuntimeEnvironment}
+#'   	\link[runtimr]{isRappRuntimeEnvironment-character-method},
+#'    \link[runtimr]{ensureRuntimeEnvironment}
 #' }
 #' @template author
 #' @template references
@@ -33,7 +33,7 @@ setGeneric(
 #' Check if Rapp Runtime Environment is Enabled
 #'
 #' @description 
-#' See generic: \code{\link[rapp.core.rte]{isRappRuntimeEnvironment}}
+#' See generic: \code{\link[runtimr]{isRappRuntimeEnvironment}}
 #'   	 
 #' @inheritParams isRappRuntimeEnvironment
 #' @param ns \code{\link{missing}}.
@@ -41,7 +41,7 @@ setGeneric(
 #'    runtime not enabled.
 #' @example inst/examples/isRappRuntimeEnvironment.r
 #' @seealso \code{
-#'    \link[rapp.core.rte]{isRappRuntimeEnvironment}
+#'    \link[runtimr]{isRappRuntimeEnvironment}
 #' }
 #' @template author
 #' @template references

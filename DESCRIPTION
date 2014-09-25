@@ -1,4 +1,4 @@
-Package: rapp.core.rte
+Package: runtimr
 Type: Package
 Title: Runtime environment for package development and application deployment
     in the context of the rapp framework
@@ -6,7 +6,7 @@ Version: 0.1.0.13
 Date: 2014-09-17
 Author: Janko Thyson [aut, cre]
 Maintainer: Janko Thyson <janko.thyson@gmail.com>
-Description: Ensures a runtime environment that is useful for both package
+Description: Ensures the existence of components that are useful for both package
     development as well as application deployment in the context of the
     rapp framework.
 License: GPL (>= 2)

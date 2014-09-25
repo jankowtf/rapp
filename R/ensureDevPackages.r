@@ -9,11 +9,11 @@
 #' If you want to fully comply with the convenvtions of the \code{rapp} framework
 #' and its associated packages and applications, to not provide an explicit
 #' value for \code{repos_home}. This will trigger the default behavior of 
-#' using the value previously set by \code{\link[rapp.core.rte]{ensureRappGlobal}}. 
+#' using the value previously set by \code{\link[runtimr]{ensureGlobalDirectory}}. 
 #' Any deviation from the default behavior might lead to inconsistencies in 
 #' the runtime environment at this point.
 #'   	
-#' @param rapp_global \strong{Signature argument}.
+#' @param global_dir \strong{Signature argument}.
 #'    Object containing rapp home directory information.
 #' @param runtime_mode \code{\link{character}}. 
 #'    Development stage as returned by \code{\link{getRuntimeMode}}.
@@ -22,7 +22,7 @@
 #' @template threedot
 #' @example inst/examples/ensureDevPackages.r
 #' @seealso \code{
-#'   	\link[rapp.core.rte]{ensureDevPackages-missing-method}
+#'   	\link[runtimr]{ensureDevPackages-missing-method}
 #' }
 #' @template author
 #' @template references
@@ -31,10 +31,10 @@
 setGeneric(
   name = "ensureDevPackages",
   signature = c(
-    "rapp_global"
+    "global_dir"
   ),
   def = function(
-    rapp_global = getRappOption(".rte/rapp_global", strict = TRUE),
+    global_dir = getRappOption(".rte/global_dir", strict = TRUE),
     runtime_mode = getRappOption(".rte/runtime_mode", strict = TRUE),
     lib = getRappOption(".rte/lib", strict = TRUE),
     ...
@@ -44,18 +44,18 @@ setGeneric(
 )
 
 #' @title
-#' Ensure Rapp Options for Specific rapp_global
+#' Ensure Rapp Options for Specific global_dir
 #'
 #' @description 
-#' See generic: \code{\link[rapp.core.rte]{ensureDevPackages}}
+#' See generic: \code{\link[runtimr]{ensureDevPackages}}
 #'   	 
 #' @inheritParams ensureDevPackages
-#' @param rapp_global \code{\link{missing}}. Default rapp_global.
+#' @param global_dir \code{\link{missing}}. Default global_dir.
 #' @return See method
-#'    \code{\link[rapp.core.rte]{ensureDevPackages-character-method}}
+#'    \code{\link[runtimr]{ensureDevPackages-character-method}}
 #' @example inst/examples/ensureDevPackages.r
 #' @seealso \code{
-#'    \link[rapp.core.rte]{ensureDevPackages}
+#'    \link[runtimr]{ensureDevPackages}
 #' }
 #' @template author
 #' @template references
@@ -63,17 +63,17 @@ setGeneric(
 setMethod(
   f = "ensureDevPackages", 
   signature = signature(
-    rapp_global = "missing"
+    global_dir = "missing"
   ), 
   definition = function(
-    rapp_global,
+    global_dir,
     runtime_mode,
     lib,
     ...
   ) {
   
   return(ensureDevPackages(
-    rapp_global = rapp_global,
+    global_dir = global_dir,
     runtime_mode = runtime_mode,
     lib = lib,
     ...
@@ -83,17 +83,17 @@ setMethod(
 )
 
 #' @title
-#' Ensure Rapp Options for Specific rapp_global
+#' Ensure Rapp Options for Specific global_dir
 #'
 #' @description 
-#' See generic: \code{\link[rapp.core.rte]{ensureDevPackages}}
+#' See generic: \code{\link[runtimr]{ensureDevPackages}}
 #'      
 #' @inheritParams ensureDevPackages
-#' @param rapp_global \code{\link{character}}. Default rapp_global.
+#' @param global_dir \code{\link{character}}. Default global_dir.
 #' @return \code{\link{logical}}. \code{TRUE}.
 #' @example inst/examples/ensureDevPackages.r
 #' @seealso \code{
-#'    \link[rapp.core.rte]{ensureDevPackages}
+#'    \link[runtimr]{ensureDevPackages}
 #' }
 #' @template author
 #' @template references
@@ -101,10 +101,10 @@ setMethod(
 setMethod(
   f = "ensureDevPackages", 
   signature = signature(
-    rapp_global = "character"
+    global_dir = "character"
   ), 
   definition = function(
-    rapp_global,
+    global_dir,
     runtime_mode,
     lib,
     ...
@@ -112,7 +112,7 @@ setMethod(
   
   runtime_mode <- match.arg(runtime_mode, c("dev", "test", "live"))    
   
-  ensureRappGlobal(path = rapp_global)    
+  ensureGlobalDirectory(path = global_dir)    
   setInternalRepositories()
   repos_global <- switch(
     runtime_mode,

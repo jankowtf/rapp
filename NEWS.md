@@ -1,4 +1,4 @@
-# CHANGES IN rapp.core.rte VERSION 0.1.0.13
+# CHANGES IN runtimr VERSION 0.1.0.13
 
 ## NEW FEATURES
 
@@ -9,7 +9,7 @@
 ## MAJOR CHANGES
 
 - rename: `ensureNamespaceRappOptions()` --> `mergeNamespaceRappOptions()`.
-  This better reflects the purpose of merging initial namespace options and the ones specified in the option file `/options/options.r`.
+  This better reflects the purpose of merging initial namespace options and the ones specified in the option file `/options/options_rapp.r`.
 - rename: `renameRuntimeOptionFile()` --> `renameRappOptionFile()`.
   This is more consistent with the overall naming conventions used.
 - improved: `setRappOption()`.
@@ -25,7 +25,7 @@
 
 -----
 
-# CHANGES IN rapp.core.rte VERSION 0.1.0.12
+# CHANGES IN runtimr VERSION 0.1.0.12
 
 ## NEW FEATURES
 
@@ -38,14 +38,14 @@ Not fully elaborated yet.
 
 ## MINOR CHANGES
 
-- added runtime option `rapp_global` in `initializeRappOptions()`
+- added runtime option `global_dir` in `initializeRappOptions()`
 - added runtime option `path_app` in `initializeRappOptions()`
 
 ## MISC 
 
 -----
 
-# CHANGES IN rapp.core.rte VERSION 0.1.0.11
+# CHANGES IN runtimr VERSION 0.1.0.11
 
 ## NEW FEATURES
 
@@ -53,9 +53,9 @@ Not fully elaborated yet.
 
 ## MAJOR CHANGES
 
-- added `path_app` to the runtime options (`/rapp/options/options_runtime.r`)
-- changed directory structure for apps in `/rapp/apps/`: options are now located below `/rapp/apps/<app-name>/rapp/options/` in order to be consitent with respect to the structure of the `/rapp` directory in the package project's root directory.
-- changed behavior for package- and app-specific option files in `ensureRappDirectoryComponents()`. 
+- added `path_app` to the runtime options (`/options/options_runtime.r`)
+- changed directory structure for apps in `/rapp/apps/`: options are now located below `/rapp/apps/<app-name>/options/` in order to be consitent with respect to the structure of the `/rapp` directory in the package project's root directory.
+- changed behavior for package- and app-specific option files in `ensureRappComponents()`. 
 
 ## MINOR CHANGES
 
@@ -66,22 +66,22 @@ Not fully elaborated yet.
 
 -----
 
-# CHANGES IN rapp.core.rte VERSION 0.1.0.10
+# CHANGES IN runtimr VERSION 0.1.0.10
 
 ## NEW FEATURES
 
-- added `tidySource()` which is mainly used to write `/options/options.r` and `/options/options_runtime.r`
+- added `tidySource()` which is mainly used to write `/options/options_rapp.r` and `/options/options_runtime.r`
 ## BUG FIXES
 
-- `ensureRuntimeEnvironment()` takes care of ensuring the existence of the default `rapp_global` directory.
+- `ensureRuntimeEnvironment()` takes care of ensuring the existence of the default `global_dir` directory.
 
 ## MAJOR CHANGES
 
 - rename: `ensureRuntimeEnvironment()` --> `ensureRuntimeEnvironment()`
 - rename: `initializeRappOptions()` --> `initializeRappOptions()`
 - added `overwrite` argument to `ensureProjectComponents()`
-- added `overwrite` argument to `ensureRappDirectoryComponents()`
-- changed the way option templates are created in `ensureRappDirectoryComponents()` (`tidySource`).
+- added `overwrite` argument to `ensureRappComponents()`
+- changed the way option templates are created in `ensureRappComponents()` (`tidySource`).
 
 ## MINOR CHANGES
 
@@ -89,7 +89,7 @@ Not fully elaborated yet.
 
 -----
 
-# CHANGES IN rapp.core.rte VERSION 0.1.0.9
+# CHANGES IN runtimr VERSION 0.1.0.9
 
 ## NEW FEATURES
 
@@ -104,21 +104,21 @@ Not fully elaborated yet.
 - `mergeNamespaceRappOptions()`:
   Changed option `context_home` to `ns_global` for consistency reasons
 - rename: `ns_home` in `ns_global`  
-- rename: `rapp_global` in `rapp_global`  
-- Directory `contexts` in `rapp_global` directory renamed to `ns` for 
+- rename: `global_dir` in `global_dir`  
+- Directory `contexts` in `global_dir` directory renamed to `ns` for 
   consistency reasons
 
 ## MISC 
 
 -----
 
-# CHANGES IN rapp.core.rte VERSION 0.1.0.8
+# CHANGES IN runtimr VERSION 0.1.0.8
 
 ## NEW FEATURES
 
 ## BUG FIXES
 
-- `ensureRappDirectoryComponents()`:
+- `ensureRappComponents()`:
   Option files are only written they don't exist yet
 
 ## MAJOR CHANGES
@@ -129,7 +129,7 @@ Not fully elaborated yet.
 
 -----
 
-# CHANGES IN rapp.core.rte VERSION 0.1.0.7
+# CHANGES IN runtimr VERSION 0.1.0.7
 
 ## NEW FEATURES
 
@@ -139,7 +139,7 @@ Not fully elaborated yet.
 
 ## MINOR CHANGES
 
-- `ensureRappDirectoryComponents()`:
+- `ensureRappComponents()`:
   option file content is a bit more generic (`lib = .libPaths()[1]` instead
   of explicit file path)
 
@@ -147,19 +147,19 @@ Not fully elaborated yet.
 
 -----
 
-# CHANGES IN rapp.core.rte VERSION 0.1.0.6
+# CHANGES IN runtimr VERSION 0.1.0.6
 
 ## NEW FEATURES
 
 - Ensured the creation of certain project components via 
-  `ensureProjectComponents()` and `ensureRappDirectoryComponents()`.
-- Config files for options: `rapp/options_runtime.r` (runtime specific options) and `rapp/options.r` (package project specific options)
+  `ensureProjectComponents()` and `ensureRappComponents()`.
+- Config files for options: `options_runtime.r` (runtime specific options) and `options.r` (package project specific options)
 - Added `rapp/apps` directory with a demo app `test`. Each app directory has
   the following structure: 
   - `./options`: contains `options_runtime.r` and `options.r`
   - `./R`: R scripts
 - `ensureRuntimeEnvironment()` is now able to read options from 
-  `/rapp/options/options_runtime.r` (see method for signature `missing`)
+  `/options/options_runtime.r` (see method for signature `missing`)
 - new: `hasOptionFile()`: checks for existence of `options.r`
 - new: `hasRuntimeOptionFile()`: checks for existence of `options_runtime.r`
 - new: `readRappOptionFile()`: reads option file content
@@ -185,7 +185,7 @@ throughout the package
 
 -----
 
-# CHANGES IN rapp.core.rte VERSION 0.1.0.5
+# CHANGES IN runtimr VERSION 0.1.0.5
 
 ## NEW FEATURES
 
@@ -196,12 +196,12 @@ throughout the package
 ## MINOR CHANGES
 
 - `mergeNamespaceRappOptions()`:
-  - ensured that context directory is created below `<rapp_global>/contexts/`
-- `ensureRappGlobal()`:
-  - ensured that root directory for context data is created: `<rapp_global>/contexts/`
+  - ensured that context directory is created below `<global_dir>/contexts/`
+- `ensureGlobalDirectory()`:
+  - ensured that root directory for context data is created: `<global_dir>/contexts/`
 - `getLibrary()`: 
   - enabled pass-through of `...` arguments 
-- `getRappGlobal()`: 
+- `getGlobalDirectory()`: 
   - enabled pass-through of `...` arguments 
 - `getRuntimeMode()`: 
   - enabled pass-through of `...` arguments 
@@ -210,7 +210,7 @@ throughout the package
 
 -----
 
-# CHANGES IN rapp.core.rte VERSION 0.1.0.4
+# CHANGES IN runtimr VERSION 0.1.0.4
 
 ## NEW FEATURES
 

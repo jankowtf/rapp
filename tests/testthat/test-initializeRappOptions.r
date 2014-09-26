@@ -10,12 +10,10 @@ test_that("initializeRappOptions", {
     "repos_global",
     "repos_root",
     "repos_pkgs",
-    "global_dir",
-    "path_app"
+    "global_dir"
   ))
   expect_equal(ls(res$.rte, all.names=TRUE), expected)
   expected_values <- list(
-    path_app = getwd(),
     global_dir = file.path(Sys.getenv("HOME"), "rapp"),
     repos_global = NA_character_,
     repos_pkg = NA_character_,
@@ -28,7 +26,6 @@ test_that("initializeRappOptions", {
   )
   expect_equal(getRappOption(".rte/global_dir"), 
                file.path(Sys.getenv("HOME"), "rapp"))
-  expect_equal(getRappOption(".rte/path_app"), getwd())
   
   on.exit(options(".rapp" = opts_old))
   

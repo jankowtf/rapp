@@ -25,18 +25,16 @@ test_that("initializeNamespaceRappOptions", {
   
   expected <- sort(c(
     "ns",
-    "ns_global",
-    "path_app"
+    "global_dir"
   ))
   expect_equal(ls(res[[ns]], all.names=TRUE), expected)
   
   expected_values <- list(
-    ns = ns,
-    ns_global = NA_character_,
-    path_app = NA_character_
+    global_dir = NA_character_,
+    ns = ns
   )
   expect_equivalent(
-    res <- lapply(expected, get, envir = res[[ns]]),
+    lapply(expected, get, envir = res[[ns]]),
     expected_values
   )
   

@@ -9,7 +9,7 @@
 #' If you want to fully comply with the convenvtions of the \code{rapp} framework
 #' and its associated packages and applications, to not provide an explicit
 #' value for \code{repos_home}. This will trigger the default behavior of 
-#' using the value previously set by \code{\link[runtimr]{ensureGlobalDirectory}}. 
+#' using the value previously set by \code{\link[rapptime]{ensureGlobalDirectory}}. 
 #' Any deviation from the default behavior might lead to inconsistencies in 
 #' the runtime environment at this point.
 #'   	
@@ -18,11 +18,11 @@
 #' @param runtime_mode \code{\link{character}}. 
 #'    Development stage as returned by \code{\link{getRuntimeMode}}.
 #' @param lib \code{\link{character}}.
-#'    Library to be used. Defaults to return value of \ode{\link{getLibrary}}.
+#'    Library to be used. Defaults to return value of \code{\link{getLibrary}}.
 #' @template threedot
 #' @example inst/examples/ensureDevPackages.r
 #' @seealso \code{
-#'   	\link[runtimr]{ensureDevPackages-missing-method}
+#'   	\link[rapptime]{ensureDevPackages-missing-method}
 #' }
 #' @template author
 #' @template references
@@ -47,15 +47,15 @@ setGeneric(
 #' Ensure Rapp Options for Specific global_dir
 #'
 #' @description 
-#' See generic: \code{\link[runtimr]{ensureDevPackages}}
+#' See generic: \code{\link[rapptime]{ensureDevPackages}}
 #'   	 
 #' @inheritParams ensureDevPackages
 #' @param global_dir \code{\link{missing}}. Default global_dir.
 #' @return See method
-#'    \code{\link[runtimr]{ensureDevPackages-character-method}}
+#'    \code{\link[rapptime]{ensureDevPackages-character-method}}
 #' @example inst/examples/ensureDevPackages.r
 #' @seealso \code{
-#'    \link[runtimr]{ensureDevPackages}
+#'    \link[rapptime]{ensureDevPackages}
 #' }
 #' @template author
 #' @template references
@@ -86,14 +86,14 @@ setMethod(
 #' Ensure Rapp Options for Specific global_dir
 #'
 #' @description 
-#' See generic: \code{\link[runtimr]{ensureDevPackages}}
+#' See generic: \code{\link[rapptime]{ensureDevPackages}}
 #'      
 #' @inheritParams ensureDevPackages
 #' @param global_dir \code{\link{character}}. Default global_dir.
 #' @return \code{\link{logical}}. \code{TRUE}.
 #' @example inst/examples/ensureDevPackages.r
 #' @seealso \code{
-#'    \link[runtimr]{ensureDevPackages}
+#'    \link[rapptime]{ensureDevPackages}
 #' }
 #' @template author
 #' @template references

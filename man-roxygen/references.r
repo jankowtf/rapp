@@ -1,1 +1,1 @@
-#' @references \url{http://githumb.com/Rappster/runtimr}
+#' @references \url{http://githumb.com/Rappster/rapptime}

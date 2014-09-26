@@ -11,7 +11,7 @@
 #' @template threedot
 #' @example inst/examples/initializeRappOptions.r
 #' @seealso \code{
-#'   	\link[runtimr]{initializeRappOptions-missing-method}
+#'   	\link[rapptime]{initializeRappOptions-missing-method}
 #' }
 #' @template author
 #' @template references
@@ -33,7 +33,7 @@ setGeneric(
 #' Initialize Rapp Options
 #'
 #' @description 
-#' See generic: \code{\link[runtimr]{initializeRappOptions}}
+#' See generic: \code{\link[rapptime]{initializeRappOptions}}
 #'   	 
 #' @inheritParams initializeRappOptions
 #' @param ns \code{\link{missing}}. Default namespace.
@@ -41,7 +41,7 @@ setGeneric(
 #'    \code{options(".rapp")}.
 #' @example inst/examples/initializeRappOptions.r
 #' @seealso \code{
-#'    \link[runtimr]{initializeRappOptions}
+#'    \link[rapptime]{initializeRappOptions}
 #' }
 #' @template author
 #' @template references

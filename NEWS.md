@@ -1,4 +1,4 @@
-# CHANGES IN runtimr VERSION 0.1.0.13
+# CHANGES IN rapptime VERSION 0.1.0.13
 
 ## NEW FEATURES
 
@@ -25,7 +25,7 @@
 
 -----
 
-# CHANGES IN runtimr VERSION 0.1.0.12
+# CHANGES IN rapptime VERSION 0.1.0.12
 
 ## NEW FEATURES
 
@@ -45,7 +45,7 @@ Not fully elaborated yet.
 
 -----
 
-# CHANGES IN runtimr VERSION 0.1.0.11
+# CHANGES IN rapptime VERSION 0.1.0.11
 
 ## NEW FEATURES
 
@@ -66,7 +66,7 @@ Not fully elaborated yet.
 
 -----
 
-# CHANGES IN runtimr VERSION 0.1.0.10
+# CHANGES IN rapptime VERSION 0.1.0.10
 
 ## NEW FEATURES
 
@@ -89,7 +89,7 @@ Not fully elaborated yet.
 
 -----
 
-# CHANGES IN runtimr VERSION 0.1.0.9
+# CHANGES IN rapptime VERSION 0.1.0.9
 
 ## NEW FEATURES
 
@@ -102,8 +102,8 @@ Not fully elaborated yet.
 ## MINOR CHANGES
 
 - `mergeNamespaceRappOptions()`:
-  Changed option `context_home` to `ns_global` for consistency reasons
-- rename: `ns_home` in `ns_global`  
+  Changed option `context_home` to `global_dir` for consistency reasons
+- rename: `ns_home` in `global_dir`  
 - rename: `global_dir` in `global_dir`  
 - Directory `contexts` in `global_dir` directory renamed to `ns` for 
   consistency reasons
@@ -112,7 +112,7 @@ Not fully elaborated yet.
 
 -----
 
-# CHANGES IN runtimr VERSION 0.1.0.8
+# CHANGES IN rapptime VERSION 0.1.0.8
 
 ## NEW FEATURES
 
@@ -129,7 +129,7 @@ Not fully elaborated yet.
 
 -----
 
-# CHANGES IN runtimr VERSION 0.1.0.7
+# CHANGES IN rapptime VERSION 0.1.0.7
 
 ## NEW FEATURES
 
@@ -147,7 +147,7 @@ Not fully elaborated yet.
 
 -----
 
-# CHANGES IN runtimr VERSION 0.1.0.6
+# CHANGES IN rapptime VERSION 0.1.0.6
 
 ## NEW FEATURES
 
@@ -185,7 +185,7 @@ throughout the package
 
 -----
 
-# CHANGES IN runtimr VERSION 0.1.0.5
+# CHANGES IN rapptime VERSION 0.1.0.5
 
 ## NEW FEATURES
 
@@ -210,7 +210,7 @@ throughout the package
 
 -----
 
-# CHANGES IN runtimr VERSION 0.1.0.4
+# CHANGES IN rapptime VERSION 0.1.0.4
 
 ## NEW FEATURES
 

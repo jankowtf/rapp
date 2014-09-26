@@ -14,7 +14,7 @@
 #' @template threedot
 #' @example inst/examples/ensureProjectComponents.r
 #' @seealso \code{
-#'   	\link[runtimr]{ensureProjectComponents-missing-method}
+#'   	\link[rapptime]{ensureProjectComponents-missing-method}
 #' }
 #' @template author
 #' @template references
@@ -36,7 +36,7 @@ setGeneric(
 #' Ensure Initial Rapp Options
 #'
 #' @description 
-#' See generic: \code{\link[runtimr]{ensureProjectComponents}}
+#' See generic: \code{\link[rapptime]{ensureProjectComponents}}
 #'   	 
 #' @inheritParams ensureProjectComponents
 #' @param ns \code{\link{missing}}. Default namespace.
@@ -44,7 +44,7 @@ setGeneric(
 #'    \code{options(".rapp")}.
 #' @example inst/examples/ensureProjectComponents.r
 #' @seealso \code{
-#'    \link[runtimr]{ensureProjectComponents}
+#'    \link[rapptime]{ensureProjectComponents}
 #' }
 #' @template author
 #' @template references

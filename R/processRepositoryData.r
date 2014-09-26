@@ -15,7 +15,7 @@
 #' @template threedot
 #' @example inst/examples/processRepositoryData.r
 #' @seealso \code{
-#'   	\link[runtimr]{processRepositoryData-character-ANY-environment-method}
+#'   	\link[rapptime]{processRepositoryData-character-ANY-environment-method}
 #' }
 #' @template author
 #' @template references
@@ -37,14 +37,14 @@ setGeneric(
 #' Process Repository Data
 #'
 #' @description 
-#' See generic: \code{\link[runtimr]{processRepositoryData}}
+#' See generic: \code{\link[rapptime]{processRepositoryData}}
 #'      
 #' @inheritParams processRepositoryData
 #' @param ns  \code{\link{missing}}. 
 #' @return \code{\link{logical}}. \code{TRUE}.
 #' @example inst/examples/processRepositoryData.r
 #' @seealso \code{
-#'    \link[runtimr]{processRepositoryData}
+#'    \link[rapptime]{processRepositoryData}
 #' }
 #' @template author
 #' @template references

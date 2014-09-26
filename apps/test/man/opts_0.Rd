@@ -11,7 +11,7 @@
 \format{
   The format is:
 List of 3
- $ ns_global: chr NA
+ $ global_dir: chr NA
  $ ns       : chr "test"
  $ path_app : chr NA
 }

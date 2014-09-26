@@ -60,14 +60,14 @@
 #' @param vsn \code{\link{character}}. Package version.
 #' @param opts \code{\link{list}}.
 #'    Optional possibility to pass along options as returned by 
-#'    \code{\link[runtimr]{readRappOptionFile}}.
+#'    \code{\link[rapptime]{readRappOptionFile}}.
 #'    Certain, but not all values, are stored in the options (has to to with
 #'    explicit vs. implicit values). This feature has not reached release stage,
 #'    so use with caution or not at all. 
 #' @template threedot
 #' @example inst/examples/ensureRuntimeEnvironment.r
 #' @seealso \code{
-#'   	\link[runtimr]{ensureRuntimeEnvironment-missing-method}
+#'   	\link[rapptime]{ensureRuntimeEnvironment-missing-method}
 #' }
 #' @template author
 #' @template references
@@ -96,7 +96,7 @@ setGeneric(
 #' Ensure Development Environment
 #'
 #' @description 
-#' See generic: \code{\link[runtimr]{ensureRuntimeEnvironment}}
+#' See generic: \code{\link[rapptime]{ensureRuntimeEnvironment}}
 #' 
 #' @details
 #' In case a file \code{options_runtime.r} exists in \code{/options/},
@@ -109,7 +109,7 @@ setGeneric(
 #' @return \code{\link{logical}}. \code{TRUE}.
 #' @example inst/examples/ensureRuntimeEnvironment.r
 #' @seealso \code{
-#'    \link[runtimr]{ensureRuntimeEnvironment}
+#'    \link[rapptime]{ensureRuntimeEnvironment}
 #' }
 #' @template author
 #' @template references
@@ -160,14 +160,14 @@ setMethod(
 #' Ensure Development Environment
 #'
 #' @description 
-#' See generic: \code{\link[runtimr]{ensureRuntimeEnvironment}}
+#' See generic: \code{\link[rapptime]{ensureRuntimeEnvironment}}
 #'   	 
 #' @inheritParams ensureRuntimeEnvironment
 #' @param global_dir \code{\link{character}}. Default global_dir.
 #' @return \code{\link{logical}}. \code{TRUE}.
 #' @example inst/examples/ensureRuntimeEnvironment.r
 #' @seealso \code{
-#'    \link[runtimr]{ensureRuntimeEnvironment}
+#'    \link[rapptime]{ensureRuntimeEnvironment}
 #' }
 #' @template author
 #' @template references
@@ -202,15 +202,8 @@ setMethod(
     
   ## Initialize //    
   initializeRappOptions()  
-    
-  ## Transfer options from option file //
-  if (length(opts)) {
-    id_0 <- "path_app"
-    if (id_0 %in% names(opts)) {
-      setRappOption(id = ".rte/path_app", value = opts[[id_0]], 
-        must_exist = TRUE, strict = TRUE)
-    }
-  }
+# ls(getOption(".rapp"))
+# ls(getOption(".rapp")$.rte)
   
   ## Global directory //
   setGlobalDirectory(value = global_dir, update_dependent = TRUE)
@@ -231,6 +224,7 @@ setMethod(
 
   ## Ensure namespace option container for project options //
   if (isPackageProject() || hasOptionFile()) {
+    initializeNamespaceRappOptions()
     mergeNamespaceRappOptions()
   } 
 

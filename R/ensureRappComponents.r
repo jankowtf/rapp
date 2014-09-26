@@ -12,7 +12,7 @@
 #' @template threedot
 #' @example inst/examples/ensureRappComponents.r
 #' @seealso \code{
-#'   	\link[runtimr]{ensureRappComponents-missing-method}
+#'   	\link[rapptime]{ensureRappComponents-missing-method}
 #' }
 #' @template author
 #' @template references
@@ -34,7 +34,7 @@ setGeneric(
 #' Ensure Initial Rapp Options
 #'
 #' @description 
-#' See generic: \code{\link[runtimr]{ensureRappComponents}}
+#' See generic: \code{\link[rapptime]{ensureRappComponents}}
 #'   	 
 #' @inheritParams ensureRappComponents
 #' @param ns \code{\link{missing}}. Default namespace.
@@ -42,7 +42,7 @@ setGeneric(
 #'    \code{options(".rapp")}.
 #' @example inst/examples/ensureRappComponents.r
 #' @seealso \code{
-#'    \link[runtimr]{ensureRappComponents}
+#'    \link[rapptime]{ensureRappComponents}
 #' }
 #' @template author
 #' @template references
@@ -68,26 +68,8 @@ setMethod(
     ## Create test rapp //
     createRapp(id = "test", path = "apps")
     
-    expr <- substitute(
-      list(
-        global_dir = file.path(Sys.getenv("HOME"), "rapp"),
-        runtime_mode = "dev",
-        lib = .libPaths()[1],
-        wd = getwd()
-      )
-    )    
-    write(runtimr::tidySource(input = expr, name = "options_runtime"), 
-      file = "options/options_runtime.r")
-    expr <- substitute(
-      list(
-        ns = rapp.core.package::asPackage(x = ".")$package, ## Primary key for runtime --> do not change this!
-        option_1 = "your option value here (can be any R object)",
-        option_2 = "your option value here (can be any R object)",
-        option_3 = "your option value here (can be any R object)"
-      )
-    )
-    write(runtimr::tidySource(input = expr, name = "options_runtime"), 
-      file = "options/options_rapp.r")
+    ## Ensure option files //
+    ensureRappOptionFiles()
     
     ## Rapp info file //
     vsn <- unname(read.dcf(system.file("DESCRIPTION"), field = "Version")[,1])

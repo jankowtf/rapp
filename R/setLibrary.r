@@ -12,7 +12,7 @@
 #' @template threedot
 #' @example inst/examples/setLibrary.r
 #' @seealso \code{
-#'   	\link[runtimr]{setLibrary-missing-method}
+#'   	\link[rapptime]{setLibrary-missing-method}
 #' }
 #' @template author
 #' @template references
@@ -36,15 +36,15 @@ setGeneric(
 #' Set Rapp Home
 #'
 #' @description 
-#' See generic: \code{\link[runtimr]{setLibrary}}
+#' See generic: \code{\link[rapptime]{setLibrary}}
 #'   	 
 #' @inheritParams setLibrary
 #' @param value \code{\link{missing}}. Default value.
 #' @return See method
-#'    \code{\link[runtimr]{setLibrary-character-method}}
+#'    \code{\link[rapptime]{setLibrary-character-method}}
 #' @example inst/examples/setLibrary.r
 #' @seealso \code{
-#'    \link[runtimr]{setLibrary}
+#'    \link[rapptime]{setLibrary}
 #' }
 #' @template author
 #' @template references
@@ -73,15 +73,15 @@ setMethod(
 #' Set Rapp Options for Specific value
 #'
 #' @description 
-#' See generic: \code{\link[runtimr]{setLibrary}}
+#' See generic: \code{\link[rapptime]{setLibrary}}
 #'      
 #' @inheritParams setLibrary
 #' @param value \code{\link{character}}. Default value.
 #' @return \code{\link{logical}}. Return value of 
-#'    \code{\link[runtimr]{setRappOption}}.
+#'    \code{\link[rapptime]{setRappOption}}.
 #' @example inst/examples/setLibrary.r
 #' @seealso \code{
-#'    \link[runtimr]{setLibrary}
+#'    \link[rapptime]{setLibrary}
 #' }
 #' @template author
 #' @template references

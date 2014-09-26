@@ -28,11 +28,11 @@
 #'    \code{FALSE}: disregard existence of \code{packrat} directory.
 #' @param strict \code{\link{logical}}.
 #'    \code{TRUE}: trigger error on negative check result; \code{FALSE}: return
-#'    \cod{FALSE} on negative check result.
+#'    \code{FALSE} on negative check result.
 #' @template threedot
 #' @example inst/examples/isRapp.r
 #' @seealso \code{
-#'   	\link[runtimr]{isRapp-character-method}
+#'   	\link[rapptime]{isRapp-character-method}
 #' }
 #' @template author
 #' @template references
@@ -56,14 +56,14 @@ setGeneric(
 #' Is Package Project
 #'
 #' @description 
-#' See generic: \code{\link[runtimr]{isRapp}}
+#' See generic: \code{\link[rapptime]{isRapp}}
 #'      
 #' @inheritParams isRapp
 #' @param path  \code{\link{missing}}. 
 #' @return \code{\link{logical}}. \code{TRUE}.
 #' @example inst/examples/isRapp.r
 #' @seealso \code{
-#'    \link[runtimr]{isRapp}
+#'    \link[rapptime]{isRapp}
 #' }
 #' @template author
 #' @template references
@@ -94,14 +94,14 @@ setMethod(
 #' Is Package Project
 #'
 #' @description 
-#' See generic: \code{\link[runtimr]{isRapp}}
+#' See generic: \code{\link[rapptime]{isRapp}}
 #'      
 #' @inheritParams isRapp
 #' @param path  \code{\link{character}}. 
 #' @return \code{\link{logical}}. \code{TRUE}.
 #' @example inst/examples/isRapp.r
 #' @seealso \code{
-#'    \link[runtimr]{isRapp}
+#'    \link[rapptime]{isRapp}
 #' }
 #' @template author
 #' @template references
@@ -123,7 +123,7 @@ setMethod(
     if (!strict) {
       return(FALSE)
     } else {
-      runtimr::signalCondition(
+      rapptime::signalCondition(
         condition = c("NegativeRappCheck",
                       "InvalidDirectoryPath"),
         msg = c(
@@ -131,7 +131,7 @@ setMethod(
           Details = "directory does not exist",
           Path = path
         ),
-        ns = "runtimr",
+        ns = "rapptime",
         type = "error"
       )
     }
@@ -142,7 +142,7 @@ setMethod(
     if (!strict) {
       return(FALSE)
     } else {
-      runtimr::signalCondition(
+      rapptime::signalCondition(
         condition = c("NegativeRappCheck",
                       "NotADirectory"),
         msg = c(
@@ -150,7 +150,7 @@ setMethod(
           Details = "not a directory",
           Path = path
         ),
-        ns = "runtimr",
+        ns = "rapptime",
         type = "error"
       )
     }
@@ -189,7 +189,7 @@ setMethod(
     if (!strict) {
       return(FALSE)
     } else {
-      runtimr::signalCondition(
+      rapptime::signalCondition(
         condition = c("NegativeRappCheck",
                       "MissingPackageComponents"),
         msg = c(
@@ -197,7 +197,7 @@ setMethod(
           Details = "missing application components",
           Path = path
         ),
-        ns = "runtimr",
+        ns = "rapptime",
         type = "error"
       )
     }
@@ -216,7 +216,7 @@ setMethod(
     if (!strict) {
       return(FALSE)
     } else {
-      runtimr::signalCondition(
+      rapptime::signalCondition(
         condition = c("NegativeRappCheck",
                       "InvalidRessourceTypes"),
         msg = c(
@@ -226,7 +226,7 @@ setMethod(
           "Missing directories" = names(idx_dirs)[!idx_dirs],
           "Missing files" = names(idx_files)[!idx_files]
         ),
-        ns = "runtimr",
+        ns = "rapptime",
         type = "error"
       )
     }
@@ -246,7 +246,7 @@ setMethod(
     if (!strict) {
       return(FALSE)
     } else {
-      runtimr::signalCondition(
+      rapptime::signalCondition(
         condition = c("NegativeRappCheck",
                       "InvalidDescriptionFileContent"),
         msg = c(
@@ -254,7 +254,7 @@ setMethod(
           Details = "invalid DESCRIPTION file content",
           Path = path
         ),
-        ns = "runtimr",
+        ns = "rapptime",
         type = "error"
       )
     }

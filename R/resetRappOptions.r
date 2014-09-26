@@ -10,7 +10,7 @@
 #' @template threedot
 #' @example inst/examples/resetRappOptions.r
 #' @seealso \code{
-#'   	\link[runtimr]{resetRappOptions-missing-method}
+#'   	\link[rapptime]{resetRappOptions-missing-method}
 #' }
 #' @template author
 #' @template references
@@ -32,7 +32,7 @@ setGeneric(
 #' Ensure Initial Rapp Options
 #'
 #' @description 
-#' See generic: \code{\link[runtimr]{resetRappOptions}}
+#' See generic: \code{\link[rapptime]{resetRappOptions}}
 #'   	 
 #' @inheritParams resetRappOptions
 #' @param ns \code{\link{missing}}. Default namespace.
@@ -40,7 +40,7 @@ setGeneric(
 #'    \code{options(".rapp")}.
 #' @example inst/examples/resetRappOptions.r
 #' @seealso \code{
-#'    \link[runtimr]{resetRappOptions}
+#'    \link[rapptime]{resetRappOptions}
 #' }
 #' @template author
 #' @template references

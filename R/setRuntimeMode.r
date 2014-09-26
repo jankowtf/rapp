@@ -12,7 +12,7 @@
 #' @template threedot
 #' @example inst/examples/setRuntimeMode.r
 #' @seealso \code{
-#'   	\link[runtimr]{setRuntimeMode-missing-method}
+#'   	\link[rapptime]{setRuntimeMode-missing-method}
 #' }
 #' @template author
 #' @template references
@@ -36,17 +36,17 @@ setGeneric(
 #' Set Rapp Home
 #'
 #' @description 
-#' See generic: \code{\link[runtimr]{setRuntimeMode}}
+#' See generic: \code{\link[rapptime]{setRuntimeMode}}
 #'   	 
 #' @inheritParams setRuntimeMode
 #' @param value \code{\link{missing}}. Default value.
 #'    Corresponds to the first value of \code{c("dev", "test", "live")} 
 #'    being used.
 #' @return See method
-#'    \code{\link[runtimr]{setRuntimeMode-character-method}}
+#'    \code{\link[rapptime]{setRuntimeMode-character-method}}
 #' @example inst/examples/setRuntimeMode.r
 #' @seealso \code{
-#'    \link[runtimr]{setRuntimeMode}
+#'    \link[rapptime]{setRuntimeMode}
 #' }
 #' @template author
 #' @template references
@@ -75,15 +75,15 @@ setMethod(
 #' Set Rapp Options for Specific value
 #'
 #' @description 
-#' See generic: \code{\link[runtimr]{setRuntimeMode}}
+#' See generic: \code{\link[rapptime]{setRuntimeMode}}
 #'      
 #' @inheritParams setRuntimeMode
 #' @param value \code{\link{character}}. Default value.
 #' @return \code{\link{logical}}. Return value of 
-#'    \code{\link[runtimr]{setRappOption}}.
+#'    \code{\link[rapptime]{setRappOption}}.
 #' @example inst/examples/setRuntimeMode.r
 #' @seealso \code{
-#'    \link[runtimr]{setRuntimeMode}
+#'    \link[rapptime]{setRuntimeMode}
 #' }
 #' @template author
 #' @template references

@@ -9,7 +9,7 @@
 #' @template threedot
 #' @example inst/examples/getLibrary.r
 #' @seealso \code{
-#'   	\link[runtimr]{getLibrary-missing-method}
+#'   	\link[rapptime]{getLibrary-missing-method}
 #' }
 #' @template author
 #' @template references
@@ -32,14 +32,14 @@ setGeneric(
 #' Get Library
 #'
 #' @description 
-#' See generic: \code{\link[runtimr]{getLibrary}}
+#' See generic: \code{\link[rapptime]{getLibrary}}
 #'      
 #' @inheritParams getLibrary
 #' @param ns \code{\link{missing}}. Default namespace.
 #' @return \code{\link{character}}. Option value.
 #' @example inst/examples/getLibrary.r
 #' @seealso \code{
-#'    \link[runtimr]{getLibrary}
+#'    \link[rapptime]{getLibrary}
 #' }
 #' @template author
 #' @template references

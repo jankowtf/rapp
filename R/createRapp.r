@@ -35,7 +35,7 @@
 #'   \item{\strong{Subdirectory for options: } \code{options}} {
 #'   
 #'   This directory contains two files that let you control runtime options:
-#'   \code{options_runtime.r} (controlls the overall behavior of the \code{runtimr}
+#'   \code{options_runtime.r} (controlls the overall behavior of the \code{rapptime}
 #'   package) and \code{options.r} (the place to state every option that your
 #'   application needs)
 #'   
@@ -66,13 +66,11 @@
 #' @template threedot
 #' @example inst/examples/createRapp.r
 #' @seealso \code{
-#'   	\link[runtimr]{createRapp-missing-method}
+#'   	\link[rapptime]{createRapp-missing-method}
 #' }
 #' @template author
 #' @template references
 #' @export 
-#' @import rapp.core.package
-#' @import packrat
 setGeneric(
   name = "createRapp",
   signature = c(
@@ -94,16 +92,16 @@ setGeneric(
 #' Create a New Application
 #'
 #' @description 
-#' See generic: \code{\link[runtimr]{createRapp}}
+#' See generic: \code{\link[rapptime]{createRapp}}
 #'      
 #' @inheritParams createRapp
 #' @param id \code{\link{character}}. 
 #' @param path \code{\link{missing}}. 
 #' @return See method 
-#'    \code{\link[runtimr]{createRapp-character-character-method}}. 
+#'    \code{\link[rapptime]{createRapp-character-character-method}}. 
 #' @example inst/examples/createRapp.r
 #' @seealso \code{
-#'    \link[runtimr]{createRapp}
+#'    \link[rapptime]{createRapp}
 #' }
 #' @template author
 #' @template references
@@ -137,7 +135,7 @@ setMethod(
 #' Create a New Application
 #'
 #' @description 
-#' See generic: \code{\link[runtimr]{createRapp}}
+#' See generic: \code{\link[rapptime]{createRapp}}
 #'      
 #' @inheritParams createRapp
 #' @param id \code{\link{character}}. 
@@ -145,11 +143,13 @@ setMethod(
 #' @return \code{\link{character}}. 
 #' @example inst/examples/createRapp.r
 #' @seealso \code{
-#'    \link[runtimr]{createRapp}
+#'    \link[rapptime]{createRapp}
 #' }
 #' @template author
 #' @template references
 #' @export
+#' @import pkgKitten
+#' @import packrat
 setMethod(
   f = "createRapp", 
   signature = signature(
@@ -166,13 +166,13 @@ setMethod(
   
   path_app <- file.path(path, id)    
   if (!file.exists(path)) {
-    runtimr::signalCondition(
+    rapptime::signalCondition(
       condition = "InvalidAppParentDirectory",
       msg = c(
         "Parent directory for application does not exist",
         Path = path
       ),
-      ns = "runtimr",
+      ns = "rapptime",
       type = "error"
     )
   }
@@ -183,27 +183,28 @@ setMethod(
     if (!strict) {
       return(FALSE)
     } else {
-      runtimr::signalCondition(
+      rapptime::signalCondition(
         condition = "ApplicationAlreadyExists", 
         msg = c(
           "Application already exists",
           ID = id,
           Path = path
         ),
-        ns = "runtimr",
+        ns = "rapptime",
         type = "error"
       )
     }
   } else {
 #     ?devtools::?create(path = path_app)
-    suppressMessages(package.skeleton(name = id, path = path))
-  
+    suppressMessages(package.skeleton(name = id, path = path,
+                                      environment = new.env()))
+#     suppressMessages(kitten(name = id, path = path))
     ## Subdirectory: shiny app //
     path_shiny <- file.path(path_app, "shiny")
     dir.create(path_shiny, recursive = TRUE, showWarnings = FALSE)
-    path_ui <- system.file("inst/templates/shiny/ui.r", package = "runtimr")
+    path_ui <- system.file("inst/templates/shiny/ui.r", package = "rapptime")
     path_server <- system.file("inst/templates/shiny/server.r", 
-                               package = "runtimr")
+                               package = "rapptime")
     sapply(c(path_ui, path_server), file.copy, to = path_shiny)
   
     ## Subdirectory: batch //
@@ -212,26 +213,9 @@ setMethod(
     ## Subdirectory: options //
     path_options <- file.path(path_app, "options")
     dir.create(path_options, showWarnings = FALSE)
-    expr <- substitute(
-      list(
-        global_dir = file.path(Sys.getenv("HOME"), "rapp"),
-        runtime_mode = "dev",
-        lib = .libPaths()[1],
-        wd = getwd()
-      )
-    )    
-    write(runtimr::tidySource(input = expr, name = "options_runtime"), 
-      file = file.path(path_options, "options_runtime.r"))
-    expr <- substitute(
-      list(
-        ns = rapp.core.package::asPackage(x = ".")$package, ## Primary key for runtime --> do not change this!
-        option_1 = "your option value here (can be any R object)",
-        option_2 = "your option value here (can be any R object)",
-        option_3 = "your option value here (can be any R object)"
-      )
-    )
-    write(runtimr::tidySource(input = expr, name = "options_runtime"), 
-      file = file.path(path_options, "options_rapp.r"))
+    
+    ## Ensure option files //
+    ensureRappOptionFiles()
     
     ## Rapp info file //
     vsn <- unname(read.dcf(system.file("DESCRIPTION"), field = "Version")[,1])

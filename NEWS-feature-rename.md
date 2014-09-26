@@ -1,4 +1,4 @@
-# CHANGES IN runtimr FEATURE rename
+# CHANGES IN rapptime FEATURE rename
 
 ## NEW FEATURES
 

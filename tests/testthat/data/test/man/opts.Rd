@@ -11,7 +11,7 @@
 \format{
   The format is:
 List of 3
- $ ns      : chr "runtimr"
+ $ ns      : chr "rapptime"
  $ option_2: chr "your option value here ,\n\tcan be any R object,\n\t"
  $ option_3: chr "your option value here ,\n\tcan be any R object,\n\t"
 }

@@ -8,7 +8,7 @@ Backlog
 - Scheduled: NA
 - Solved: NA
 - Description:
-  e.g. consider `<ns>/ns_global`: it is clearly dependent on `.rte/global_dir`
+  e.g. consider `<ns>/global_dir`: it is clearly dependent on `.rte/global_dir`
   
 ## Implement merging of nested options
 

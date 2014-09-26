@@ -50,7 +50,7 @@ test_that("ensureRuntimeEnvironment", {
       ls(getOption(".rapp")$.rte, all.names=TRUE)
   ))
   expect_true(all(
-    c("ns", "ns_global") %in% 
+    c("ns", "global_dir") %in% 
       ls(getOption(".rapp")$test, all.names=TRUE)
   ))
 

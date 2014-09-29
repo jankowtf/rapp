@@ -11,8 +11,8 @@
 \format{
   The format is:
 List of 5
- $ ns        : chr "rapptime"
- $ global_dir: chr "C:/Users/jat/Documents/rapp/ns/rapptime"
+ $ ns        : chr "rapp"
+ $ global_dir: chr "C:/Users/jat/Documents/rapp/ns/rapp"
  $ option_1  : chr "your option value here (can be any R object)"
  $ option_2  : chr "your option value here (can be any R object)"
  $ option_3  : chr "your option value here (can be any R object)"

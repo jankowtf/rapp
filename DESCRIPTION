@@ -1,4 +1,4 @@
-Package: rapptime
+Package: rapp
 Type: Package
 Title: Runtime environment for package development and application deployment
     in the context of the rapp framework
@@ -14,6 +14,8 @@ Roxygen: list(wrap = FALSE)
 NeedsCompilation: no
 Repository: CRAN
 Imports:
+    devtools,
     packrat,
-    pkgKitten,
-    rapp.core.package
+    rapp.core.examples,
+    rapp.core.package,
+    rapp.core.repos

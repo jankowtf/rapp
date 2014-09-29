@@ -9,9 +9,9 @@ test_that("mergeNamespaceRappOptions", {
     setGlobalDirectory(tempdir())
   }
   expect_is(res <- mergeNamespaceRappOptions(), "logical")
-#   expect_equal(ls(getOption(".rapp"), all.names=TRUE), c(".rte", "rapptime"))
+#   expect_equal(ls(getOption(".rapp"), all.names=TRUE), c(".rte", "rapp"))
 #   expect_true(all(c("ns", "global_dir") %in% 
-#         ls(getOption(".rapp")$rapptime, all.names=TRUE)))
+#         ls(getOption(".rapp")$rapp, all.names=TRUE)))
 #   
   on.exit(options(".rapp" = opts_old))
   

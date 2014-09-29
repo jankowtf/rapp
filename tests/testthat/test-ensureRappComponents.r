@@ -15,7 +15,7 @@ test_that("ensureRappComponents", {
   path <- file.path(tempdir(), "test")
   wd_0 <- setwd(path)
   expect_true(res <- ensureRappComponents())
-  expect_true(file.exists("options/options_rapp.r"))
+  expect_true(file.exists("options/options_ns.r"))
   expect_true(file.exists("options/options_runtime.r"))
   expect_true(res <- ensureRappComponents(overwrite = TRUE))
   

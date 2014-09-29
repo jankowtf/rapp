@@ -8,6 +8,7 @@
 #' As it is sometimes not clear how much "glue code" you might still still in 
 #' order to turn your ideas into a functioning application, this function tries
 #' to give you the best of both worlds. It contains
+#' 
 #' \itemize{
 #'   \item{\strong{A regular R package project: }} {
 #'   
@@ -35,7 +36,7 @@
 #'   \item{\strong{Subdirectory for options: } \code{options}} {
 #'   
 #'   This directory contains two files that let you control runtime options:
-#'   \code{options_runtime.r} (controlls the overall behavior of the \code{rapptime}
+#'   \code{options_runtime.r} (controlls the overall behavior of the \code{rapp}
 #'   package) and \code{options.r} (the place to state every option that your
 #'   application needs)
 #'   
@@ -49,7 +50,6 @@
 #'   session (at least when used with RStudio), this option can be disabled
 #'   by \code{packrat = FALSE}. You can initialize a created R application
 #'   for the use with \code{packrat} at any time by running \code{\link[packrat]{init}}
-#'   
 #'   }
 #' }
 #'   	
@@ -63,16 +63,20 @@
 #' @param strict \code{\link{logical}}.
 #'    \code{TRUE}: trigger error if certain conditions are met;
 #'    \code{FALSE}: return with \code{character()} when these conditions are met.
+#' @param github_name \code{\link{character}}.
+#'    User name at \href{http://github.com}{GitHub}. If not specified, it is
+#'    automatically set to the maintainer information 
+#'    \code{{firstname}{lastname}} as specified in the \code{DESCRIPTION} file.
 #' @template threedot
-#' @example inst/examples/createRapp.r
+#' @example inst/examples/createRappProject.r
 #' @seealso \code{
-#'   	\link[rapptime]{createRapp-missing-method}
+#'   	\link[rapp]{createRappProject-missing-method}
 #' }
 #' @template author
 #' @template references
 #' @export 
 setGeneric(
-  name = "createRapp",
+  name = "createRappProject",
   signature = c(
     "id",
     "path"
@@ -82,9 +86,10 @@ setGeneric(
     path = "rapp/apps",
     packrat = FALSE,
     strict = FALSE,
+    github_name = NA_character_,
     ...
   ) {
-    standardGeneric("createRapp")       
+    standardGeneric("createRappProject")       
   }
 )
 
@@ -92,22 +97,22 @@ setGeneric(
 #' Create a New Application
 #'
 #' @description 
-#' See generic: \code{\link[rapptime]{createRapp}}
+#' See generic: \code{\link[rapp]{createRappProject}}
 #'      
-#' @inheritParams createRapp
+#' @inheritParams createRappProject
 #' @param id \code{\link{character}}. 
 #' @param path \code{\link{missing}}. 
 #' @return See method 
-#'    \code{\link[rapptime]{createRapp-character-character-method}}. 
-#' @example inst/examples/createRapp.r
+#'    \code{\link[rapp]{createRappProject-character-character-method}}. 
+#' @example inst/examples/createRappProject.r
 #' @seealso \code{
-#'    \link[rapptime]{createRapp}
+#'    \link[rapp]{createRappProject}
 #' }
 #' @template author
 #' @template references
 #' @export
 setMethod(
-  f = "createRapp", 
+  f = "createRappProject", 
   signature = signature(
     id = "character",
     path = "missing"
@@ -117,14 +122,16 @@ setMethod(
     path,
     packrat,
     strict,
+    github_name,
     ...
   ) {
   
-  return(createRapp(
+  return(createRappProject(
     id = id,
     path = path,
     packrat = packrat,
     strict = strict,
+    github_name = github_name,
     ...
   ))
     
@@ -135,15 +142,15 @@ setMethod(
 #' Create a New Application
 #'
 #' @description 
-#' See generic: \code{\link[rapptime]{createRapp}}
+#' See generic: \code{\link[rapp]{createRappProject}}
 #'      
-#' @inheritParams createRapp
+#' @inheritParams createRappProject
 #' @param id \code{\link{character}}. 
 #' @param path \code{\link{character}}. 
 #' @return \code{\link{character}}. 
-#' @example inst/examples/createRapp.r
+#' @example inst/examples/createRappProject.r
 #' @seealso \code{
-#'    \link[rapptime]{createRapp}
+#'    \link[rapp]{createRappProject}
 #' }
 #' @template author
 #' @template references
@@ -151,7 +158,7 @@ setMethod(
 #' @import pkgKitten
 #' @import packrat
 setMethod(
-  f = "createRapp", 
+  f = "createRappProject", 
   signature = signature(
     id = "character",
     path = "character"
@@ -161,18 +168,19 @@ setMethod(
     path,
     packrat,
     strict,
+    github_name,
     ...
   ) {
   
   path_app <- file.path(path, id)    
   if (!file.exists(path)) {
-    rapptime::signalCondition(
+    rapp::signalCondition(
       condition = "InvalidAppParentDirectory",
       msg = c(
         "Parent directory for application does not exist",
         Path = path
       ),
-      ns = "rapptime",
+      ns = "rapp",
       type = "error"
     )
   }
@@ -183,28 +191,30 @@ setMethod(
     if (!strict) {
       return(FALSE)
     } else {
-      rapptime::signalCondition(
+      rapp::signalCondition(
         condition = "ApplicationAlreadyExists", 
         msg = c(
           "Application already exists",
           ID = id,
           Path = path
         ),
-        ns = "rapptime",
+        ns = "rapp",
         type = "error"
       )
     }
   } else {
-#     ?devtools::?create(path = path_app)
-    suppressMessages(package.skeleton(name = id, path = path,
-                                      environment = new.env()))
+#     devtools::?create(path = path_app)
+#     suppressMessages(package.skeleton(name = id, path = path,
+#                                       environment = new.env()))
 #     suppressMessages(kitten(name = id, path = path))
+    createPackageSkeleton(id = id, path = path, github_name = github_name)
+
     ## Subdirectory: shiny app //
     path_shiny <- file.path(path_app, "shiny")
     dir.create(path_shiny, recursive = TRUE, showWarnings = FALSE)
-    path_ui <- system.file("inst/templates/shiny/ui.r", package = "rapptime")
+    path_ui <- system.file("inst/templates/shiny/ui.r", package = "rapp")
     path_server <- system.file("inst/templates/shiny/server.r", 
-                               package = "rapptime")
+                               package = "rapp")
     sapply(c(path_ui, path_server), file.copy, to = path_shiny)
   
     ## Subdirectory: batch //

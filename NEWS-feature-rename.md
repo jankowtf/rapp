@@ -1,4 +1,4 @@
-# CHANGES IN rapptime FEATURE rename
+# CHANGES IN rapp FEATURE rename
 
 ## NEW FEATURES
 

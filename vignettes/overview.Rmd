@@ -22,7 +22,7 @@ output: pdf_document
 ## Main top-level functions
 
 
-### `ensureRuntimeEnvironment()`
+### `ensureRappRuntime()`
 
 - calls `initializeRappOptions()` and thus ensures an environment that contains all options (in `options(".rapp")` or `getOption(".rapp")`)
   
@@ -43,7 +43,7 @@ ls(getOption(".rapp")$.rte, all.names = TRUE)
 
 - Ensures the existence of all necessary project components in the packageprojects root directory: `ensureProjectComponents()` and `ensureRappComponents()`
 
-- If called from the context of a package project or if an option file `/options/options_rapp.r` exists, then these options are read (`readRappOptionFile()`) and merged into the option container `getOption(".rapp")`. 
+- If called from the context of a package project or if an option file `/options/options_ns.r` exists, then these options are read (`readRappOptionFile()`) and merged into the option container `getOption(".rapp")`. 
 
   To be more specific, a subcontainer is created where these options are stored. The name of the subcontainer corresponds to the name of the package project or the application (`mergeNamespaceRappOptions()`)
 

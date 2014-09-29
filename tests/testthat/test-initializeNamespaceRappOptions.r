@@ -24,12 +24,14 @@ test_that("initializeNamespaceRappOptions", {
   expect_equal(ls(res, all.names=TRUE), c(".rte", ns))
   
   expected <- sort(c(
+    "github_name",
     "ns",
     "global_dir"
   ))
   expect_equal(ls(res[[ns]], all.names=TRUE), expected)
   
   expected_values <- list(
+    github_name = NA_character_,
     global_dir = NA_character_,
     ns = ns
   )

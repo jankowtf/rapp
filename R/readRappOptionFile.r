@@ -12,7 +12,7 @@
 #' @template threedot
 #' @example inst/examples/readRappOptionFile.r
 #' @seealso \code{
-#'   	\link[rapptime]{readRappOptionFile-character-method}
+#'   	\link[rapp]{readRappOptionFile-character-method}
 #' }
 #' @template author
 #' @template references
@@ -36,15 +36,15 @@ setGeneric(
 #' Read Runtime Options
 #'
 #' @description 
-#' See generic: \code{\link[rapptime]{readRappOptionFile}}
+#' See generic: \code{\link[rapp]{readRappOptionFile}}
 #'   	 
 #' @inheritParams readRappOptionFile
 #' @param path \code{\link{missing}}. Default path.
 #' @return See method
-#'    \code{\link[rapptime]{readRappOptionFile-character-method}}
+#'    \code{\link[rapp]{readRappOptionFile-character-method}}
 #' @example inst/examples/readRappOptionFile.r
 #' @seealso \code{
-#'    \link[rapptime]{readRappOptionFile}
+#'    \link[rapp]{readRappOptionFile}
 #' }
 #' @template author
 #' @template references
@@ -73,14 +73,14 @@ setMethod(
 #' Read Runtime Options
 #'
 #' @description 
-#' See generic: \code{\link[rapptime]{readRappOptionFile}}
+#' See generic: \code{\link[rapp]{readRappOptionFile}}
 #'      
 #' @inheritParams readRappOptionFile
 #' @param path \code{\link{character}}. Default path.
 #' @return \code{\link{list}}. Options as name-value pairs.
 #' @example inst/examples/readRappOptionFile.r
 #' @seealso \code{
-#'    \link[rapptime]{readRappOptionFile}
+#'    \link[rapp]{readRappOptionFile}
 #' }
 #' @template author
 #' @template references
@@ -101,13 +101,13 @@ setMethod(
     if (!strict) {
       out <- list()
     } else {
-      rapptime::signalCondition(
+      rapp::signalCondition(
         condition = "InvalidOptionFilePath",
         msg = c(
           "Invalid path to option file",
           Path = path
         ),
-        ns = "rapptime",
+        ns = "rapp",
         type = "error"
       )
     }

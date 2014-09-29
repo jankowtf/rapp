@@ -17,8 +17,8 @@
 #' @template threedot
 #' @example inst/examples/isRappOptionSet.r
 #' @seealso \code{
-#'   	\link[rapptime]{isRappOptionSet-character-method},
-#'    \link[rapptime]{getRappOption},
+#'   	\link[rapp]{isRappOptionSet-character-method},
+#'    \link[rapp]{getRappOption},
 #' }
 #' @template author
 #' @template references
@@ -40,7 +40,7 @@ setGeneric(
 #' Is Rapp Option Set
 #'
 #' @description 
-#' See generic: \code{\link[rapptime]{isRappOptionSet}}
+#' See generic: \code{\link[rapp]{isRappOptionSet}}
 #'   	 
 #' @inheritParams isRappOptionSet
 #' @param id \code{\link{character}}. Default id.
@@ -48,7 +48,7 @@ setGeneric(
 #'    option is not set.
 #' @example inst/examples/isRappOptionSet.r
 #' @seealso \code{
-#'    \link[rapptime]{isRappOptionSet}
+#'    \link[rapp]{isRappOptionSet}
 #' }
 #' @template author
 #' @template references

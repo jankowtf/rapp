@@ -10,7 +10,7 @@
 \usage{data("wd_0")}
 \format{
   The format is:
- chr "Q:/home/wsp/rapp2/rapptime"
+ chr "Q:/home/wsp/rapp2/rapp"
 }
 \details{
 %%  ~~ If necessary, more details than the __description__ above ~~

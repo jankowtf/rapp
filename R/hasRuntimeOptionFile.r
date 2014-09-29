@@ -12,7 +12,7 @@
 #' @template threedot
 #' @example inst/examples/hasRuntimeOptionFile.r
 #' @seealso \code{
-#'   	\link[rapptime]{hasRuntimeOptionFile-character-method}
+#'   	\link[rapp]{hasRuntimeOptionFile-character-method}
 #' }
 #' @template author
 #' @template references
@@ -35,14 +35,14 @@ setGeneric(
 #' Is Package Project
 #'
 #' @description 
-#' See generic: \code{\link[rapptime]{hasRuntimeOptionFile}}
+#' See generic: \code{\link[rapp]{hasRuntimeOptionFile}}
 #'      
 #' @inheritParams hasRuntimeOptionFile
 #' @param path  \code{\link{missing}}. 
 #' @return \code{\link{logical}}. \code{TRUE}.
 #' @example inst/examples/hasRuntimeOptionFile.r
 #' @seealso \code{
-#'    \link[rapptime]{hasRuntimeOptionFile}
+#'    \link[rapp]{hasRuntimeOptionFile}
 #' }
 #' @template author
 #' @template references
@@ -71,14 +71,14 @@ setMethod(
 #' Is Package Project
 #'
 #' @description 
-#' See generic: \code{\link[rapptime]{hasRuntimeOptionFile}}
+#' See generic: \code{\link[rapp]{hasRuntimeOptionFile}}
 #'      
 #' @inheritParams hasRuntimeOptionFile
 #' @param path  \code{\link{character}}. 
 #' @return \code{\link{logical}}. \code{TRUE}: exists; \code{FALSE}: does not exist.
 #' @example inst/examples/hasRuntimeOptionFile.r
 #' @seealso \code{
-#'    \link[rapptime]{hasRuntimeOptionFile}
+#'    \link[rapp]{hasRuntimeOptionFile}
 #' }
 #' @template author
 #' @template references
@@ -98,13 +98,13 @@ setMethod(
     if (!strict) {
       return(FALSE)
     } else {
-      rapptime::signalCondition(
+      rapp::signalCondition(
         condition = "NegativeOptionFileCheck",
         msg = c(
           "Option file does not exist",
           Path = path
         ),
-        ns = "rapptime",
+        ns = "rapp",
         type = "error"
       )
     }

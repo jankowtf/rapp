@@ -4,7 +4,7 @@ if (hasRuntimeOptionFile()) {
   readRappOptionFile()
 }
 if (hasOptionFile()) {
-  readRappOptionFile(path = "options/options_rapp.r")
+  readRappOptionFile(path = "options/options_ns.r")
 }
 
 }

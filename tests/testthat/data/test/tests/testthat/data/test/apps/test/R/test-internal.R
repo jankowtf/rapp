@@ -127,7 +127,7 @@ c(403L, 11L, 954079874L, 19972276L, 1851437111L, -519068883L,
 .validateMergeConstellation <-
 function(name, value_1, value_2) {
     if (value_1 != value_2) {
-      rapptime::signalCondition(
+      rapp::signalCondition(
         condition = "InvalidOptionMergeConstellation",
         msg = c(
           "Invalid option value constellation",
@@ -135,7 +135,7 @@ function(name, value_1, value_2) {
           "Argument value" = value_1,
           "Option file value" = value_2
         ),
-        ns = "rapptime",
+        ns = "rapp",
         type = "error"
       )
     }

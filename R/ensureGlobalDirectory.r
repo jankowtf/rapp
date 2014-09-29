@@ -10,7 +10,7 @@
 #' @template threedot
 #' @example inst/examples/ensureGlobalDirectory.r
 #' @seealso \code{
-#'   	\link[rapptime]{ensureGlobalDirectory-missing-method}
+#'   	\link[rapp]{ensureGlobalDirectory-missing-method}
 #' }
 #' @template author
 #' @template references
@@ -33,15 +33,15 @@ setGeneric(
 #' Ensure Rapp Home
 #'
 #' @description 
-#' See generic: \code{\link[rapptime]{ensureGlobalDirectory}}
+#' See generic: \code{\link[rapp]{ensureGlobalDirectory}}
 #'   	 
 #' @inheritParams ensureGlobalDirectory
 #' @param path \code{\link{missing}}. Default path.
 #' @return See method
-#'    \code{\link[rapptime]{ensureGlobalDirectory-character-method}}
+#'    \code{\link[rapp]{ensureGlobalDirectory-character-method}}
 #' @example inst/examples/ensureGlobalDirectory.r
 #' @seealso \code{
-#'    \link[rapptime]{ensureGlobalDirectory}
+#'    \link[rapp]{ensureGlobalDirectory}
 #' }
 #' @template author
 #' @template references
@@ -68,14 +68,14 @@ setMethod(
 #' Ensure Rapp Home
 #'
 #' @description 
-#' See generic: \code{\link[rapptime]{ensureGlobalDirectory}}
+#' See generic: \code{\link[rapp]{ensureGlobalDirectory}}
 #'      
 #' @inheritParams ensureGlobalDirectory
 #' @param path \code{\link{character}}. Default path.
 #' @return \code{\link{logical}}. \code{TRUE}
 #' @example inst/examples/ensureGlobalDirectory.r
 #' @seealso \code{
-#'    \link[rapptime]{ensureGlobalDirectory}
+#'    \link[rapp]{ensureGlobalDirectory}
 #' }
 #' @template author
 #' @template references
@@ -91,13 +91,13 @@ setMethod(
   ) {
   
   if (!file.exists(dirname(path))) {
-    rapptime::signalCondition(
+    rapp::signalCondition(
       condition = "InvalidParentDirectory",
       msg = c(
         "Invalid parent directory for rapp HOME",
         Path = dirname(path)
       ),
-      ns = "rapptime",
+      ns = "rapp",
       type = "error"
     )
   }

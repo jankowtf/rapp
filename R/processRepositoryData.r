@@ -15,7 +15,7 @@
 #' @template threedot
 #' @example inst/examples/processRepositoryData.r
 #' @seealso \code{
-#'   	\link[rapptime]{processRepositoryData-character-ANY-environment-method}
+#'   	\link[rapp]{processRepositoryData-character-ANY-environment-method}
 #' }
 #' @template author
 #' @template references
@@ -37,18 +37,19 @@ setGeneric(
 #' Process Repository Data
 #'
 #' @description 
-#' See generic: \code{\link[rapptime]{processRepositoryData}}
+#' See generic: \code{\link[rapp]{processRepositoryData}}
 #'      
 #' @inheritParams processRepositoryData
 #' @param ns  \code{\link{missing}}. 
 #' @return \code{\link{logical}}. \code{TRUE}.
 #' @example inst/examples/processRepositoryData.r
 #' @seealso \code{
-#'    \link[rapptime]{processRepositoryData}
+#'    \link[rapp]{processRepositoryData}
 #' }
 #' @template author
 #' @template references
 #' @export
+#' @import rapp.core.repos
 setMethod(
   f = "processRepositoryData", 
   signature = signature(

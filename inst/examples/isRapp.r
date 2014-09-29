@@ -1,6 +1,6 @@
 \dontrun{
 
-createRapp(id = "test", path = tempdir())
+createRappProject(id = "test", path = tempdir())
 
 path_app <- file.path(tempdir(), "test")
 isRapp(path = path_app)

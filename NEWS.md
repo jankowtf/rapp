@@ -1,4 +1,4 @@
-# CHANGES IN rapptime VERSION 0.1.0.13
+# CHANGES IN rapp VERSION 0.1.0.13
 
 ## NEW FEATURES
 
@@ -9,7 +9,7 @@
 ## MAJOR CHANGES
 
 - rename: `ensureNamespaceRappOptions()` --> `mergeNamespaceRappOptions()`.
-  This better reflects the purpose of merging initial namespace options and the ones specified in the option file `/options/options_rapp.r`.
+  This better reflects the purpose of merging initial namespace options and the ones specified in the option file `/options/options_ns.r`.
 - rename: `renameRuntimeOptionFile()` --> `renameRappOptionFile()`.
   This is more consistent with the overall naming conventions used.
 - improved: `setRappOption()`.
@@ -25,7 +25,7 @@
 
 -----
 
-# CHANGES IN rapptime VERSION 0.1.0.12
+# CHANGES IN rapp VERSION 0.1.0.12
 
 ## NEW FEATURES
 
@@ -33,7 +33,7 @@
 
 ## MAJOR CHANGES
 
-- added argument `opts` to `ensureRuntimeEnvironment()`: allows to pass read options in order to transfer some runtime options to internal `.rte` options.
+- added argument `opts` to `ensureRapptime()`: allows to pass read options in order to transfer some runtime options to internal `.rte` options.
 Not fully elaborated yet.
 
 ## MINOR CHANGES
@@ -45,7 +45,7 @@ Not fully elaborated yet.
 
 -----
 
-# CHANGES IN rapptime VERSION 0.1.0.11
+# CHANGES IN rapp VERSION 0.1.0.11
 
 ## NEW FEATURES
 
@@ -66,18 +66,18 @@ Not fully elaborated yet.
 
 -----
 
-# CHANGES IN rapptime VERSION 0.1.0.10
+# CHANGES IN rapp VERSION 0.1.0.10
 
 ## NEW FEATURES
 
-- added `tidySource()` which is mainly used to write `/options/options_rapp.r` and `/options/options_runtime.r`
+- added `tidySource()` which is mainly used to write `/options/options_ns.r` and `/options/options_runtime.r`
 ## BUG FIXES
 
-- `ensureRuntimeEnvironment()` takes care of ensuring the existence of the default `global_dir` directory.
+- `ensureRapptime()` takes care of ensuring the existence of the default `global_dir` directory.
 
 ## MAJOR CHANGES
 
-- rename: `ensureRuntimeEnvironment()` --> `ensureRuntimeEnvironment()`
+- rename: `ensureRapptime()` --> `ensureRapptime()`
 - rename: `initializeRappOptions()` --> `initializeRappOptions()`
 - added `overwrite` argument to `ensureProjectComponents()`
 - added `overwrite` argument to `ensureRappComponents()`
@@ -89,7 +89,7 @@ Not fully elaborated yet.
 
 -----
 
-# CHANGES IN rapptime VERSION 0.1.0.9
+# CHANGES IN rapp VERSION 0.1.0.9
 
 ## NEW FEATURES
 
@@ -112,7 +112,7 @@ Not fully elaborated yet.
 
 -----
 
-# CHANGES IN rapptime VERSION 0.1.0.8
+# CHANGES IN rapp VERSION 0.1.0.8
 
 ## NEW FEATURES
 
@@ -129,7 +129,7 @@ Not fully elaborated yet.
 
 -----
 
-# CHANGES IN rapptime VERSION 0.1.0.7
+# CHANGES IN rapp VERSION 0.1.0.7
 
 ## NEW FEATURES
 
@@ -147,7 +147,7 @@ Not fully elaborated yet.
 
 -----
 
-# CHANGES IN rapptime VERSION 0.1.0.6
+# CHANGES IN rapp VERSION 0.1.0.6
 
 ## NEW FEATURES
 
@@ -158,7 +158,7 @@ Not fully elaborated yet.
   the following structure: 
   - `./options`: contains `options_runtime.r` and `options.r`
   - `./R`: R scripts
-- `ensureRuntimeEnvironment()` is now able to read options from 
+- `ensureRapptime()` is now able to read options from 
   `/options/options_runtime.r` (see method for signature `missing`)
 - new: `hasOptionFile()`: checks for existence of `options.r`
 - new: `hasRuntimeOptionFile()`: checks for existence of `options_runtime.r`
@@ -177,7 +177,7 @@ throughout the package
 - Rename: `getRuntimeStage()` --> `getRuntimeMode()`
 - Argument `ctx` changed to `ns` in various functions/methods
 - Argument `runtime_stage` changed to `runtime_mode` in various functions/methods
-- Ensure creation of `vignettes` subdirectory in `ensureRuntimeEnvironment()`
+- Ensure creation of `vignettes` subdirectory in `ensureRapptime()`
 
 ## MINOR CHANGES
   
@@ -185,7 +185,7 @@ throughout the package
 
 -----
 
-# CHANGES IN rapptime VERSION 0.1.0.5
+# CHANGES IN rapp VERSION 0.1.0.5
 
 ## NEW FEATURES
 
@@ -210,7 +210,7 @@ throughout the package
 
 -----
 
-# CHANGES IN rapptime VERSION 0.1.0.4
+# CHANGES IN rapp VERSION 0.1.0.4
 
 ## NEW FEATURES
 

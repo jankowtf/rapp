@@ -9,8 +9,8 @@
 #' @template references
 .onAttach <- function(libname, pkgname) {
   
-vsn <- packageDescription("rapptime", field = "Version")
-msg <- paste0("Package 'rapptime' (v", vsn, ")")
+vsn <- packageDescription("rapp", field = "Version")
+msg <- paste0("Package 'rapp' (v", vsn, ")")
 packageStartupMessage(msg, appendLF = TRUE)
   
 }

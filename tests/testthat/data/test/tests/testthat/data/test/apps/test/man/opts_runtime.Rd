@@ -12,7 +12,7 @@
   The format is:
 List of 4
  $ global_dir  : chr "C:/Users/jat/Documents/rapp"
- $ wd          : chr "Q:/home/wsp/rapp2/rapptime"
+ $ wd          : chr "Q:/home/wsp/rapp2/rapp"
  $ runtime_mode: chr "dev"
  $ lib         : chr "Q:/home/apps/rapptools/apps/r/R-3.1.1/library"
 }

@@ -2,7 +2,7 @@
 #' Check for Existence of Option File
 #'
 #' @description 
-#' Checks if file \code{/options/options_rapp.r} exists.
+#' Checks if file \code{/options/options_ns.r} exists.
 #'   	
 #' @param path \strong{Signature argument}.
 #'    Object containing path information.
@@ -12,7 +12,7 @@
 #' @template threedot
 #' @example inst/examples/hasOptionFile.r
 #' @seealso \code{
-#'   	\link[rapptime]{hasOptionFile-character-method}
+#'   	\link[rapp]{hasOptionFile-character-method}
 #' }
 #' @template author
 #' @template references
@@ -23,7 +23,7 @@ setGeneric(
     "path"
   ),
   def = function(
-    path = "options/options_rapp.r",
+    path = "options/options_ns.r",
     strict = FALSE,
     ...
   ) {
@@ -35,14 +35,14 @@ setGeneric(
 #' Is Package Project
 #'
 #' @description 
-#' See generic: \code{\link[rapptime]{hasOptionFile}}
+#' See generic: \code{\link[rapp]{hasOptionFile}}
 #'      
 #' @inheritParams hasOptionFile
 #' @param path  \code{\link{missing}}. 
 #' @return \code{\link{logical}}. \code{TRUE}.
 #' @example inst/examples/hasOptionFile.r
 #' @seealso \code{
-#'    \link[rapptime]{hasOptionFile}
+#'    \link[rapp]{hasOptionFile}
 #' }
 #' @template author
 #' @template references
@@ -71,14 +71,14 @@ setMethod(
 #' Is Package Project
 #'
 #' @description 
-#' See generic: \code{\link[rapptime]{hasOptionFile}}
+#' See generic: \code{\link[rapp]{hasOptionFile}}
 #'      
 #' @inheritParams hasOptionFile
 #' @param path  \code{\link{character}}. 
 #' @return \code{\link{logical}}. \code{TRUE}: exists; \code{FALSE}: does not exist.
 #' @example inst/examples/hasOptionFile.r
 #' @seealso \code{
-#'    \link[rapptime]{hasOptionFile}
+#'    \link[rapp]{hasOptionFile}
 #' }
 #' @template author
 #' @template references
@@ -98,13 +98,13 @@ setMethod(
     if (!strict) {
       return(FALSE)
     } else {
-      rapptime::signalCondition(
+      rapp::signalCondition(
         condition = "NegativeOptionFileCheck",
         msg = c(
           "Option file does not exist",
           Path = path
         ),
-        ns = "rapptime",
+        ns = "rapp",
         type = "error"
       )
     }

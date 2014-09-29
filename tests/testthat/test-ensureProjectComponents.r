@@ -7,23 +7,21 @@ test_that("ensureProjectComponents", {
     }
   }
   
-  suppressMessages(package.skeleton(
-    name = "test",
+  suppressMessages(createPackageSkeleton(
+    id = "test.package",
     path = tempdir(),
-    force = TRUE
+    overwrite = TRUE
   ))
   
-  path <- file.path(tempdir(), "test")
+  path <- file.path(tempdir(), "test.package")
   wd_0 <- setwd(path)
   expect_true(res <- ensureProjectComponents())
   expect_true(file.exists("data"))
-  expect_true(file.exists("man-roxygen"))
-  expect_true(file.exists("inst/examples"))
-  expect_true(file.exists("apps/test/options"))
-  expect_true(file.exists("apps/test/R"))
-  expect_true(file.exists("options"))
-  expect_true(file.exists("tests/testthat/data"))
-  expect_true(file.exists("vignettes"))
+  expect_true(file.exists("man"))
+  expect_true(file.exists("R/test.package.r"))
+  expect_true(file.exists("DESCRIPTION"))
+  expect_true(file.exists("NAMESPACE"))
+  
   expect_true(res <- ensureProjectComponents(overwrite = TRUE))
   
   setwd(wd_0)

@@ -9,7 +9,7 @@
 #' If you want to fully comply with the convenvtions of the \code{rapp} framework
 #' and its associated packages and applications, to not provide an explicit
 #' value for \code{repos_home}. This will trigger the default behavior of 
-#' using the value previously set by \code{\link[rapptime]{ensureGlobalDirectory}}. 
+#' using the value previously set by \code{\link[rapp]{ensureGlobalDirectory}}. 
 #' Any deviation from the default behavior might lead to inconsistencies in 
 #' the runtime environment at this point.
 #'   	
@@ -22,7 +22,7 @@
 #' @template threedot
 #' @example inst/examples/ensureDevPackages.r
 #' @seealso \code{
-#'   	\link[rapptime]{ensureDevPackages-missing-method}
+#'   	\link[rapp]{ensureDevPackages-missing-method}
 #' }
 #' @template author
 #' @template references
@@ -47,15 +47,15 @@ setGeneric(
 #' Ensure Rapp Options for Specific global_dir
 #'
 #' @description 
-#' See generic: \code{\link[rapptime]{ensureDevPackages}}
+#' See generic: \code{\link[rapp]{ensureDevPackages}}
 #'   	 
 #' @inheritParams ensureDevPackages
 #' @param global_dir \code{\link{missing}}. Default global_dir.
 #' @return See method
-#'    \code{\link[rapptime]{ensureDevPackages-character-method}}
+#'    \code{\link[rapp]{ensureDevPackages-character-method}}
 #' @example inst/examples/ensureDevPackages.r
 #' @seealso \code{
-#'    \link[rapptime]{ensureDevPackages}
+#'    \link[rapp]{ensureDevPackages}
 #' }
 #' @template author
 #' @template references
@@ -86,14 +86,14 @@ setMethod(
 #' Ensure Rapp Options for Specific global_dir
 #'
 #' @description 
-#' See generic: \code{\link[rapptime]{ensureDevPackages}}
+#' See generic: \code{\link[rapp]{ensureDevPackages}}
 #'      
 #' @inheritParams ensureDevPackages
 #' @param global_dir \code{\link{character}}. Default global_dir.
 #' @return \code{\link{logical}}. \code{TRUE}.
 #' @example inst/examples/ensureDevPackages.r
 #' @seealso \code{
-#'    \link[rapptime]{ensureDevPackages}
+#'    \link[rapp]{ensureDevPackages}
 #' }
 #' @template author
 #' @template references

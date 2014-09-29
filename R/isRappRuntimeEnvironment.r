@@ -3,7 +3,7 @@
 #'
 #' @description 
 #' Checks if the \code{rapp} runtime environment as established by 
-#' \code{\link[rapptime]{ensureRuntimeEnvironment}} is enabled.
+#' \code{\link[rapp]{ensureRappRuntime}} is enabled.
 #'   	
 #' @details
 #' The check is performed based on a check if the option \code{".rapp"} 
@@ -14,8 +14,8 @@
 #' @template threedot
 #' @example inst/examples/isRappRuntimeEnvironment.r
 #' @seealso \code{
-#'   	\link[rapptime]{isRappRuntimeEnvironment-character-method},
-#'    \link[rapptime]{ensureRuntimeEnvironment}
+#'   	\link[rapp]{isRappRuntimeEnvironment-character-method},
+#'    \link[rapp]{ensureRappRuntime}
 #' }
 #' @template author
 #' @template references
@@ -37,7 +37,7 @@ setGeneric(
 #' Check if Rapp Runtime Environment is Enabled
 #'
 #' @description 
-#' See generic: \code{\link[rapptime]{isRappRuntimeEnvironment}}
+#' See generic: \code{\link[rapp]{isRappRuntimeEnvironment}}
 #'   	 
 #' @inheritParams isRappRuntimeEnvironment
 #' @param ns \code{\link{missing}}.
@@ -45,7 +45,7 @@ setGeneric(
 #'    runtime not enabled.
 #' @example inst/examples/isRappRuntimeEnvironment.r
 #' @seealso \code{
-#'    \link[rapptime]{isRappRuntimeEnvironment}
+#'    \link[rapp]{isRappRuntimeEnvironment}
 #' }
 #' @template author
 #' @template references

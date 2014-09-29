@@ -13,7 +13,7 @@
 #' @template threedot
 #' @example inst/examples/setGlobalDirectory.r
 #' @seealso \code{
-#'   	\link[rapptime]{setGlobalDirectory-missing-method}
+#'   	\link[rapp]{setGlobalDirectory-missing-method}
 #' }
 #' @template author
 #' @template references
@@ -37,15 +37,15 @@ setGeneric(
 #' Set Rapp Home
 #'
 #' @description 
-#' See generic: \code{\link[rapptime]{setGlobalDirectory}}
+#' See generic: \code{\link[rapp]{setGlobalDirectory}}
 #'   	 
 #' @inheritParams setGlobalDirectory
 #' @param value \code{\link{missing}}. Default value (see generic).
 #' @return See method
-#'    \code{\link[rapptime]{setGlobalDirectory-character-method}}
+#'    \code{\link[rapp]{setGlobalDirectory-character-method}}
 #' @example inst/examples/setGlobalDirectory.r
 #' @seealso \code{
-#'    \link[rapptime]{setGlobalDirectory}
+#'    \link[rapp]{setGlobalDirectory}
 #' }
 #' @template author
 #' @template references
@@ -74,15 +74,15 @@ setMethod(
 #' Set Rapp Home
 #'
 #' @description 
-#' See generic: \code{\link[rapptime]{setGlobalDirectory}}
+#' See generic: \code{\link[rapp]{setGlobalDirectory}}
 #'      
 #' @inheritParams setGlobalDirectory
 #' @param value \code{\link{character}}. Default value.
 #' @return \code{\link{logical}}. Return value of 
-#'    \code{\link[rapptime]{setRappOption}}.
+#'    \code{\link[rapp]{setRappOption}}.
 #' @example inst/examples/setGlobalDirectory.r
 #' @seealso \code{
-#'    \link[rapptime]{setGlobalDirectory}
+#'    \link[rapp]{setGlobalDirectory}
 #' }
 #' @template author
 #' @template references

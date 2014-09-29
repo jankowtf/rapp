@@ -11,7 +11,7 @@
 #' @template threedot
 #' @example inst/examples/getGlobalDirectory.r
 #' @seealso \code{
-#'   	\link[rapptime]{getGlobalDirectory-missing-method}
+#'   	\link[rapp]{getGlobalDirectory-missing-method}
 #' }
 #' @template author
 #' @template references
@@ -34,14 +34,14 @@ setGeneric(
 #' Get Global Directory
 #'
 #' @description 
-#' See generic: \code{\link[rapptime]{getGlobalDirectory}}
+#' See generic: \code{\link[rapp]{getGlobalDirectory}}
 #'      
 #' @inheritParams getGlobalDirectory
 #' @param ns \code{\link{missing}}. Default ns.
 #' @return \code{\link{character}}. Option value.
 #' @example inst/examples/getGlobalDirectory.r
 #' @seealso \code{
-#'    \link[rapptime]{getGlobalDirectory}
+#'    \link[rapp]{getGlobalDirectory}
 #' }
 #' @template author
 #' @template references

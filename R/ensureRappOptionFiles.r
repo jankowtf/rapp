@@ -2,7 +2,7 @@
 #' Ensure Rapp Option Files
 #'
 #' @description 
-#' Ensures option files \code{options_runtime.r} and \code{options_rapp.r} 
+#' Ensures option files \code{options_runtime.r} and \code{options_ns.r} 
 #' associated to the \code{rapp} framework.
 #'   	
 #' @param path \strong{Signature argument}.
@@ -13,7 +13,7 @@
 #' @template threedot
 #' @example inst/examples/ensureRappOptionFiles.r
 #' @seealso \code{
-#'   	\link[rapptime]{ensureRappOptionFiles-missing-method}
+#'   	\link[rapp]{ensureRappOptionFiles-missing-method}
 #' }
 #' @template author
 #' @template references
@@ -35,15 +35,15 @@ setGeneric(
 #' Ensure Rapp Option Files
 #'
 #' @description 
-#' See generic: \code{\link[rapptime]{ensureRappOptionFiles}}
+#' See generic: \code{\link[rapp]{ensureRappOptionFiles}}
 #'   	 
 #' @inheritParams ensureRappOptionFiles
 #' @param path \code{\link{missing}}. 
 #' @return See method 
-#'    \code{\link[rapptime]{ensureRappOptionFiles-character-method}}. 
+#'    \code{\link[rapp]{ensureRappOptionFiles-character-method}}. 
 #' @example inst/examples/ensureRappOptionFiles.r
 #' @seealso \code{
-#'    \link[rapptime]{ensureRappOptionFiles}
+#'    \link[rapp]{ensureRappOptionFiles}
 #' }
 #' @template author
 #' @template references
@@ -72,7 +72,7 @@ setMethod(
 #' Ensure Rapp Option Files
 #'
 #' @description 
-#' See generic: \code{\link[rapptime]{ensureRappOptionFiles}}
+#' See generic: \code{\link[rapp]{ensureRappOptionFiles}}
 #'      
 #' @inheritParams ensureRappOptionFiles
 #' @param path \code{\link{character}}. 
@@ -80,7 +80,7 @@ setMethod(
 #'    been ensured. 
 #' @example inst/examples/ensureRappOptionFiles.r
 #' @seealso \code{
-#'    \link[rapptime]{ensureRappOptionFiles}
+#'    \link[rapp]{ensureRappOptionFiles}
 #' }
 #' @template author
 #' @template references
@@ -105,20 +105,21 @@ setMethod(
     )
   )    
   path_opts_runtime <- file.path(path, "options_runtime.r")
-  write(rapptime::tidySource(input = expr, name = "options"), 
+  write(rapp::tidySource(input = expr, name = "options"), 
     file = path_opts_runtime)
   expr <- substitute(
     list(
       ns = rapp.core.package::asPackage(x = ".")$package, ## Primary key for runtime --> do not change this!
       global_dir = file.path(Sys.getenv("HOME"), "rapp/ns", 
                              rapp.core.package::asPackage(x = ".")$package),
+      github_name = NA_character_,
       option_1 = "your option value here (can be any R object)",
       option_2 = "your option value here (can be any R object)",
       option_3 = "your option value here (can be any R object)"
     )
   )
-  path_opts_rapp <- file.path(path, "options_rapp.r")
-  write(rapptime::tidySource(input = expr, name = "options"), 
+  path_opts_rapp <- file.path(path, "options_ns.r")
+  write(rapp::tidySource(input = expr, name = "options"), 
     file = path_opts_rapp)
   out <- c(path_opts_runtime, path_opts_rapp)
   

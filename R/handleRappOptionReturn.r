@@ -9,7 +9,7 @@
 #' @template threedot
 #' @example inst/examples/handleRappOptionReturn.r
 #' @seealso \code{
-#'   	\link[rapptime]{handleRappOptionReturn-character-method}
+#'   	\link[rapp]{handleRappOptionReturn-character-method}
 #' }
 #' @template author
 #' @template references
@@ -31,7 +31,7 @@ setGeneric(
 #' Handle Rapp Option Return Value
 #'
 #' @description 
-#' See generic: \code{\link[rapptime]{handleRappOptionReturn}}
+#' See generic: \code{\link[rapp]{handleRappOptionReturn}}
 #'      
 #' @inheritParams handleRappOptionReturn
 #' @param value \code{\link{ANY}}.
@@ -40,7 +40,7 @@ setGeneric(
 #'    if \code{strict = TRUE}.
 #' @example inst/examples/handleRappOptionReturn.r
 #' @seealso \code{
-#'    \link[rapptime]{handleRappOptionReturn}
+#'    \link[rapp]{handleRappOptionReturn}
 #' }
 #' @template author
 #' @template references
@@ -64,7 +64,7 @@ setMethod(
 #' Handle Rapp Option Return Value
 #'
 #' @description 
-#' See generic: \code{\link[rapptime]{handleRappOptionReturn}}
+#' See generic: \code{\link[rapp]{handleRappOptionReturn}}
 #'   	 
 #' @inheritParams handleRappOptionReturn
 #' @param value \code{\link{RappReactiveValue}}.
@@ -73,7 +73,7 @@ setMethod(
 #'    if \code{strict = TRUE}.
 #' @example inst/examples/handleRappOptionReturn.r
 #' @seealso \code{
-#'    \link[rapptime]{handleRappOptionReturn}
+#'    \link[rapp]{handleRappOptionReturn}
 #' }
 #' @template author
 #' @template references

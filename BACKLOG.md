@@ -18,7 +18,7 @@ Backlog
 - Solved: NA
 - Description:
   Consider `mergeNamespaceRappOptions()` or, in general, the current structure of
-  the option files (i.e. `/options/options_rapp.r` and `/options/options_runtime.r`): currently, it is only possible to set non-nested values via the options file;
+  the option files (i.e. `/options/options_ns.r` and `/options/options_runtime.r`): currently, it is only possible to set non-nested values via the options file;
   change that.
 
 ## Ensure templates for `.Renviron`

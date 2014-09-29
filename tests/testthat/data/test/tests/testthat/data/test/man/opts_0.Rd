@@ -12,7 +12,7 @@
   The format is:
 List of 2
  $ global_dir: chr NA
- $ ns        : chr "rapptime"
+ $ ns        : chr "rapp"
 }
 \details{
 %%  ~~ If necessary, more details than the __description__ above ~~

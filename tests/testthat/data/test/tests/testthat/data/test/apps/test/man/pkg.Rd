@@ -10,7 +10,7 @@
 \usage{data("pkg")}
 \format{
   The format is:
- chr "rapptime"
+ chr "rapp"
 }
 \details{
 %%  ~~ If necessary, more details than the __description__ above ~~

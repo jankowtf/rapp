@@ -21,21 +21,16 @@ package.skeleton(
   force = TRUE
 )
 
-## Temporarily change working directory //
-pkg_path <- file.path(tempdir(), "test")
-wd_0 <- setwd(pkg_path)
-
 ## Investigate current project content //
 .openDirectory(pkg_path)
 
 ## Ensure additional project components //
-ensureProjectComponents()
+ensureProjectComponents(path = pkg_path)
 
 ## Investigate updated project content //
 .openDirectory(pkg_path)
 
 ## Clean up //
-setwd(wd_0)
 on.exit(.cleanTempDir(x = tempdir()), add = TRUE)
 
 }

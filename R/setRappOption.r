@@ -50,7 +50,7 @@
 #' @template threedot
 #' @example inst/examples/setRappOption.r
 #' @seealso \code{
-#'   	\link[rapptime]{setRappOption-character-method}
+#'   	\link[rapp]{setRappOption-character-method}
 #' }
 #' @template author
 #' @template references
@@ -79,7 +79,7 @@ setGeneric(
 #' Set Rapp Option
 #'
 #' @description 
-#' See generic: \code{\link[rapptime]{setRappOption}}
+#' See generic: \code{\link[rapp]{setRappOption}}
 #'   	 
 #' @inheritParams setRappOption
 #' @param id \code{\link{character}}.
@@ -87,7 +87,7 @@ setGeneric(
 #' @return \code{\link{logical}}. \code{TRUE}.
 #' @example inst/examples/setRappOption.r
 #' @seealso \code{
-#'    \link[rapptime]{setRappOption}
+#'    \link[rapp]{setRappOption}
 #' }
 #' @template author
 #' @template references
@@ -181,14 +181,14 @@ setMethod(
             if (!strict) {
               out <- FALSE
             } else {
-              rapptime::signalCondition(
+              rapp::signalCondition(
                 condition = "InvalidBranchConstellation",
                 msg = c(
                   "Parent branch is not an environment",
                   ID = id,
                   "ID branch" = id_branch_tree[idx_no]
                 ),
-                ns = "rapptime",
+                ns = "rapp",
                 type = "error"
               )  
             }
@@ -217,13 +217,13 @@ setMethod(
       if (!strict) {
         out <- FALSE
       } else {
-        rapptime::signalCondition(
+        rapp::signalCondition(
           condition = "InvalidBranchConstellation",
           msg = c(
             "Branch gap",
             ID = id
           ),
-          ns = "rapptime",
+          ns = "rapp",
           type = "error"
         )
       }
@@ -243,7 +243,7 @@ setMethod(
       if (!strict) {
         out <- FALSE
       } else {
-        rapptime::signalCondition(
+        rapp::signalCondition(
           condition = "InvalidBranchConstellation",
           msg = c(
             "Parent branch is not an environment",
@@ -251,7 +251,7 @@ setMethod(
             "ID branch" = id_branch,
             "Class branch" = class(value_branch)
           ),
-          ns = "rapptime",
+          ns = "rapp",
           type = "error"
         )
       }
@@ -267,13 +267,13 @@ setMethod(
       if (!strict) {
         out <- FALSE
       } else {
-        rapptime::signalCondition(
+        rapp::signalCondition(
           condition = "OptionPrerequisitesNotMet",
           msg = c(
             "Option does not exist yet",
             ID = id
           ),
-          ns = "rapptime",
+          ns = "rapp",
           type = "error"
         )
       }
@@ -292,7 +292,7 @@ setMethod(
       if (!strict) {
         out <- FALSE
       } else {
-        rapptime::signalCondition(
+        rapp::signalCondition(
           condition = "OptionPrerequisitesNotMet",
           msg = c(
             "New value has invalid class",
@@ -300,7 +300,7 @@ setMethod(
             "Class expected" = cl_0,
             "Class provided" = cl_1
           ),
-          ns = "rapptime",
+          ns = "rapp",
           type = "error"
         )
       }

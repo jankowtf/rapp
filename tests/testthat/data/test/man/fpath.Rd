@@ -10,7 +10,7 @@
 \usage{data("fpath")}
 \format{
   The format is:
- chr "rapp/options/options.r"
+ chr "options/options_ns.r"
 }
 \details{
 %%  ~~ If necessary, more details than the __description__ above ~~

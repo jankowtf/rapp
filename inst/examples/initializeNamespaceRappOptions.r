@@ -37,7 +37,7 @@ ls(res[[ns]], all.names=TRUE)
 ## Namespace:
 getNamespaceRappOption(ns = ns, id = "ns")
 ## Global application directory for namespace:
-getNamespaceRappOption(ns = ns, id = "ns_global")
+getNamespaceRappOption(ns = ns, id = "global_dir")
 ## Directory of an internal app ('/rapp/apps/<app-name>'):
 getNamespaceRappOption(ns = ns, id = "path_app")
 

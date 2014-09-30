@@ -12,7 +12,7 @@
 #' @template threedot
 #' @example inst/examples/readRappOptionFile.r
 #' @seealso \code{
-#'   	\link[rapp.core.rte]{readRappOptionFile-character-method}
+#'   	\link[rapp]{readRappOptionFile-character-method}
 #' }
 #' @template author
 #' @template references
@@ -24,7 +24,7 @@ setGeneric(
     "path"
   ),
   def = function(
-    path = "rapp/options/options_runtime.r",
+    path = "options/options_runtime.r",
     strict = FALSE,
     ...
   ) {
@@ -36,15 +36,15 @@ setGeneric(
 #' Read Runtime Options
 #'
 #' @description 
-#' See generic: \code{\link[rapp.core.rte]{readRappOptionFile}}
+#' See generic: \code{\link[rapp]{readRappOptionFile}}
 #'   	 
 #' @inheritParams readRappOptionFile
 #' @param path \code{\link{missing}}. Default path.
 #' @return See method
-#'    \code{\link[rapp.core.rte]{readRappOptionFile-character-method}}
+#'    \code{\link[rapp]{readRappOptionFile-character-method}}
 #' @example inst/examples/readRappOptionFile.r
 #' @seealso \code{
-#'    \link[rapp.core.rte]{readRappOptionFile}
+#'    \link[rapp]{readRappOptionFile}
 #' }
 #' @template author
 #' @template references
@@ -73,14 +73,14 @@ setMethod(
 #' Read Runtime Options
 #'
 #' @description 
-#' See generic: \code{\link[rapp.core.rte]{readRappOptionFile}}
+#' See generic: \code{\link[rapp]{readRappOptionFile}}
 #'      
 #' @inheritParams readRappOptionFile
 #' @param path \code{\link{character}}. Default path.
 #' @return \code{\link{list}}. Options as name-value pairs.
 #' @example inst/examples/readRappOptionFile.r
 #' @seealso \code{
-#'    \link[rapp.core.rte]{readRappOptionFile}
+#'    \link[rapp]{readRappOptionFile}
 #' }
 #' @template author
 #' @template references
@@ -101,13 +101,13 @@ setMethod(
     if (!strict) {
       out <- list()
     } else {
-      rapp.core.rte::signalCondition(
+      rapp::signalCondition(
         condition = "InvalidOptionFilePath",
         msg = c(
           "Invalid path to option file",
           Path = path
         ),
-        ns = "rapp.core.rte",
+        ns = "rapp",
         type = "error"
       )
     }

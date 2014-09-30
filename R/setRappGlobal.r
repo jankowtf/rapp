@@ -3,7 +3,7 @@
 #'
 #' @description 
 #' Sets the home directory associated to the \code{rapp}
-#' framework and its associated packages to \code{.rte/rapp_global}.
+#' framework and its associated packages to \code{.rte/global_dir}.
 #'   	
 #' @param value \strong{Signature argument}.
 #'    Object containing value information.
@@ -11,16 +11,16 @@
 #'    \code{TRUE}: update dependent options; \code{FALSE}: dependent options 
 #'    are not updated.
 #' @template threedot
-#' @example inst/examples/setRappGlobal.r
+#' @example inst/examples/setGlobalDirectory.r
 #' @seealso \code{
-#'   	\link[rapp.core.rte]{setRappGlobal-missing-method}
+#'   	\link[rapp]{setGlobalDirectory-missing-method}
 #' }
 #' @template author
 #' @template references
 #' @export 
 #' @import rapp.core.package
 setGeneric(
-  name = "setRappGlobal",
+  name = "setGlobalDirectory",
   signature = c(
     "value"
   ),
@@ -29,7 +29,7 @@ setGeneric(
     update_dependent = FALSE,
     ...
   ) {
-    standardGeneric("setRappGlobal")       
+    standardGeneric("setGlobalDirectory")       
   }
 )
 
@@ -37,21 +37,21 @@ setGeneric(
 #' Set Rapp Home
 #'
 #' @description 
-#' See generic: \code{\link[rapp.core.rte]{setRappGlobal}}
+#' See generic: \code{\link[rapp]{setGlobalDirectory}}
 #'   	 
-#' @inheritParams setRappGlobal
+#' @inheritParams setGlobalDirectory
 #' @param value \code{\link{missing}}. Default value (see generic).
 #' @return See method
-#'    \code{\link[rapp.core.rte]{setRappGlobal-character-method}}
-#' @example inst/examples/setRappGlobal.r
+#'    \code{\link[rapp]{setGlobalDirectory-character-method}}
+#' @example inst/examples/setGlobalDirectory.r
 #' @seealso \code{
-#'    \link[rapp.core.rte]{setRappGlobal}
+#'    \link[rapp]{setGlobalDirectory}
 #' }
 #' @template author
 #' @template references
 #' @export
 setMethod(
-  f = "setRappGlobal", 
+  f = "setGlobalDirectory", 
   signature = signature(
     value = "missing"
   ), 
@@ -61,7 +61,7 @@ setMethod(
     ...
   ) {
   
-  return(setRappGlobal(
+  return(setGlobalDirectory(
     value = value,
     update_dependent = update_dependent,
     ...
@@ -74,21 +74,21 @@ setMethod(
 #' Set Rapp Home
 #'
 #' @description 
-#' See generic: \code{\link[rapp.core.rte]{setRappGlobal}}
+#' See generic: \code{\link[rapp]{setGlobalDirectory}}
 #'      
-#' @inheritParams setRappGlobal
+#' @inheritParams setGlobalDirectory
 #' @param value \code{\link{character}}. Default value.
 #' @return \code{\link{logical}}. Return value of 
-#'    \code{\link[rapp.core.rte]{setRappOption}}.
-#' @example inst/examples/setRappGlobal.r
+#'    \code{\link[rapp]{setRappOption}}.
+#' @example inst/examples/setGlobalDirectory.r
 #' @seealso \code{
-#'    \link[rapp.core.rte]{setRappGlobal}
+#'    \link[rapp]{setGlobalDirectory}
 #' }
 #' @template author
 #' @template references
 #' @export
 setMethod(
-  f = "setRappGlobal", 
+  f = "setGlobalDirectory", 
   signature = signature(
     value = "character"
   ), 
@@ -100,14 +100,14 @@ setMethod(
   
   ## Set option //
   out <- setRappOption(
-    id = ".rte/rapp_global",
+    id = ".rte/global_dir",
     value = value,
     branch_gap = TRUE
   )
   
   ## Update dependent options //
   if (update_dependent) {
-    ensureRappGlobal(path = value)
+    ensureGlobalDirectory(path = value)
   }
   
   return(out)

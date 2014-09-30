@@ -1,4 +1,4 @@
-Package: rapp.core.rte
+Package: rapp
 Type: Package
 Title: Runtime environment for package development and application deployment
     in the context of the rapp framework

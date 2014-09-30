@@ -15,7 +15,7 @@
 #' @template threedot
 #' @example inst/examples/processRepositoryData.r
 #' @seealso \code{
-#'   	\link[rapp.core.rte]{processRepositoryData-character-ANY-environment-method}
+#'   	\link[rapp]{processRepositoryData-character-ANY-environment-method}
 #' }
 #' @template author
 #' @template references
@@ -37,18 +37,19 @@ setGeneric(
 #' Process Repository Data
 #'
 #' @description 
-#' See generic: \code{\link[rapp.core.rte]{processRepositoryData}}
+#' See generic: \code{\link[rapp]{processRepositoryData}}
 #'      
 #' @inheritParams processRepositoryData
 #' @param ns  \code{\link{missing}}. 
 #' @return \code{\link{logical}}. \code{TRUE}.
 #' @example inst/examples/processRepositoryData.r
 #' @seealso \code{
-#'    \link[rapp.core.rte]{processRepositoryData}
+#'    \link[rapp]{processRepositoryData}
 #' }
 #' @template author
 #' @template references
 #' @export
+#' @import rapp.core.repos
 setMethod(
   f = "processRepositoryData", 
   signature = signature(
@@ -85,7 +86,7 @@ setMethod(
     getRappOption(id = ".rte/repos_global"),
     getRappOption(id = ".rte/repos_pkg")
   ))
-  names(repos_list) <- unique(c(repos_list_names, "rapp_global", "rapp_package"))
+  names(repos_list) <- unique(c(repos_list_names, "global_dir", "rapp_package"))
   
   on.exit(options("repos" = repos_list))
   return(TRUE)

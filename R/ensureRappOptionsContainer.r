@@ -14,7 +14,7 @@
 #' @template threedot
 #' @example inst/examples/ensureRappOptionsContainer.r
 #' @seealso \code{
-#'   	\link[rapp.core.rte]{ensureRappOptionsContainer-missing-method}
+#'   	\link[rapp]{ensureRappOptionsContainer-missing-method}
 #' }
 #' @template author
 #' @template references
@@ -37,14 +37,14 @@ setGeneric(
 #' Ensure Development Environment
 #'
 #' @description 
-#' See generic: \code{\link[rapp.core.rte]{ensureRappOptionsContainer}}
+#' See generic: \code{\link[rapp]{ensureRappOptionsContainer}}
 #'   	 
 #' @inheritParams ensureRappOptionsContainer
 #' @param container \code{\link{missing}}. Default container.
 #' @return \code{\link{logical}}. \code{TRUE}.
 #' @example inst/examples/ensureRappOptionsContainer.r
 #' @seealso \code{
-#'    \link[rapp.core.rte]{ensureRappOptionsContainer}
+#'    \link[rapp]{ensureRappOptionsContainer}
 #' }
 #' @template author
 #' @template references

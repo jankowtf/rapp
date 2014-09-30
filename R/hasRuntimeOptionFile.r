@@ -2,17 +2,17 @@
 #' Check for Existence of Runtime Option File
 #'
 #' @description 
-#' Checks if file \code{/rapp/options/options_runtime.r} exists.
+#' Checks if file \code{/options/options_runtime.r} exists.
 #'   	
 #' @param path \strong{Signature argument}.
 #'    Object containing path information.
 #' @param strict \code{\link{logical}}.
 #'    \code{TRUE}: trigger error on negative check result; \code{FALSE}: return
-#'    \cod{FALSE} on negative check result.
+#'    \code{FALSE} on negative check result.
 #' @template threedot
 #' @example inst/examples/hasRuntimeOptionFile.r
 #' @seealso \code{
-#'   	\link[rapp.core.rte]{hasRuntimeOptionFile-character-method}
+#'   	\link[rapp]{hasRuntimeOptionFile-character-method}
 #' }
 #' @template author
 #' @template references
@@ -23,7 +23,7 @@ setGeneric(
     "path"
   ),
   def = function(
-    path = "rapp/options/options_runtime.r",
+    path = "options/options_runtime.r",
     strict = FALSE,
     ...
   ) {
@@ -35,14 +35,14 @@ setGeneric(
 #' Is Package Project
 #'
 #' @description 
-#' See generic: \code{\link[rapp.core.rte]{hasRuntimeOptionFile}}
+#' See generic: \code{\link[rapp]{hasRuntimeOptionFile}}
 #'      
 #' @inheritParams hasRuntimeOptionFile
 #' @param path  \code{\link{missing}}. 
 #' @return \code{\link{logical}}. \code{TRUE}.
 #' @example inst/examples/hasRuntimeOptionFile.r
 #' @seealso \code{
-#'    \link[rapp.core.rte]{hasRuntimeOptionFile}
+#'    \link[rapp]{hasRuntimeOptionFile}
 #' }
 #' @template author
 #' @template references
@@ -71,14 +71,14 @@ setMethod(
 #' Is Package Project
 #'
 #' @description 
-#' See generic: \code{\link[rapp.core.rte]{hasRuntimeOptionFile}}
+#' See generic: \code{\link[rapp]{hasRuntimeOptionFile}}
 #'      
 #' @inheritParams hasRuntimeOptionFile
 #' @param path  \code{\link{character}}. 
 #' @return \code{\link{logical}}. \code{TRUE}: exists; \code{FALSE}: does not exist.
 #' @example inst/examples/hasRuntimeOptionFile.r
 #' @seealso \code{
-#'    \link[rapp.core.rte]{hasRuntimeOptionFile}
+#'    \link[rapp]{hasRuntimeOptionFile}
 #' }
 #' @template author
 #' @template references
@@ -98,13 +98,13 @@ setMethod(
     if (!strict) {
       return(FALSE)
     } else {
-      rapp.core.rte::signalCondition(
+      rapp::signalCondition(
         condition = "NegativeOptionFileCheck",
         msg = c(
           "Option file does not exist",
           Path = path
         ),
-        ns = "rapp.core.rte",
+        ns = "rapp",
         type = "error"
       )
     }

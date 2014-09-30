@@ -11,7 +11,7 @@
 #' @template threedot
 #' @example inst/examples/initializeRappOptions.r
 #' @seealso \code{
-#'   	\link[rapp.core.rte]{initializeRappOptions-missing-method}
+#'   	\link[rapp]{initializeRappOptions-missing-method}
 #' }
 #' @template author
 #' @template references
@@ -33,7 +33,7 @@ setGeneric(
 #' Initialize Rapp Options
 #'
 #' @description 
-#' See generic: \code{\link[rapp.core.rte]{initializeRappOptions}}
+#' See generic: \code{\link[rapp]{initializeRappOptions}}
 #'   	 
 #' @inheritParams initializeRappOptions
 #' @param ns \code{\link{missing}}. Default namespace.
@@ -41,7 +41,7 @@ setGeneric(
 #'    \code{options(".rapp")}.
 #' @example inst/examples/initializeRappOptions.r
 #' @seealso \code{
-#'    \link[rapp.core.rte]{initializeRappOptions}
+#'    \link[rapp]{initializeRappOptions}
 #' }
 #' @template author
 #' @template references
@@ -59,7 +59,7 @@ setMethod(
   container <- ensureRappOptionsContainer(overwrite = TRUE)
   
   setRappOption(
-    id = ".rte/rapp_global",
+    id = ".rte/global_dir",
     value = file.path(Sys.getenv("HOME"), "rapp"),
     branch_gap = TRUE
   )

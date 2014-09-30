@@ -5,7 +5,7 @@ opts_old <- getOption(".rapp")
 
 ## Create example content //
 ensureRappOptionsContainer(overwrite = TRUE)
-setRappGlobal("q:/home/rapp")
+setGlobalDirectory("q:/home/rapp")
 setInternalRepositories()
 
 processRepositoryData()

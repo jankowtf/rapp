@@ -1,0 +1,49 @@
+<!--
+%\VignetteEngine{knitr::knitr}
+%\VignetteIndexEntry{Managing your NAMESPACE}
+-->
+
+
+```{r, echo = FALSE, message = FALSE}
+knitr::opts_chunk$set(
+  comment = "#>",
+  error = FALSE,
+  tidy = FALSE
+)
+```
+
+---
+title: "Package overview"
+author: "Janko Thyson"
+date: "Thursday, September 25, 2014"
+output: pdf_document
+---
+
+## Main top-level functions
+
+
+### `ensureRappRuntime()`
+
+- calls `initializeRappOptions()` and thus ensures an environment that contains all options (in `options(".rapp")` or `getOption(".rapp")`)
+  
+```{r}
+initializeRappOptions()
+ls(getOption(".rapp")$.rte, all.names = TRUE)
+```
+
+- Reads runtime options from `/options/options_runtime.r` if exists
+
+- Ensures global directory and sets respective option (`global_dir`): `setGlobalDirectory()` and `ensureGlobalDirectory()`
+
+- Ensures internal repositories and sets respective options (`repos_global`, `repos_pkgs`, `repos_root`): `setInternalRepositories()`
+
+- Sets option for runtime mode (`runtime_mode`): `setRuntimeMode()`
+
+- Sets package library to use (option `lib` and in `.libPaths()`): `setLibrary()`
+
+- Ensures the existence of all necessary project components in the packageprojects root directory: `ensureProjectComponents()` and `ensureRappComponents()`
+
+- If called from the context of a package project or if an option file `/options/options_ns.r` exists, then these options are read (`readRappOptionFile()`) and merged into the option container `getOption(".rapp")`. 
+
+  To be more specific, a subcontainer is created where these options are stored. The name of the subcontainer corresponds to the name of the package project or the application (`mergeNamespaceRappOptions()`)
+

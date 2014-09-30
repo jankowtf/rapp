@@ -8,7 +8,7 @@ opts_old <- getOption(".rapp")
 ## This might not work if you have not used the rapp framework's features
 ## for package building 
 ## (in particular 'rapp.core.repos::buildIntoRepositoryInfrastructure()')
-ensureRappGlobal("q:/home/rapp")
+ensureGlobalDirectory("q:/home/rapp")
 ensureDevPackages()
                
 ## Clean up //

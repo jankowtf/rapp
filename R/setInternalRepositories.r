@@ -10,7 +10,7 @@
 #' value for \code{repos_root}. This will trigger the default behavior of 
 #' placing the repository root under \code{<rapp-home>/repos/r} with 
 #' \code{<rapp-home>} being the \code{rapp HOME} directory as set by 
-#' \code{\link[rapp.core.rte]{ensureRappGlobal}}. 
+#' \code{\link[rapp]{ensureGlobalDirectory}}. 
 #' Any deviation from the default behavior might lead to inconsistencies in 
 #' the runtime environment at this point.
 #'   	
@@ -23,7 +23,7 @@
 #' @template threedot
 #' @example inst/examples/setInternalRepositories.r
 #' @seealso \code{
-#'   	\link[rapp.core.rte]{setInternalRepositories-missing-method}
+#'   	\link[rapp]{setInternalRepositories-missing-method}
 #' }
 #' @template author
 #' @template references
@@ -35,7 +35,7 @@ setGeneric(
     "repos_root"
   ),
   def = function(
-    repos_root = file.path(getRappOption(".rte/rapp_global", strict = TRUE), 
+    repos_root = file.path(getRappOption(".rte/global_dir", strict = TRUE), 
                            "repos/r"),
     runtime_mode = c("dev", "test", "live"),
     pkg = ifelse(isPackageProject(), devtools::as.package(x = ".")$package,
@@ -55,15 +55,15 @@ setGeneric(
 #' Sets that internal repository options are set.
 #'
 #' @description 
-#' See generic: \code{\link[rapp.core.rte]{setInternalRepositories}}
+#' See generic: \code{\link[rapp]{setInternalRepositories}}
 #'   	 
 #' @inheritParams setInternalRepositories
 #' @param repos_root \code{\link{missing}}. Default repos_root.
 #' @return See method
-#'    \code{\link[rapp.core.rte]{setInternalRepositories-character-method}}
+#'    \code{\link[rapp]{setInternalRepositories-character-method}}
 #' @example inst/examples/setInternalRepositories.r
 #' @seealso \code{
-#'    \link[rapp.core.rte]{setInternalRepositories}
+#'    \link[rapp]{setInternalRepositories}
 #' }
 #' @template author
 #' @template references
@@ -96,15 +96,15 @@ setMethod(
 #' Set Rapp Options for Specific repos_root
 #'
 #' @description 
-#' See generic: \code{\link[rapp.core.rte]{setInternalRepositories}}
+#' See generic: \code{\link[rapp]{setInternalRepositories}}
 #'      
 #' @inheritParams setInternalRepositories
 #' @param repos_root \code{\link{character}}. Default repos_root.
 #' @return \code{\link{logical}}. Vector with options settings result as 
-#'    returned by \code{\link[rapp.core.rte]{setRappOption}}.
+#'    returned by \code{\link[rapp]{setRappOption}}.
 #' @example inst/examples/setInternalRepositories.r
 #' @seealso \code{
-#'    \link[rapp.core.rte]{setInternalRepositories}
+#'    \link[rapp]{setInternalRepositories}
 #' }
 #' @template author
 #' @template references
@@ -165,7 +165,7 @@ setMethod(
     value = repos_list_pkgs[3],
     branch_gap = TRUE
   ))
-  
+
   ## Package-specific repositories (default values) //
   out <- c(out, "repos_dev_pkg" = setRappOption(
     id = ".rte/repos_dev_pkg",
@@ -187,7 +187,7 @@ setMethod(
     value = NA_character_,
     branch_gap = TRUE
   ))
-  
+
   ## Global repository to be used //
   repos_global <- switch(
     runtime_mode,
@@ -196,15 +196,15 @@ setMethod(
     "live" = getRappOption(".rte/repos_live_global")
   )
   setRappOption(id = ".rte/repos_global", value = repos_global)
-  
+
   ## Package-specific repositories //
-  if (length(pkg) && length(vsn)) {
-    repos_list_pkg <- file.path(repos_list_pkgs, file.path(pkg, vsn))
+  if (length(pkg) && length(vsn)) {        
+    repos_list_pkg <- file.path(repos_list_pkgs, file.path(pkg, vsn)) 
     out <- c(out, "repos_dev_pkg" = setRappOption(
       id = ".rte/repos_dev_pkg",
       value = repos_list_pkg[1],
       branch_gap = TRUE
-    ))
+    )) 
     out <- c(out, "repos_test_pkg" = setRappOption(
       id = ".rte/repos_test_pkg",
       value = repos_list_pkg[2],
@@ -215,7 +215,7 @@ setMethod(
       value = repos_list_pkg[3],
       branch_gap = TRUE
     ))  
-    
+   
     repos_pkg <- switch(
       runtime_mode,
       "dev" = getRappOption(".rte/repos_dev_pkg"),
@@ -224,7 +224,7 @@ setMethod(
     )
     setRappOption(id = ".rte/repos_pkg", value = repos_pkg)
   }
-  
+ 
   return(out)
     
   }

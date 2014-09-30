@@ -155,8 +155,6 @@ setMethod(
 #' @template author
 #' @template references
 #' @export
-#' @import pkgKitten
-#' @import packrat
 setMethod(
   f = "createRappProject", 
   signature = signature(

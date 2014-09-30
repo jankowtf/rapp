@@ -3,7 +3,7 @@
 #'
 #' @description 
 #' Checks if a given directory corresponds to an R application
-#' following  the conventions of the \code{rappr} framework
+#' following  the conventions of the \code{rapp} framework
 #'   	
 #' @details
 #' The check is performed based on the following aspects:

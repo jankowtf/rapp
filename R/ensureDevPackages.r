@@ -146,6 +146,9 @@ setMethod(
 #   if (!no_require) {
 #     base::require("rapp.core.repos", lib.loc = lib)
 #   }
+  
+  require("packrat", lib.loc = lib)
+  require("devtools", lib.loc = lib)
   base::require("testthat", lib.loc = lib)
   
   return(TRUE)

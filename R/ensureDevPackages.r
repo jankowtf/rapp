@@ -123,7 +123,7 @@ setMethod(
   
   # new.packages(lib.loc = lib, repos = repos_global)
   old_pkgs <- utils::old.packages(lib.loc = lib, repos = repos_global)
-  # old_pkgs <- data.frame(Package = c("rapp.core.examples", "rapp.core.repos"),
+  # old_pkgs <- data.frame(Package = c("examplr", "rapp.core.repos"),
   #                        stringsAsFactors = FALSE)
   if (length(old_pkgs)) {
     utils::install.packages(
@@ -136,12 +136,12 @@ setMethod(
   ## Ensure packages //
 #   if (isPackageProject()) {
 #     no_require <- devtools::as.package(".")$package %in% 
-#         c("rapp.core.examples", "rapp.core.repos")
+#         c("examplr", "rapp.core.repos")
 #   } else {
 #     no_require <- FALSE
 #   }
 #   if (!no_require) {
-#     base::require("rapp.core.examples", lib.loc = lib)
+#     base::require("examplr", lib.loc = lib)
 #   }
 #   if (!no_require) {
 #     base::require("rapp.core.repos", lib.loc = lib)

@@ -22,7 +22,7 @@
 #'        }
 #'        \item{Ensure latest development packages}: } {
 #'          Ensures that the latest versions of development packages are loaded:
-#'          \code{require("rapp.core.examples") (in order to being able to 
+#'          \code{require("examplr") (in order to being able to 
 #'          ensure example files) and \code{require("rapp.core.repos")
 #'          (in order to enable integration with the \code{rapp} framework's
 #'          local repository conventions 

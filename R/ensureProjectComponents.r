@@ -120,7 +120,7 @@ setMethod(
     base::dir.create(file.path(path, "vignettes"), 
                      recursive = TRUE, showWarnings = FALSE)
     
-    rapp.core.examples::ensureExamplesDirectory(
+    examplr::ensureExamplesDirectory(
       path = file.path(path, "inst/examples")
     )
     ensureRoxygenTemplates(path = path, github_name = github_name)

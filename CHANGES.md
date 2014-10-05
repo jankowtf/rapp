@@ -1,3 +1,7 @@
+# Version 0.1.3
+
+----------
+
 # Version 0.1.2
  - cleanup commit
  - Merge branch 'release-0.1.1' into develop

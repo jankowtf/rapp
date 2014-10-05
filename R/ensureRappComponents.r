@@ -56,7 +56,7 @@ setGeneric(
 #' }
 #' @template author
 #' @template references
-#' @import rapp.core.package
+#' @import libr
 setMethod(
   f = "ensureRappComponents", 
   signature = signature(
@@ -97,7 +97,7 @@ setMethod(
 #' }
 #' @template author
 #' @template references
-#' @import rapp.core.package
+#' @import libr
 setMethod(
   f = "ensureRappComponents", 
   signature = signature(

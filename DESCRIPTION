@@ -13,5 +13,5 @@ License: GPL (>= 2)
 Roxygen: list(wrap = FALSE)
 NeedsCompilation: no
 Repository: CRAN
-Imports: devtools, examplr, rapp.core.package, rapp.core.repos
+Imports: devtools, examplr, libr, repositr
 Suggests: packrat

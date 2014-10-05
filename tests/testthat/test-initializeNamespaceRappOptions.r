@@ -1,22 +1,12 @@
 context("initializeNamespaceRappOptions-1")
 test_that("initializeNamespaceRappOptions", {
 
-  .cleanTempDir <- function(x) {
-    if (grepl(basename(tempdir()), x)) {
-      unlink(x, recursive = TRUE, force = TRUE)
-    }
-  }
-  
   opts_old <- getOption(".rapp")
   
   ## Dummy package project //
   path <- file.path(tempdir(), "test")
   ns <- basename(path)
-  suppressMessages(package.skeleton(
-    name = ns,
-    path = dirname(path),
-    force = TRUE
-  ))
+  createPackageSkeleton(id = "test", path = tempdir())
   wd_0 <- setwd(path)
   
   initializeRappOptions()
@@ -43,7 +33,7 @@ test_that("initializeNamespaceRappOptions", {
   setwd(wd_0)
   on.exit({
     options(".rapp" = opts_old)
-    .cleanTempDir(x = path)
+    filesystr::conditionalDelete(path, condition = tempdir())
   })
   
   }

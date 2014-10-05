@@ -10,7 +10,7 @@
 \usage{data("expr")}
 \format{
   The format is:
- language list(ns = rapp.core.package::asPackage(x = ".")$package, option_1 = "your option value here (can be any R object)",      option_2 = "your option value here (can be any R object)", option_3 = "your option value here (can be any R object)")
+ language list(ns = libr::asPackage(x = ".")$package, option_1 = "your option value here (can be any R object)",      option_2 = "your option value here (can be any R object)", option_3 = "your option value here (can be any R object)")
 }
 \details{
 %%  ~~ If necessary, more details than the __description__ above ~~

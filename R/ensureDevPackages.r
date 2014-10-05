@@ -27,7 +27,7 @@
 #' @template author
 #' @template references
 #' @export 
-#' @import rapp.core.package
+#' @import libr
 setGeneric(
   name = "ensureDevPackages",
   signature = c(
@@ -123,7 +123,7 @@ setMethod(
   
   # new.packages(lib.loc = lib, repos = repos_global)
   old_pkgs <- utils::old.packages(lib.loc = lib, repos = repos_global)
-  # old_pkgs <- data.frame(Package = c("examplr", "rapp.core.repos"),
+  # old_pkgs <- data.frame(Package = c("examplr", "repositr"),
   #                        stringsAsFactors = FALSE)
   if (length(old_pkgs)) {
     utils::install.packages(
@@ -136,7 +136,7 @@ setMethod(
   ## Ensure packages //
 #   if (isPackageProject()) {
 #     no_require <- devtools::as.package(".")$package %in% 
-#         c("examplr", "rapp.core.repos")
+#         c("examplr", "repositr")
 #   } else {
 #     no_require <- FALSE
 #   }
@@ -144,7 +144,7 @@ setMethod(
 #     base::require("examplr", lib.loc = lib)
 #   }
 #   if (!no_require) {
-#     base::require("rapp.core.repos", lib.loc = lib)
+#     base::require("repositr", lib.loc = lib)
 #   }
   
   require("packrat", lib.loc = lib)

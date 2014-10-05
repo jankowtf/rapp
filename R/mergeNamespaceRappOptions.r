@@ -23,7 +23,7 @@
 #' @template author
 #' @template references
 #' @export 
-#' @import rapp.core.package
+#' @import libr
 setGeneric(
   name = "mergeNamespaceRappOptions",
   signature = c(
@@ -36,7 +36,7 @@ setGeneric(
     ns = if (isPackageProject(path)) {
       devtools::as.package(x = path)$package
     } else {
-      rapp.core.package::asPackage(x = path)$package
+      libr::asPackage(x = path)$package
     },
     option_file = file.path(path, "options/options_ns.r"),
     ...

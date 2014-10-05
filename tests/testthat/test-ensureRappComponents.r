@@ -1,17 +1,7 @@
 context("ensureRappComponents-1")
 test_that("ensureRappComponents", {
 
-  .cleanTempDir <- function(x) {
-    if (grepl(basename(tempdir()), x)) {
-      unlink(x, recursive = TRUE, force = TRUE)
-    }
-  }
-  
-  suppressMessages(package.skeleton(
-    name = "test",
-    path = tempdir(),
-    force = TRUE
-  ))
+  createPackageSkeleton(id = "test", path = tempdir())
   path <- file.path(tempdir(), "test")
   wd_0 <- setwd(path)
   expect_true(res <- ensureRappComponents())
@@ -21,7 +11,7 @@ test_that("ensureRappComponents", {
   
   setwd(wd_0)
   on.exit({
-    .cleanTempDir(x = path)
+    filesystr::conditionalDelete(path, condition = tempdir())
   })
   
   }

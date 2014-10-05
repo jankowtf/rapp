@@ -15,7 +15,7 @@
 #' @template author
 #' @template references
 #' @export 
-#' @import rapp.core.package
+#' @import libr
 setGeneric(
   name = "ensureGlobalDirectory",
   signature = c(

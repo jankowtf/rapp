@@ -1,3 +1,75 @@
+# CHANGES IN rapp VERSION 0.2
+
+## NEW FEATURES
+
+## BUG FIXES
+
+## MAJOR CHANGES
+
+## MINOR CHANGES
+
+## MISC
+
+-----
+
+# CHANGES IN rapp VERSION 0.1.5
+
+## NEW FEATURES
+
+## BUG FIXES
+
+## MAJOR CHANGES
+
+## MINOR CHANGES
+
+## MISC
+
+-----
+
+# CHANGES IN rapp VERSION 0.1.4
+
+## NEW FEATURES
+
+## BUG FIXES
+
+## MAJOR CHANGES
+
+## MINOR CHANGES
+
+## MISC
+
+-----
+
+# CHANGES IN rapp VERSION 0.1.3
+
+## NEW FEATURES
+
+## BUG FIXES
+
+## MAJOR CHANGES
+
+## MINOR CHANGES
+
+## MISC
+
+-----
+
+# CHANGES IN rapp VERSION 0.1.2
+
+## NEW FEATURES
+
+## BUG FIXES
+
+## MAJOR CHANGES
+
+## MINOR CHANGES
+
+## MISC
+
+- cleanup commit
+
+-----
+
 # CHANGES IN rapp VERSION 0.1.0.13
 
 ## NEW FEATURES

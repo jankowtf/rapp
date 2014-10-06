@@ -9,6 +9,4 @@
 #' @template references
 .onLoad <- function(libname, pkgname) {
   
-
-  
 }

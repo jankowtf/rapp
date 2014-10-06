@@ -21,7 +21,7 @@
 #' @template threedot
 #' @example inst/examples/getRappOption.r
 #' @seealso \code{
-#'   	\link[rapp.core.rte]{getRappOption-character-method}
+#'   	\link[rapp]{getRappOption-character-method}
 #' }
 #' @template author
 #' @template references
@@ -44,7 +44,7 @@ setGeneric(
 #' Get Rapp Option
 #'
 #' @description 
-#' See generic: \code{\link[rapp.core.rte]{getRappOption}}
+#' See generic: \code{\link[rapp]{getRappOption}}
 #'   	 
 #' @inheritParams getRappOption
 #' @param id \code{\link{character}}.
@@ -53,7 +53,7 @@ setGeneric(
 #'    if \code{strict = TRUE}.
 #' @example inst/examples/getRappOption.r
 #' @seealso \code{
-#'    \link[rapp.core.rte]{getRappOption}
+#'    \link[rapp]{getRappOption}
 #' }
 #' @template author
 #' @template references
@@ -73,12 +73,12 @@ setMethod(
     if (!strict) {
       out <- NULL
     } else {
-      rapp.core.rte::signalCondition(
+      rapp::signalCondition(
         condition = "InvalidRappOption",
         msg = c(
           "Empty ID"
         ),
-        ns = "rapp.core.rte",
+        ns = "rapp",
         type = "error"
       )
     }
@@ -93,13 +93,13 @@ setMethod(
       if (!strict) {
         out <- out
       } else {
-        rapp.core.rte::signalCondition(
+        rapp::signalCondition(
           condition = "InvalidRappOption",
           msg = c(
             "Invalid rapp option",
             ID = id
           ),
-          ns = "rapp.core.rte",
+          ns = "rapp",
           type = "error"
         )
       }

@@ -3,37 +3,42 @@
 #'
 #' @description 
 #' Merges initial namespace options as set by 
-#' \code{\link[rapp.core.rte]{initializeNamespaceRappOptions}} with the ones
-#' specified in option file \code{/options/options.r} and read via 
-#' \code{\link[rapp.core.rte]{readRappOptionFile}}.
-#' 
-#' @details
-#' In case a file \code{options.r} exists in \code{/rapp/options/},
-#' then it is parsed and if \code{ns} is specified, the default values 
-#' from the generic function are overwritten. Else the default values are used.
+#' \code{\link[rapp]{initializeNamespaceRappOptions}} with the ones
+#' specified in option file \code{/options/options_ns.r} and read via 
+#' \code{\link[rapp]{readRappOptionFile}}.
 #'   	
+#' @param path \strong{Signature argument}.
+#'    Object containing location information. Typically, this corresponds to 
+#'    the directory path of an R package project or R application project.
 #' @param ns \strong{Signature argument}.
-#'    Object containing namespace information.
-#' @param ns \strong{Signature argument}.
+#'    Object containing namespace information. Typically, this corresponds to 
+#'    the the package name or application name.
+#' @param option_file \strong{Signature argument}.
 #'    Object containing file path information for the option file.
 #' @template threedot
 #' @example inst/examples/mergeNamespaceRappOptions.r
 #' @seealso \code{
-#'   	\link[rapp.core.rte]{mergeNamespaceRappOptions-missing-method}
+#'   	\link[rapp]{mergeNamespaceRappOptions-missing-method}
 #' }
 #' @template author
 #' @template references
 #' @export 
-#' @import rapp.core.package
+#' @import libr
 setGeneric(
   name = "mergeNamespaceRappOptions",
   signature = c(
+    "path",
     "ns",
-    "path"
+    "option_file"
   ),
   def = function(
-    ns = rapp.core.package::asPackage(x = ".")$package,
-    path = "rapp/options/options.r",
+    path = ".",
+    ns = if (isPackageProject(path)) {
+      devtools::as.package(x = path)$package
+    } else {
+      libr::asPackage(x = path)$package
+    },
+    option_file = file.path(path, "options/options_ns.r"),
     ...
   ) {
     standardGeneric("mergeNamespaceRappOptions")       
@@ -44,21 +49,17 @@ setGeneric(
 #' Merge Namespace Rapp Options
 #'
 #' @description 
-#' See generic: \code{\link[rapp.core.rte]{mergeNamespaceRappOptions}}
-#' 
-#' @details
-#' In case a file \code{options.r} exists in \code{/rapp/options/},
-#' then it is parsed and if \code{ns} is specified, the default values 
-#' from the generic function are overwritten. Else the default values are used.
+#' See generic: \code{\link[rapp]{mergeNamespaceRappOptions}}
 #'   	 
 #' @inheritParams mergeNamespaceRappOptions
+#' @param path \code{\link{missing}}. Current working directory.
 #' @param ns \code{\link{missing}}. Default namespace.
-#' @param path \code{\link{missing}}. Default option file path.
+#' @param option_file \code{\link{missing}}. Default option file path.
 #' @return See method 
-#'    \code{\link{mergeNamespaceRappOptions-character-character-method}}.
+#'    \code{\link{mergeNamespaceRappOptions-character-character-character-method}}.
 #' @example inst/examples/mergeNamespaceRappOptions.r
 #' @seealso \code{
-#'    \link[rapp.core.rte]{mergeNamespaceRappOptions}
+#'    \link[rapp]{mergeNamespaceRappOptions}
 #' }
 #' @template author
 #' @template references
@@ -66,18 +67,21 @@ setGeneric(
 setMethod(
   f = "mergeNamespaceRappOptions", 
   signature = signature(
+    path = "missing",
     ns = "missing",
-    path = "missing"
+    option_file = "missing"
   ), 
   definition = function(
-    ns,
     path,
+    ns,
+    option_file,
     ...
   ) {
     
   return(mergeNamespaceRappOptions(
-    ns = ns,
     path = path,
+    ns = ns,
+    option_file = option_file,
     ...
   ))
     
@@ -88,21 +92,17 @@ setMethod(
 #' Merge Namespace Rapp Options
 #'
 #' @description 
-#' See generic: \code{\link[rapp.core.rte]{mergeNamespaceRappOptions}}
-#' 
-#' @details
-#' In case a file \code{options.r} exists in \code{/rapp/options/},
-#' then it is parsed and if \code{ns} is specified, the default values 
-#' from the generic function are overwritten. Else the default values are used.
+#' See generic: \code{\link[rapp]{mergeNamespaceRappOptions}}
 #'      
 #' @inheritParams mergeNamespaceRappOptions
-#' @param ns \code{\link{character}}. Default namespace.
-#' @param path \code{\link{missing}}. Default option file path.
+#' @param path \code{\link{character}}. 
+#' @param ns \code{\link{character}}. 
+#' @param option_file \code{\link{missing}}. 
 #' @return See method 
 #'    \code{\link{mergeNamespaceRappOptions-character-character-method}}.
 #' @example inst/examples/mergeNamespaceRappOptions.r
 #' @seealso \code{
-#'    \link[rapp.core.rte]{mergeNamespaceRappOptions}
+#'    \link[rapp]{mergeNamespaceRappOptions}
 #' }
 #' @template author
 #' @template references
@@ -110,18 +110,21 @@ setMethod(
 setMethod(
   f = "mergeNamespaceRappOptions", 
   signature = signature(
+    path = "character",
     ns = "character",
-    path = "missing"
+    option_file = "missing"
   ), 
   definition = function(
-    ns,
     path,
+    ns,
+    option_file,
     ...
   ) {
     
   return(mergeNamespaceRappOptions(
-    ns = ns,
     path = path,
+    ns = ns,
+    option_file = option_file,
     ...
   ))
     
@@ -132,21 +135,22 @@ setMethod(
 #' Merge Namespace Rapp Options
 #'
 #' @description 
-#' See generic: \code{\link[rapp.core.rte]{mergeNamespaceRappOptions}}
+#' See generic: \code{\link[rapp]{mergeNamespaceRappOptions}}
 #' 
 #' @details
-#' In case a file \code{options.r} exists in \code{/rapp/options/},
+#' In case a file \code{options.r} exists in \code{/options/},
 #' then it is parsed and if \code{ns} is specified, the default values 
 #' from the generic function are overwritten. Else the default values are used.
 #'      
 #' @inheritParams mergeNamespaceRappOptions
-#' @param ns \code{\link{missing}}. Default namespace.
-#' @param path \code{\link{character}}. Default option file path.
+#' @param path \code{\link{missing}}. 
+#' @param ns \code{\link{missing}}. 
+#' @param option_file \code{\link{character}}. 
 #' @return See method 
 #'    \code{\link{mergeNamespaceRappOptions-character-character-method}}.
 #' @example inst/examples/mergeNamespaceRappOptions.r
 #' @seealso \code{
-#'    \link[rapp.core.rte]{mergeNamespaceRappOptions}
+#'    \link[rapp]{mergeNamespaceRappOptions}
 #' }
 #' @template author
 #' @template references
@@ -154,18 +158,21 @@ setMethod(
 setMethod(
   f = "mergeNamespaceRappOptions", 
   signature = signature(
+    path = "missing",
     ns = "missing",
-    path = "character"
+    option_file = "character"
   ), 
   definition = function(
-    ns,
     path,
+    ns,
+    option_file,
     ...
   ) {
     
   return(mergeNamespaceRappOptions(
-    ns = ns,
     path = path,
+    ns = ns,
+    option_file = option_file,
     ...
   ))
     
@@ -176,21 +183,17 @@ setMethod(
 #' Merge Namespace Rapp Options
 #'
 #' @description 
-#' See generic: \code{\link[rapp.core.rte]{mergeNamespaceRappOptions}}
+#' See generic: \code{\link[rapp]{mergeNamespaceRappOptions}}
 #' 
-#' @details
-#' In case a file \code{options.r} exists in \code{/rapp/options/},
-#' then it is parsed and if \code{ns} is specified, the default values 
-#' from the generic function are overwritten. Else the default values are used.
-#'      
 #' @inheritParams mergeNamespaceRappOptions
-#' @param ns \code{\link{character}}. Default namespace.
-#' @param path \code{\link{character}}. Default option file path.
-#' @return \code{\link{environment}}. The options container as stored in 
-#'    \code{options(".rapp")}.
+#' @param path \code{\link{character}}. 
+#' @param ns \code{\link{missing}}. 
+#' @param option_file \code{\link{missing}}. 
+#' @return See method 
+#'    \code{\link{mergeNamespaceRappOptions-character-character-method}}.
 #' @example inst/examples/mergeNamespaceRappOptions.r
 #' @seealso \code{
-#'    \link[rapp.core.rte]{mergeNamespaceRappOptions}
+#'    \link[rapp]{mergeNamespaceRappOptions}
 #' }
 #' @template author
 #' @template references
@@ -198,19 +201,63 @@ setMethod(
 setMethod(
   f = "mergeNamespaceRappOptions", 
   signature = signature(
+    path = "character",
     ns = "missing",
-    path = "missing"
+    option_file = "missing"
   ), 
   definition = function(
-    ns,
     path,
+    ns,
+    option_file,
+    ...
+  ) {
+    
+  return(mergeNamespaceRappOptions(
+    path = path,
+    ns = ns,
+    option_file = option_file,
+    ...
+  ))
+    
+  }
+)
+
+#' @title
+#' Merge Namespace Rapp Options
+#'
+#' @description 
+#' See generic: \code{\link[rapp]{mergeNamespaceRappOptions}}
+#'      
+#' @inheritParams mergeNamespaceRappOptions
+#' @param path \code{\link{character}}.
+#' @param ns \code{\link{character}}.
+#' @param option_file \code{\link{character}}.
+#' @return \code{\link{logical}}. \code{TRUE}.
+#' @example inst/examples/mergeNamespaceRappOptions.r
+#' @seealso \code{
+#'    \link[rapp]{mergeNamespaceRappOptions}
+#' }
+#' @template author
+#' @template references
+#' @export
+setMethod(
+  f = "mergeNamespaceRappOptions", 
+  signature = signature(
+    path = "character",
+    ns = "character",
+    option_file = "character"
+  ), 
+  definition = function(
+    path,
+    ns,
+    option_file,
     ...
   ) {
   
   ## Private function //
   .validateMergeConstellation <- function(name, value_1, value_2) {
     if (value_1 != value_2) {
-      rapp.core.rte::signalCondition(
+      rapp::signalCondition(
         condition = "InvalidOptionMergeConstellation",
         msg = c(
           "Invalid option value constellation",
@@ -218,7 +265,7 @@ setMethod(
           "Argument value" = value_1,
           "Option file value" = value_2
         ),
-        ns = "rapp.core.rte",
+        ns = "rapp",
         type = "error"
       )
     }
@@ -226,7 +273,7 @@ setMethod(
   }
   
   ## Read option file //
-  opts <- readRappOptionFile(path = path)
+  opts <- readRappOptionFile(path = option_file)
   
   ## Namespace match check //
   if (length(opts)) {
@@ -253,37 +300,33 @@ setMethod(
   }
   
   ## Special options //
-  ## Option 'ns_global': depends on 'rapp_global'
-  rapp_global <- getRappGlobal(strict = TRUE)
+  ## Option 'global_dir': depends on 'global_dir'
+#   global_dir <- getGlobalDirectory(strict = TRUE)
+#   getNamespaceRappOption(ns = ns, id = "global_dir")
+  ## TODO: make reactive
   
-  fun <- function() {
-    file.path(getRappGlobal(strict = TRUE), "ns", 
-        getNamespaceRappOption(id = "ns"))
+  if (FALSE) {
+    setNamespaceRappOption(
+      ns = ns,
+      id = "global_dir",
+      value = fun,
+      must_exist = TRUE,
+      strict = TRUE,
+      branch_gap = TRUE
+    )
+  
+    getNamespaceRappOption(
+      ns = ns,
+      id = "global_dir"
+    )
+    setGlobalDirectory(value = "c:/temp")
+    getNamespaceRappOption(
+      ns = ns,
+      id = "global_dir"
+    )
   }
-  class(fun) <- c("RappReactiveValue", class(fun))
-    
-#   dir.create(value, recursive = TRUE, showWarnings = FALSE)
-  
-  setNamespaceRappOption(
-    ns = ns,
-    id = "ns_global",
-    value = fun,
-    must_exist = TRUE,
-    strict = TRUE,
-    branch_gap = TRUE
-  )
 
-  getNamespaceRappOption(
-    ns = ns,
-    id = "ns_global"
-  )
-  setRappGlobal(value = "c:/temp")
-  getNamespaceRappOption(
-    ns = ns,
-    id = "ns_global"
-  )
-
-  return(out)
+  return(TRUE)
     
   }
 )

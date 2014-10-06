@@ -12,12 +12,12 @@
 #' @template threedot
 #' @example inst/examples/setRuntimeMode.r
 #' @seealso \code{
-#'   	\link[rapp.core.rte]{setRuntimeMode-missing-method}
+#'   	\link[rapp]{setRuntimeMode-missing-method}
 #' }
 #' @template author
 #' @template references
 #' @export 
-#' @import rapp.core.package
+#' @import libr
 setGeneric(
   name = "setRuntimeMode",
   signature = c(
@@ -36,17 +36,17 @@ setGeneric(
 #' Set Rapp Home
 #'
 #' @description 
-#' See generic: \code{\link[rapp.core.rte]{setRuntimeMode}}
+#' See generic: \code{\link[rapp]{setRuntimeMode}}
 #'   	 
 #' @inheritParams setRuntimeMode
 #' @param value \code{\link{missing}}. Default value.
 #'    Corresponds to the first value of \code{c("dev", "test", "live")} 
 #'    being used.
 #' @return See method
-#'    \code{\link[rapp.core.rte]{setRuntimeMode-character-method}}
+#'    \code{\link[rapp]{setRuntimeMode-character-method}}
 #' @example inst/examples/setRuntimeMode.r
 #' @seealso \code{
-#'    \link[rapp.core.rte]{setRuntimeMode}
+#'    \link[rapp]{setRuntimeMode}
 #' }
 #' @template author
 #' @template references
@@ -75,15 +75,15 @@ setMethod(
 #' Set Rapp Options for Specific value
 #'
 #' @description 
-#' See generic: \code{\link[rapp.core.rte]{setRuntimeMode}}
+#' See generic: \code{\link[rapp]{setRuntimeMode}}
 #'      
 #' @inheritParams setRuntimeMode
 #' @param value \code{\link{character}}. Default value.
 #' @return \code{\link{logical}}. Return value of 
-#'    \code{\link[rapp.core.rte]{setRappOption}}.
+#'    \code{\link[rapp]{setRappOption}}.
 #' @example inst/examples/setRuntimeMode.r
 #' @seealso \code{
-#'    \link[rapp.core.rte]{setRuntimeMode}
+#'    \link[rapp]{setRuntimeMode}
 #' }
 #' @template author
 #' @template references

@@ -9,12 +9,12 @@
 #' @template threedot
 #' @example inst/examples/getLibrary.r
 #' @seealso \code{
-#'   	\link[rapp.core.rte]{getLibrary-missing-method}
+#'   	\link[rapp]{getLibrary-missing-method}
 #' }
 #' @template author
 #' @template references
 #' @export 
-#' @import rapp.core.package
+#' @import libr
 setGeneric(
   name = "getLibrary",
   signature = c(
@@ -32,14 +32,14 @@ setGeneric(
 #' Get Library
 #'
 #' @description 
-#' See generic: \code{\link[rapp.core.rte]{getLibrary}}
+#' See generic: \code{\link[rapp]{getLibrary}}
 #'      
 #' @inheritParams getLibrary
 #' @param ns \code{\link{missing}}. Default namespace.
 #' @return \code{\link{character}}. Option value.
 #' @example inst/examples/getLibrary.r
 #' @seealso \code{
-#'    \link[rapp.core.rte]{getLibrary}
+#'    \link[rapp]{getLibrary}
 #' }
 #' @template author
 #' @template references

@@ -2,7 +2,7 @@
 
 input <- substitute(
   list(
-    rapp_global = file.path(Sys.getenv("HOME"), "rapp"),
+    global_dir = file.path(Sys.getenv("HOME"), "rapp"),
     runtime_mode = "dev",
     lib = .libPaths()[1]
   )

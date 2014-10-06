@@ -9,12 +9,12 @@
 #' @template threedot
 #' @example inst/examples/getRuntimeMode.r
 #' @seealso \code{
-#'   	\link[rapp.core.rte]{getRuntimeMode-missing-method}
+#'   	\link[rapp]{getRuntimeMode-missing-method}
 #' }
 #' @template author
 #' @template references
 #' @export 
-#' @import rapp.core.package
+#' @import libr
 setGeneric(
   name = "getRuntimeMode",
   signature = c(
@@ -32,14 +32,14 @@ setGeneric(
 #' Get Development Stage
 #'
 #' @description 
-#' See generic: \code{\link[rapp.core.rte]{getRuntimeMode}}
+#' See generic: \code{\link[rapp]{getRuntimeMode}}
 #'      
 #' @inheritParams getRuntimeMode
 #' @param ns \code{\link{missing}}. Default namespace.
 #' @return \code{\link{character}}. Option value.
 #' @example inst/examples/getRuntimeMode.r
 #' @seealso \code{
-#'    \link[rapp.core.rte]{getRuntimeMode}
+#'    \link[rapp]{getRuntimeMode}
 #' }
 #' @template author
 #' @template references

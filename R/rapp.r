@@ -7,9 +7,8 @@
 #' package development as well as application deployment in the 
 #' context of therapp framework.
 #' 
-#' @details 
+#' @section Main functions/methods:
 #' 
-#' The core functions/methods of this package: 
 #'  \itemize{
 #'    \item{\code{\link[rapp]{ensureRappRuntime}}: }{
 #'    

@@ -12,9 +12,9 @@
 #' @param ns \strong{Signature argument}.
 #'    Object containing namespace information.
 #' @template threedot
-#' @example inst/examples/initializeNamespaceRappOptions.r
+#' @example inst/examples/initializeNsRappOptions.r
 #' @seealso \code{
-#'   	\link[rapp]{initializeNamespaceRappOptions-missing-method}
+#'   	\link[rapp]{initializeNsRappOptions-missing-method}
 #' }
 #' @template author
 #' @template references
@@ -22,7 +22,7 @@
 #' @import devtools
 #' @import libr
 setGeneric(
-  name = "initializeNamespaceRappOptions",
+  name = "initializeNsRappOptions",
   signature = c(
     "path",
     "ns"
@@ -36,7 +36,7 @@ setGeneric(
     },
     ...
   ) {
-    standardGeneric("initializeNamespaceRappOptions")       
+    standardGeneric("initializeNsRappOptions")       
   }
 )
 
@@ -44,22 +44,22 @@ setGeneric(
 #' Initialize Namespace Rapp Options
 #'
 #' @description 
-#' See generic: \code{\link[rapp]{initializeNamespaceRappOptions}}
+#' See generic: \code{\link[rapp]{initializeNsRappOptions}}
 #'      
-#' @inheritParams initializeNamespaceRappOptions
+#' @inheritParams initializeNsRappOptions
 #' @param path \code{\link{missing}}. Current working directory.
 #' @param ns \code{\link{missing}}. Default namespace.
 #' @return See method
-#'    \code{\link[rapp]{initializeNamespaceRappOptions-character-character-method}}.
-#' @example inst/examples/initializeNamespaceRappOptions.r
+#'    \code{\link[rapp]{initializeNsRappOptions-character-character-method}}.
+#' @example inst/examples/initializeNsRappOptions.r
 #' @seealso \code{
-#'    \link[rapp]{initializeNamespaceRappOptions}
+#'    \link[rapp]{initializeNsRappOptions}
 #' }
 #' @template author
 #' @template references
 #' @export
 setMethod(
-  f = "initializeNamespaceRappOptions", 
+  f = "initializeNsRappOptions", 
   signature = signature(
     path = "missing",
     ns = "missing"
@@ -70,7 +70,7 @@ setMethod(
     ...
   ) {
     
-  return(initializeNamespaceRappOptions(
+  return(initializeNsRappOptions(
     path = path,
     ns = ns, 
     ...
@@ -83,22 +83,22 @@ setMethod(
 #' Initialize Namespace Rapp Options
 #'
 #' @description 
-#' See generic: \code{\link[rapp]{initializeNamespaceRappOptions}}
+#' See generic: \code{\link[rapp]{initializeNsRappOptions}}
 #'      
-#' @inheritParams initializeNamespaceRappOptions
+#' @inheritParams initializeNsRappOptions
 #' @param path \code{\link{character}}. 
 #' @param ns \code{\link{missing}}. Default namespace.
 #' @return See method
-#'    \code{\link[rapp]{initializeNamespaceRappOptions-character-character-method}}.
-#' @example inst/examples/initializeNamespaceRappOptions.r
+#'    \code{\link[rapp]{initializeNsRappOptions-character-character-method}}.
+#' @example inst/examples/initializeNsRappOptions.r
 #' @seealso \code{
-#'    \link[rapp]{initializeNamespaceRappOptions}
+#'    \link[rapp]{initializeNsRappOptions}
 #' }
 #' @template author
 #' @template references
 #' @export
 setMethod(
-  f = "initializeNamespaceRappOptions", 
+  f = "initializeNsRappOptions", 
   signature = signature(
     path = "character",
     ns = "missing"
@@ -109,7 +109,7 @@ setMethod(
     ...
   ) {
     
-  return(initializeNamespaceRappOptions(
+  return(initializeNsRappOptions(
     path = path,
     ns = ns, 
     ...
@@ -122,22 +122,22 @@ setMethod(
 #' Initialize Namespace Rapp Options
 #'
 #' @description 
-#' See generic: \code{\link[rapp]{initializeNamespaceRappOptions}}
+#' See generic: \code{\link[rapp]{initializeNsRappOptions}}
 #'   	 
-#' @inheritParams initializeNamespaceRappOptions
+#' @inheritParams initializeNsRappOptions
 #' @param path \code{\link{character}}.
 #' @param ns \code{\link{character}}.
 #' @return \code{\link{environment}}. The options container as stored in 
 #'    \code{options(".rapp")}.
-#' @example inst/examples/initializeNamespaceRappOptions.r
+#' @example inst/examples/initializeNsRappOptions.r
 #' @seealso \code{
-#'    \link[rapp]{initializeNamespaceRappOptions}
+#'    \link[rapp]{initializeNsRappOptions}
 #' }
 #' @template author
 #' @template references
 #' @export
 setMethod(
-  f = "initializeNamespaceRappOptions", 
+  f = "initializeNsRappOptions", 
   signature = signature(
     path = "character",
     ns = "character"

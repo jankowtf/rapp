@@ -235,14 +235,14 @@ setMethod(
 
   ## Ensure namespace option container for project options //
   if (isPackageProject() || hasOptionFile()) {    
-    initializeNamespaceRappOptions()
+    initializeNsRappOptions()
 # ls(getOption(".rapp"), all.names = TRUE)    
 # ls(getOption(".rapp")[[devtools::as.package(".")$package]], all.names = TRUE)    
-    mergeNamespaceRappOptions()
+    mergeNsRappOptions()
   } 
 
   ## Project components //
-  github_name <- getNamespaceRappOption(id = "github_name")
+  github_name <- getNsRappOption(id = "github_name")
   ensureProjectComponents(github_name = github_name)
 
   ## Process repository data //

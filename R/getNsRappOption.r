@@ -4,7 +4,7 @@
 #' @description 
 #' Retrieves namespace-specific \code{rapp} options. These are usually 
 #' options associated to package projects or applications. 
-#' See \code{\link[rapp]{mergeNamespaceRappOptions}}.
+#' See \code{\link[rapp]{mergeNsRappOptions}}.
 #' 
 #' @details
 #' Providing a value for \code{ns} but none for \code{id} retrieves the 
@@ -19,27 +19,27 @@
 #' @param id \strong{Signature argument}.
 #'    Object containing path-like ID information.
 #' @template threedot
-#' @example inst/examples/getNamespaceRappOption.r
+#' @example inst/examples/getNsRappOption.r
 #' @seealso \code{
-#'   	\link[rapp]{getNamespaceRappOption-character-character-method}
+#'   	\link[rapp]{getNsRappOption-character-character-method}
 #' }
 #' @template author
 #' @template references
 #' @export 
 #' @import libr
 setGeneric(
-  name = "getNamespaceRappOption",
+  name = "getNsRappOption",
   signature = c(
     "ns",
     "id"
   ),
   def = function(
-    ns = ifelse(isPackageProject(), devtools::as.package(x = ".")$package,
+    ns = ifelse(isPackageProject("."), devtools::as.package(x = ".")$package,
                  character()),
     id = character(),
     ...
   ) {
-    standardGeneric("getNamespaceRappOption")       
+    standardGeneric("getNsRappOption")       
   }
 )
 
@@ -47,22 +47,22 @@ setGeneric(
 #' Get Context-Specific Rapp Options
 #'
 #' @description 
-#' See generic: \code{\link[rapp]{getNamespaceRappOption}}
+#' See generic: \code{\link[rapp]{getNsRappOption}}
 #'      
-#' @inheritParams getNamespaceRappOption
+#' @inheritParams getNsRappOption
 #' @param ns \code{\link{missing}}. Default namespace.
 #' @param id \code{\link{missing}}. Default ID.
 #' @return See method 
-#'   \code{\link[rapp]{getNamespaceRappOption-character-character-method}}
-#' @example inst/examples/getNamespaceRappOption.r
+#'   \code{\link[rapp]{getNsRappOption-character-character-method}}
+#' @example inst/examples/getNsRappOption.r
 #' @seealso \code{
-#'    \link[rapp]{getNamespaceRappOption}
+#'    \link[rapp]{getNsRappOption}
 #' }
 #' @template author
 #' @template references
 #' @export
 setMethod(
-  f = "getNamespaceRappOption", 
+  f = "getNsRappOption", 
   signature = signature(
     ns = "missing",
     id = "missing"
@@ -73,7 +73,7 @@ setMethod(
     ...
   ) {
   
-  return(getNamespaceRappOption(ns = ns, id = id, ...))
+  return(getNsRappOption(ns = ns, id = id, ...))
     
   }
 )
@@ -82,22 +82,22 @@ setMethod(
 #' Get Context-Specific Rapp Options
 #'
 #' @description 
-#' See generic: \code{\link[rapp]{getNamespaceRappOption}}
+#' See generic: \code{\link[rapp]{getNsRappOption}}
 #'      
-#' @inheritParams getNamespaceRappOption
+#' @inheritParams getNsRappOption
 #' @param ns \code{\link{character}}.
 #' @param id \code{\link{missing}}. 
 #' @return See method 
-#'   \code{\link[rapp]{getNamespaceRappOption-character-character-method}}
-#' @example inst/examples/getNamespaceRappOption.r
+#'   \code{\link[rapp]{getNsRappOption-character-character-method}}
+#' @example inst/examples/getNsRappOption.r
 #' @seealso \code{
-#'    \link[rapp]{getNamespaceRappOption}
+#'    \link[rapp]{getNsRappOption}
 #' }
 #' @template author
 #' @template references
 #' @export
 setMethod(
-  f = "getNamespaceRappOption", 
+  f = "getNsRappOption", 
   signature = signature(
     ns = "character",
     id = "missing"
@@ -108,7 +108,7 @@ setMethod(
     ...
   ) {
   
-  return(getNamespaceRappOption(ns = ns, id = id, ...))
+  return(getNsRappOption(ns = ns, id = id, ...))
     
   }
 )
@@ -117,22 +117,22 @@ setMethod(
 #' Get Context-Specific Rapp Options
 #'
 #' @description 
-#' See generic: \code{\link[rapp]{getNamespaceRappOption}}
+#' See generic: \code{\link[rapp]{getNsRappOption}}
 #'      
-#' @inheritParams getNamespaceRappOption
+#' @inheritParams getNsRappOption
 #' @param ns \code{\link{missing}}.
 #' @param id \code{\link{character}}. 
 #' @return See method 
-#'   \code{\link[rapp]{getNamespaceRappOption-character-character-method}}
-#' @example inst/examples/getNamespaceRappOption.r
+#'   \code{\link[rapp]{getNsRappOption-character-character-method}}
+#' @example inst/examples/getNsRappOption.r
 #' @seealso \code{
-#'    \link[rapp]{getNamespaceRappOption}
+#'    \link[rapp]{getNsRappOption}
 #' }
 #' @template author
 #' @template references
 #' @export
 setMethod(
-  f = "getNamespaceRappOption", 
+  f = "getNsRappOption", 
   signature = signature(
     ns = "missing",
     id = "character"
@@ -143,7 +143,7 @@ setMethod(
     ...
   ) {
   
-  return(getNamespaceRappOption(ns = ns, id = id, ...))
+  return(getNsRappOption(ns = ns, id = id, ...))
     
   }
 )
@@ -152,22 +152,22 @@ setMethod(
 #' Get Context-Specific Rapp Options
 #'
 #' @description 
-#' See generic: \code{\link[rapp]{getNamespaceRappOption}}
+#' See generic: \code{\link[rapp]{getNsRappOption}}
 #'      
-#' @inheritParams getNamespaceRappOption
+#' @inheritParams getNsRappOption
 #' @param ns \code{\link{character}}.
 #' @param id \code{\link{character}}.
 #' @return \code{\link{logical}}. Return value of 
 #'    \code{\link[rapp]{setRappOption}}.
-#' @example inst/examples/getNamespaceRappOption.r
+#' @example inst/examples/getNsRappOption.r
 #' @seealso \code{
-#'    \link[rapp]{getNamespaceRappOption}
+#'    \link[rapp]{getNsRappOption}
 #' }
 #' @template author
 #' @template references
 #' @export
 setMethod(
-  f = "getNamespaceRappOption", 
+  f = "getNsRappOption", 
   signature = signature(
     ns = "character",
     id = "character"

@@ -4,7 +4,7 @@
 #' @description 
 #' Sets namespace-specific \code{rapp} options. These are usually 
 #' options associated to package projects or applications. 
-#' See \code{\link[rapp]{mergeNamespaceRappOptions}}.
+#' See \code{\link[rapp]{mergeNsRappOptions}}.
 #'   	
 #' @details
 #' Providing a value for \code{ns} but none for \code{id} sets an empty 

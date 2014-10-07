@@ -1,5 +1,5 @@
-context("getNamespaceRappOption-1")
-test_that("getNamespaceRappOption", {
+context("getNsRappOption-1")
+test_that("getNsRappOption", {
 
 #   skip("not finished yet")
   opts_old <- getOption(".rapp")
@@ -21,14 +21,14 @@ test_that("getNamespaceRappOption", {
   wd_0 <- setwd(path)
   
   initializeRappOptions()
-  initializeNamespaceRappOptions()
-  mergeNamespaceRappOptions()
-  expect_is(res <- getNamespaceRappOption(), "environment")
+  initializeNsRappOptions()
+  mergeNsRappOptions()
+  expect_is(res <- getNsRappOption(), "environment")
   expect_true(length(ls(res)) > 0)
-  expect_equal(getNamespaceRappOption(id = "github_name"), NA_character_)
-  expect_is(res <- getNamespaceRappOption(id = "global_dir"), "character")
+  expect_equal(getNsRappOption(id = "github_name"), NA_character_)
+  expect_is(res <- getNsRappOption(id = "global_dir"), "character")
   expect_true(!is.na(res))
-  expect_equal(res <- getNamespaceRappOption(id = "ns"), "test.package")
+  expect_equal(res <- getNsRappOption(id = "ns"), "test.package")
               
   setwd(wd_0)
   on.exit(options(".rapp" = opts_old))

@@ -1,4 +1,4 @@
-rapp (v0.2.2)
+rapp (v0.2.3)
 ======
 
 Runtime environment for package development and application deployment in the context of the rapp framework.
@@ -11,6 +11,12 @@ devtools::install_github("Rappster/examplr")
 devtools::install_github("Rappster/libr")
 devtools::install_github("Rappster/repositr")
 require("rapp")
+```
+
+Suggested
+
+```
+devtools::install_github("Rappster/filesystr")
 ```
 
 ## Ensure runtime environment
@@ -38,12 +44,18 @@ filesystr::openRessource()
 Note that you can modify options via the option file: `/options/options_runtime.r`
 
 ```
-ls(getOption(".rapp"), all.names = TRUE)
+rapp_opts <- getRappOptions()
 
-## Runtime options //
+## Same as:
+rapp_opts <- getOption(".rapp")
+
+## Inspect //
+ls(rapp_opts, all.names = TRUE)
+
+## Runtime options only //
 ls(getOption(".rapp")$.rte, all.names = TRUE)
 
-## Requires "full path" //
+## Get specific options via "option path" //
 getRappOption(".rte/global_dir")
 getRappOption(".rte/lib")
 
@@ -63,8 +75,8 @@ getRappOption(".rte/repos_live_pkg")
 getRappOption(".rte/runtime_mode")
 getRappOption(".rte/repos_global")
 getRappOption(".rte/repos_pkgs")
+## TODO: #1
 getRappOption(".rte/repos_pkg")
-## TODO: 
 ```
 
 ### Namespace-specific runtime options
@@ -99,6 +111,32 @@ createRappProject(id = "test.rapp", path = tempdir())
 path_rapp <- file.path(tempdir(), "test.rapp")
 filesystr::openRessource(path_rapp)
 ## --> note directories 'batch' and 'options' and 'shiny'
+```
+
+## Load internal R application 
+
+Internal R applications should be placed below directory `/apps`.
+
+Per default, there already exists an R application of name `test`
+
+```
+## Ensure runtime //
+ensureRappRuntime()
+
+## Load //
+loadInternalRapp(id = "test")
+
+## Working directory has changed //
+getwd()
+
+## Inspect R application project //
+filesystr::openRessource()
+
+## Get global application directory //
+getNsRappOption(id = "global_dir")
+
+## Unload again //
+unloadInternalRapp(id = "test")
 ```
 
 ## Convenience functions/methods

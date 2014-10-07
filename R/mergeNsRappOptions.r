@@ -301,7 +301,7 @@ setMethod(
   
   ## Ensure namespace-specific subdirectory //
   global_dir <- getNsRappOption(ns = ns, id = "global_dir")
-  if (!is.na(global_dir)) {
+  if (!is.null(global_dir) && !is.na(global_dir)) {
     ensureGlobalDirectory(path = global_dir)
   }
   

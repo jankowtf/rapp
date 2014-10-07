@@ -1,4 +1,4 @@
-rapp (v0.2.4)
+rapp (v0.2.5)
 ======
 
 Runtime environment for package development and application deployment in the context of the rapp framework.

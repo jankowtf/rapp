@@ -224,6 +224,11 @@ setMethod(
     wd_0 <- getwd()
   }
 
+  ## Determine where it is called from //
+  if (isRapp()) {
+    overwrite <- FALSE
+  }
+  
   ## Initialize //    
   if (overwrite) {
     initializeRappOptions()  
@@ -232,8 +237,10 @@ setMethod(
 # ls(getOption(".rapp")$.rte)
   
   ## Global directory //
-  setGlobalDirectory(value = global_dir, update_dependent = TRUE)
-  ensureGlobalDirectory()
+  if (overwrite) {
+    setGlobalDirectory(value = global_dir, update_dependent = TRUE)
+    ensureGlobalDirectory()
+  }
  
   ## Repositories //
   setInternalRepositories(pkg = pkg, vsn = vsn)

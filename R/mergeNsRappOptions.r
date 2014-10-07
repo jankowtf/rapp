@@ -6,6 +6,15 @@
 #' \code{\link[rapp]{initializeNsRappOptions}} with the ones
 #' specified in option file \code{/options/options_ns.r} and read via 
 #' \code{\link[rapp]{readRappOptionFile}}.
+#' 
+#' @section Delayed evaluation:
+#' 
+#' Sometimes it is useful to delay the evaluation of an option until all 
+#' options have been read and set. For example, if one of your options 
+#' depends on \code{global_dir}, it will only be properly set after option
+#' \code{global_dir} has in fact been set. In such cases, simply wrap the 
+#' option value with \code{\link[base]{expression}}. The function takes care
+#' of evaluating all expressions after all options have been set.
 #'   	
 #' @param path \strong{Signature argument}.
 #'    Object containing location information. Typically, this corresponds to 
@@ -274,6 +283,7 @@ setMethod(
   
   ## Read option file //
   opts <- readRappOptionFile(path = option_file)
+  idx_expr <- sapply(opts, is.expression)
   
   ## Namespace match check //
   if (length(opts)) {
@@ -300,13 +310,33 @@ setMethod(
 #   }
   
   ## Merge options //
-  sapply(names(opts), function(ii) {
+  if (any(!idx_expr)) {
+    idx_this <- names(opts)[!idx_expr]
+  } else {
+    idx_this <- names(opts)
+  }
+  sapply(idx_this, function(ii) {
     setNsRappOption(
       ns = ns, 
       id = ii, 
       value = opts[[ii]]
     )
   })
+
+  ## Process expressions //
+  if (any(idx_expr)) {
+    sapply(names(opts)[idx_expr], function(ii) {
+      value <- opts[[ii]]
+      if (is.expression(value)) {
+        value <- eval(value)
+      }
+      setNsRappOption(
+        ns = ns, 
+        id = ii, 
+        value = value
+      )
+    })  
+  }
   
   ## Ensure namespace-specific subdirectory //
   global_dir <- getNsRappOption(ns = ns, id = "global_dir")

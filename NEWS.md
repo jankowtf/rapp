@@ -1,3 +1,19 @@
+# CHANGES IN rapp VERSION 0.2.5
+
+## NEW FEATURES
+
+- fixed: #6 (delayed option evaluation)
+
+## BUG FIXES
+
+## MAJOR CHANGES
+
+## MINOR CHANGES
+
+## MISC
+
+-----
+
 # CHANGES IN rapp VERSION 0.2.4
 
 ## NEW FEATURES

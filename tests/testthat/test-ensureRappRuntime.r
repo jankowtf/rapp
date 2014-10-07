@@ -1,4 +1,4 @@
-context("ensureRappRuntime-1")
+context("ensureRappRuntime-A")
 test_that("ensureRappRuntime", {
  
   opts_old <- getOption(".rapp")
@@ -32,7 +32,7 @@ test_that("ensureRappRuntime", {
       "repos_global", "repos_live_global", "repos_live_pkg", 
       "repos_live_pkgs", "repos_pkg", "repos_pkgs", "repos_root", 
       "repos_test_global", "repos_test_pkg", "repos_test_pkgs", 
-      "runtime_mode") %in% 
+      "runtime_mode", "ns_prime", "wd_prime") %in% 
       ls(getOption(".rapp")$.rte, all.names=TRUE)
   ))
   expect_true(all(
@@ -41,7 +41,21 @@ test_that("ensureRappRuntime", {
   ))
 
   expect_equal(getRappOption(".rte/global_dir"), global_dir)
+  expect_equal(getRappOption(".rte/ns_prime"), basename(path))
   
+  ## Temporarily switch working director //
+  wd_0 <- setwd(path)
+  ensureRappRuntime()
+  expect_equal(getRappOption(".rte/ns_prime"), devtools::as.package(".")$package)
+  expect_equal(getRappOption(".rte/wd_prime"), getwd())
+  
+  getNsRappOption(id = "is_internal")
+  getNsRappOption(ns = "test.package", id = "is_internal")
+  getNsRappOption(ns = "test.package", id = "global_dir")
+  expected <- sort(c("github_name", "global_dir", "is_internal", "ns"))
+  expect_equal(sort(ls(getOption(".rapp")$test.package, all.names=TRUE)), expected)
+  
+  setwd(wd_0)
   on.exit({
     options(".rapp" = opts_old)
   })

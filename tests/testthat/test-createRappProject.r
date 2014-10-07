@@ -16,7 +16,7 @@ test_that("createRappProject", {
 # wd_0 <- setwd("tests/testthat")
   expect_equal(res <- createRappProject(id = "rapp.test.1", path = tempdir()), 
                file.path(tempdir(), "rapp.test.1"))
-               
+  filesystr::openRessource(tempdir())               
   if (FALSE) {
     id <- "rapp.test.1"
     res <- createRappProject(id = id, path = path_0)

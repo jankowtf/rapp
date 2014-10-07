@@ -81,6 +81,25 @@ setMethod(
     branch_gap = TRUE
   )
   
+  ## Prime stuff //
+  if (!isRapp()) {
+    setRappOption(
+      id = ".rte/ns_prime",
+      value = devtools::as.package(".")$package,
+      branch_gap = TRUE
+    )
+#     setRappOption(
+#       id = ".rte/ns_prime_type",
+#       value = switch(!isRapp(), "TRUE" = "package", "FALSE" = "rapp"),
+#       branch_gap = TRUE
+#     )
+    setRappOption(
+      id = ".rte/wd_prime",
+      value = getwd(),
+      branch_gap = TRUE
+    )
+  }
+  
   return(container)
     
   }

@@ -67,6 +67,11 @@
 #'    Certain, but not all values, are stored in the options (has to to with
 #'    explicit vs. implicit values). This feature has not reached release stage,
 #'    so use with caution or not at all. 
+#' @param overwrite \code{\link{logical}}.
+#'    \code{TRUE}: overwrite entire options container (typically that's 
+#'    what you want);
+#'    \code{FALSE}: only update options container (typically only makes sense
+#'    when loading an internal R application in directory \code{/apps}).
 #' @template threedot
 #' @example inst/examples/ensureRappRuntime.r
 #' @seealso \code{
@@ -90,6 +95,7 @@ setGeneric(
     vsn = ifelse(isPackageProject(path), devtools::as.package(x = path)$version,
       character()),
     opts = list(),
+    overwrite = TRUE,
     ...
   ) {
     standardGeneric("ensureRappRuntime")       
@@ -129,6 +135,8 @@ setMethod(
     lib,
     pkg,
     vsn,
+    opts,
+    overwrite,
     ...
   ) {
   
@@ -158,6 +166,7 @@ setMethod(
     pkg = pkg,
     vsn = vsn,
     opts = opts,
+    overwrite = overwrite,
     ...
   ))
     
@@ -193,6 +202,7 @@ setMethod(
     pkg,
     vsn,
     opts,
+    overwrite,
     ...
   ) {
   
@@ -215,7 +225,9 @@ setMethod(
   }
 
   ## Initialize //    
-  initializeRappOptions()  
+  if (overwrite) {
+    initializeRappOptions()  
+  }
 # ls(getOption(".rapp"), all.names = TRUE)
 # ls(getOption(".rapp")$.rte)
   
@@ -233,9 +245,9 @@ setMethod(
   setLibrary(value = lib)
   .libPaths(lib)
 
-  ## Ensure namespace option container for project options //
+  ## Ensure namespace-specific options //
   if (isPackageProject() || hasOptionFile()) {    
-    initializeNsRappOptions()
+      initializeNsRappOptions()
 # ls(getOption(".rapp"), all.names = TRUE)    
 # ls(getOption(".rapp")[[devtools::as.package(".")$package]], all.names = TRUE)    
     mergeNsRappOptions()

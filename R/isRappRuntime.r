@@ -12,16 +12,16 @@
 #' @param ns \strong{Signature argument}.
 #'    Object containing namespace information.
 #' @template threedot
-#' @example inst/examples/isRappRuntimeEnvironment.r
+#' @example inst/examples/isRappRuntime.r
 #' @seealso \code{
-#'   	\link[rapp]{isRappRuntimeEnvironment-character-method},
+#'   	\link[rapp]{isRappRuntime-character-method},
 #'    \link[rapp]{ensureRappRuntime}
 #' }
 #' @template author
 #' @template references
 #' @export 
 setGeneric(
-  name = "isRappRuntimeEnvironment",
+  name = "isRappRuntime",
   signature = c(
     "ns"
   ),
@@ -29,7 +29,7 @@ setGeneric(
     ns,
     ...
   ) {
-    standardGeneric("isRappRuntimeEnvironment")       
+    standardGeneric("isRappRuntime")       
   }
 )
 
@@ -37,21 +37,21 @@ setGeneric(
 #' Check if Rapp Runtime Environment is Enabled
 #'
 #' @description 
-#' See generic: \code{\link[rapp]{isRappRuntimeEnvironment}}
+#' See generic: \code{\link[rapp]{isRappRuntime}}
 #'   	 
-#' @inheritParams isRappRuntimeEnvironment
+#' @inheritParams isRappRuntime
 #' @param ns \code{\link{missing}}.
 #' @return \code{\link{logical}}. \code{TRUE}: runtime enabled; \code{FALSE}:
 #'    runtime not enabled.
-#' @example inst/examples/isRappRuntimeEnvironment.r
+#' @example inst/examples/isRappRuntime.r
 #' @seealso \code{
-#'    \link[rapp]{isRappRuntimeEnvironment}
+#'    \link[rapp]{isRappRuntime}
 #' }
 #' @template author
 #' @template references
 #' @export
 setMethod(
-  f = "isRappRuntimeEnvironment", 
+  f = "isRappRuntime", 
   signature = signature(
     ns = "missing"
   ), 

@@ -223,7 +223,7 @@ setMethod(
     dir.create(path_options, showWarnings = FALSE)
     
     ## Ensure option files //
-    ensureRappOptionFiles()
+    ensureRappOptionFiles(path = path_options)
     
     ## Rapp info file //
     vsn <- unname(read.dcf(system.file("DESCRIPTION"), field = "Version")[,1])

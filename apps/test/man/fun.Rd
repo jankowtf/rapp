@@ -44,7 +44,7 @@ fun()
 ## The function is currently defined as
 structure(function () 
 {
-    file.path(getRappGlobal(strict = TRUE), "ns", getNamespaceRappOption(id = "ns"))
+    file.path(getRappGlobal(strict = TRUE), "ns", getNsRappOption(id = "ns"))
   }, class = c("RappReactiveValue", "function"))
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the

@@ -27,7 +27,7 @@ wd_0 <- setwd(path)
 initializeRappOptions()
 
 ## Initialize namespace rapp options //
-res <- initializeNamespaceRappOptions()
+res <- initializeNsRappOptions()
 ls(res, all.names=TRUE)
 ## Element '.rte' corresponds to system rapp options, element 'test' to the 
 ## rapp options for the namespace, i.e. the package 'test'.
@@ -35,11 +35,11 @@ ls(res, all.names=TRUE)
 ## Inspect default option values //
 ls(res[[ns]], all.names=TRUE)
 ## Namespace:
-getNamespaceRappOption(ns = ns, id = "ns")
+getNsRappOption(ns = ns, id = "ns")
 ## Global application directory for namespace:
-getNamespaceRappOption(ns = ns, id = "global_dir")
+getNsRappOption(ns = ns, id = "global_dir")
 ## Directory of an internal app ('/rapp/apps/<app-name>'):
-getNamespaceRappOption(ns = ns, id = "path_app")
+getNsRappOption(ns = ns, id = "path_app")
 
 ## Clean up //
 setwd(wd_0)

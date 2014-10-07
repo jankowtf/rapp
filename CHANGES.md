@@ -1,3 +1,18 @@
+# Version 0.2.4
+ - fixes #2 fixes #3 fixes #4 fixes #5
+ - Merge branch 'master' into develop
+ - Merge branch 'release-0.2.3'
+ - build commit
+ - bump commit
+ - feature loadInternalApp
+ - Merge branch 'master' into develop
+ - Merge branch 'release-0.2.2'
+ - build commit
+ - bump commit
+ - Merge branch 'release-0.2.1'
+
+----------
+
 # Version 0.2.2
  - bugfix for option file
  - cleanup commit

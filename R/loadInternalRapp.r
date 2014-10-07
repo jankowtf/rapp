@@ -115,10 +115,15 @@ setMethod(
     }
   }
   
+  ## Ensure runtime //
+  if (!isRappRuntime()) {
+    ensureRappRuntime()
+  }
+  
   ## Change working directory
   if (getwd() != path_app) {
     wd_0 <- setwd(path_app)  
-    setRappOption(id = ".rte/wd_prime", value = wd_0)
+    setRappOption(id = ".rte/wd_prime", value = wd_0, strict = TRUE)
   }
 #   getRappOption(id = ".rte/wd_prime")
     

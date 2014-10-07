@@ -1,3 +1,19 @@
+# CHANGES IN rapp VERSION 0.2.6
+
+## NEW FEATURES
+
+- fixed: #7 (implicit ensurance of runtime environment when loading internal apps)
+
+## BUG FIXES
+
+## MAJOR CHANGES
+
+## MINOR CHANGES
+
+## MISC
+
+-----
+
 # CHANGES IN rapp VERSION 0.2.5
 
 ## NEW FEATURES

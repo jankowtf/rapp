@@ -1,4 +1,4 @@
-rapp (v0.2.5)
+rapp (v0.2.6)
 ======
 
 Runtime environment for package development and application deployment in the context of the rapp framework.
@@ -120,9 +120,6 @@ Internal R applications should be placed below directory `/apps`.
 Per default, there already exists an R application of name `test`
 
 ```
-## Ensure runtime //
-ensureRappRuntime()
-
 ## Load //
 loadInternalRapp(id = "test")
 

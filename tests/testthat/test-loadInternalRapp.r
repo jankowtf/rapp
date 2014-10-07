@@ -10,16 +10,15 @@ test_that("loadInternalRapp", {
   
   ## Switch working directory //
   wd_0 <- setwd(path_pkg)
-  ensureRappRuntime()
-  wd_1 <- getwd()
   
+  ## Load before ensuring //
   expect_true(loadInternalRapp(id = "test"))
   expect_true(loadInternalRapp(id = "test"))
   expect_error(loadInternalRapp(id = "test", strict = TRUE))
   
   ## Internal options that should not be changed //
   expect_equal(getRappOption(".rte/ns_prime"), "test.package")
-  expect_equal(getRappOption(".rte/wd_prime"), wd_1)
+  expect_equal(getRappOption(".rte/wd_prime"), normalizePath(path_pkg, winslash = "/"))
   
   expect_equal(sort(ls(getOption(".rapp"), all.names = TRUE)),
               sort(c(".rte", "test", "test.package")))

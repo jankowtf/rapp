@@ -66,33 +66,6 @@ setMethod(
     ...
   ) {
   
-  path_parent <- "apps"
-  if (!file.exists(path_parent)) {
-    rapp::signalCondition(
-      condition = "InvalidProjectStructure",
-      msg = c(
-        "Invalid project structure",
-        Reason = "expecting 'apps' directory but not found",
-        "Working directory" = getwd()
-      ),
-      ns = "rapp",
-      type = "error"
-    )
-  }
-  path_app <- file.path(path_parent, id)
-  if (!file.exists(path_app)) {
-    rapp::signalCondition(
-      condition = "InvalidInternalApplicationID",
-      msg = c(
-        "Invalid internal application ID",
-        Reason = paste0("expecting app '", id, "' below 'apps' but not found"),
-        "Working directory" = getwd()
-      ),
-      ns = "rapp",
-      type = "error"
-    )
-  }
-  
   ## Unload R application //
   devtools::unload()
   

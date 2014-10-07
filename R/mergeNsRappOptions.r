@@ -287,17 +287,26 @@ setMethod(
   ## Initial values //
   opts_0 <- as.list(getNsRappOption(ns = ns))
   
-  ## Overwrite initial option values //
-  idx <- intersect(names(opts), names(opts_0))
-  if (length(idx)) {
-    sapply(idx, function(ii) {
-      setNsRappOption(
-        ns = ns, 
-        id = ii, 
-        value = opts[[ii]]
-      )
-    })
-  }
+#   ## Overwrite initial option values //
+#   idx <- intersect(names(opts), names(opts_0))
+#   if (length(idx)) {
+#     sapply(idx, function(ii) {
+#       setNsRappOption(
+#         ns = ns, 
+#         id = ii, 
+#         value = opts[[ii]]
+#       )
+#     })
+#   }
+  
+  ## Merge options //
+  sapply(names(opts), function(ii) {
+    setNsRappOption(
+      ns = ns, 
+      id = ii, 
+      value = opts[[ii]]
+    )
+  })
   
   ## Ensure namespace-specific subdirectory //
   global_dir <- getNsRappOption(ns = ns, id = "global_dir")

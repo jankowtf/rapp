@@ -14,6 +14,8 @@ test_that("loadInternalRapp", {
   wd_1 <- getwd()
   
   expect_true(loadInternalRapp(id = "test"))
+  expect_true(loadInternalRapp(id = "test"))
+  expect_error(loadInternalRapp(id = "test", strict = TRUE))
   
   ## Internal options that should not be changed //
   expect_equal(getRappOption(".rte/ns_prime"), "test.package")
@@ -24,6 +26,12 @@ test_that("loadInternalRapp", {
   expect_equal(getNsRappOption(id = "global_dir"),
     file.path(getRappOption(".rte/global_dir"), "ns/test.package/test")
   )
+  if (FALSE) {
+  ## Interactive only //    
+    filesystr::openRessource(tempdir())
+    expect_equal(getNsRappOption(id = "test_option"), "hello world")
+    expect_equal(getNsRappOption(id = "test_option_2"), TRUE)
+  }
   
   ## Unload //
   unloadInternalRapp(id = "test")

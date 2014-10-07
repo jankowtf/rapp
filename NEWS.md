@@ -1,3 +1,22 @@
+# CHANGES IN rapp VERSION 0.2.4
+
+## NEW FEATURES
+
+## BUG FIXES
+
+- fixed: #2
+- fixed: #3
+- fixed: #4
+- fixed: #5
+
+## MAJOR CHANGES
+
+## MINOR CHANGES
+
+## MISC
+
+-----
+
 # CHANGES IN rapp VERSION 0.2.2
 
 ## NEW FEATURES

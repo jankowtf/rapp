@@ -19,6 +19,16 @@ filesystr::openRessource()
 ## Load internal R application //
 loadInternalRapp(id = "test")
 
+## NOTE
+## As long as 'strict = FALSE', the function gracefully handles subsequent
+## loads even though actually each load needs to be followd by an unload
+## ('unloadInternalRapp()') due to the switch of working directories.
+## This is especially usefull if you want to reload an application
+## because, for example, you forgot to specify a certain option that you need. 
+## If 'strict = TRUE', an error is thrown for subsequent loads.
+loadInternalRapp(id = "test")
+try(loadInternalRapp(id = "test", strict = TRUE))
+
 ## Investigate implications //
 ## Current search path state:
 search()

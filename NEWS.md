@@ -1,3 +1,19 @@
+# CHANGES IN rapp VERSION 0.2.7
+
+## NEW FEATURES
+
+- fixed: #8 (provide flexible interface for initialize namespace-specific options)
+
+## BUG FIXES
+
+## MAJOR CHANGES
+
+## MINOR CHANGES
+
+## MISC
+
+-----
+
 # CHANGES IN rapp VERSION 0.2.6
 
 ## NEW FEATURES

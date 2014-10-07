@@ -23,7 +23,7 @@ test_that("loadInternalRapp", {
   expect_equal(sort(ls(getOption(".rapp"), all.names = TRUE)),
               sort(c(".rte", "test", "test.package")))
   expect_equal(getNsRappOption(id = "global_dir"),
-    file.path(getRappOption(".rte/global_dir"), "ns/test.package/test")
+    file.path(getRappOption(".rte/global_dir"), "ns/test.package/ns/test")
   )
   if (FALSE) {
   ## Interactive only //    

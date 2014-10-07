@@ -1,3 +1,9 @@
+# Version 0.2.2
+ - bugfix for option file
+ - cleanup commit
+
+----------
+
 # Version 0.2.1
  - Merge branch 'release-0.1.2' into develop
  - cleanup commit

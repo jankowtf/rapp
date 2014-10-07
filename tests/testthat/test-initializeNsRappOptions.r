@@ -1,5 +1,5 @@
-context("initializeNamespaceRappOptions-1")
-test_that("initializeNamespaceRappOptions", {
+context("initializeNsRappOptions-1")
+test_that("initializeNsRappOptions", {
 
   opts_old <- getOption(".rapp")
   
@@ -10,7 +10,7 @@ test_that("initializeNamespaceRappOptions", {
   wd_0 <- setwd(path)
   
   initializeRappOptions()
-  expect_is(res <- initializeNamespaceRappOptions(), "environment")
+  expect_is(res <- initializeNsRappOptions(), "environment")
   expect_equal(ls(res, all.names=TRUE), c(".rte", ns))
   
   expected <- sort(c(

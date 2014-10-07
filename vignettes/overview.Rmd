@@ -45,5 +45,5 @@ ls(getOption(".rapp")$.rte, all.names = TRUE)
 
 - If called from the context of a package project or if an option file `/options/options_ns.r` exists, then these options are read (`readRappOptionFile()`) and merged into the option container `getOption(".rapp")`. 
 
-  To be more specific, a subcontainer is created where these options are stored. The name of the subcontainer corresponds to the name of the package project or the application (`mergeNamespaceRappOptions()`)
+  To be more specific, a subcontainer is created where these options are stored. The name of the subcontainer corresponds to the name of the package project or the application (`mergeNsRappOptions()`)
 

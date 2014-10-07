@@ -64,11 +64,6 @@ setMethod(
     branch_gap = TRUE
   )
   setRappOption(
-    id = ".rte/runtime_mode",
-    value = "dev",
-    branch_gap = TRUE
-  )
-  setRappOption(
     id = ".rte/repos_root",
     value = NA_character_
   )
@@ -80,7 +75,12 @@ setMethod(
     id = ".rte/repos_pkgs",
     value = NA_character_
   )
-
+  setRappOption(
+    id = ".rte/runtime_mode",
+    value = "dev",
+    branch_gap = TRUE
+  )
+  
   return(container)
     
   }

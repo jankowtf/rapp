@@ -106,7 +106,9 @@ setMethod(
   dir.create(path, recursive = TRUE, showWarnings = FALSE)
   
   ## Components //
-  dir.create(file.path(path, "ns"), recursive = TRUE, showWarnings = FALSE)
+  if (!isRapp()) {
+    dir.create(file.path(path, "ns"), recursive = TRUE, showWarnings = FALSE)
+  }
   
   return(TRUE)
     

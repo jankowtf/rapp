@@ -309,7 +309,7 @@ setMethod(
 #     })
 #   }
   
-  ## Merge options //
+  ## Merge non-expression options //
   if (any(!idx_expr)) {
     idx_this <- names(opts)[!idx_expr]
   } else {
@@ -323,7 +323,7 @@ setMethod(
     )
   })
 
-  ## Process expressions //
+  ## Process expression options //
   if (any(idx_expr)) {
     sapply(names(opts)[idx_expr], function(ii) {
       value <- opts[[ii]]

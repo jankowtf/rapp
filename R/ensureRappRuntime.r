@@ -239,8 +239,8 @@ setMethod(
   ## Global directory //
   if (overwrite) {
     setGlobalDirectory(value = global_dir, update_dependent = TRUE)
-    ensureGlobalDirectory()
   }
+  ensureGlobalDirectory()
  
   ## Repositories //
   setInternalRepositories(pkg = pkg, vsn = vsn)

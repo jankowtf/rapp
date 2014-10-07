@@ -132,8 +132,11 @@ setMethod(
         is_internal = TRUE,
         global_dir = if (getNsRappOption(id = "is_internal")) {
           file.path(
-            getNsRappOption(ns = getRappOption(".rte/ns_prime"),
-              id = "global_dir"), 
+            getNsRappOption(
+              ns = getRappOption(".rte/ns_prime"),
+              id = "global_dir"
+            ),
+            "ns",
             libr::asPackage(".")$package
           )
         } else {

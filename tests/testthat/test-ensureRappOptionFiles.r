@@ -1,4 +1,4 @@
-context("ensureRappOptionFiles-1")
+context("ensureRappOptionFiles-A")
 test_that("ensureRappOptionFiles", {
 
   expected <- c(file.path(tempdir(), "options_runtime.r"),
@@ -14,11 +14,13 @@ test_that("ensureRappOptionFiles", {
       lib = .libPaths()[1]
     )
   )
+  
   expect_equal(res <- eval(parse(file=expected[2])),
     list(
-      ns = libr::asPackage(x = ".")$package, ## Primary key for runtime --> do not change this!
+      ns = libr::asPackage(".")$package,
+      is_internal = TRUE,
       global_dir = file.path(Sys.getenv("HOME"), "rapp/ns", 
-                             libr::asPackage(x = ".")$package),
+          libr::asPackage(".")$package),
       github_name = NA_character_,
       option_1 = "your option value here (can be any R object)",
       option_2 = "your option value here (can be any R object)",

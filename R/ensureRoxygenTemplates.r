@@ -131,7 +131,7 @@ setMethod(
   ## Directory 'man-roxygen' //
   path_man_roxy <- file.path(path, "man-roxygen")
   dir.create(path_man_roxy, showWarnings = FALSE)
-  tmp <- sprintf("#' @author %s \\email{%s}", maint[1], maint[2])
+  tmp <- sprintf("#' @author %s \\email{%s}", maint[1], gsub("@", "@@", maint[2]))
   path_author <- file.path(path_man_roxy, "author.r")
   write(tmp, file = path_author)
   tmp <- sprintf("#' @references \\url{http://github.com/%s/%s}", maint[3], pkg)

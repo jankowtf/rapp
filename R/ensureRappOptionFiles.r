@@ -147,7 +147,7 @@ setMethod(
       )
     )
   }
-#   path=tempdir()
+  
   path_opts_rapp <- file.path(path, "options_ns.r")
   if (!file.exists(path_opts_rapp) || overwrite) {
     write(rapp::tidySource(input = expr, name = "options"), 

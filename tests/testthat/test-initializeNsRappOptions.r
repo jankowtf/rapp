@@ -15,6 +15,7 @@ test_that("initializeNsRappOptions", {
   
   expected <- sort(c(
     "github_name",
+    "is_internal",
     "ns",
     "global_dir"
   ))
@@ -23,6 +24,7 @@ test_that("initializeNsRappOptions", {
   expected_values <- list(
     github_name = NA_character_,
     global_dir = NA_character_,
+    is_internal = TRUE,
     ns = ns
   )
   expect_equivalent(

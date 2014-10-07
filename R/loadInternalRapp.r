@@ -17,6 +17,13 @@
 #'   	
 #' @param id \strong{Signature argument}.
 #'    Object containing application ID information.
+#' @param strict \code{\link{logical}}.
+#'    \code{TRUE}: trigger error when function is run from an inapproproate
+#'    environment in the sense that it is not a package project containing 
+#'    internal apps in directory \code{/apps/};
+#'    \code{FALSE}: tries to fix working directory so the internal app can 
+#'    be loaded (typically usefull if running the function twice in a row or 
+#'    something like that). 
 #' @template threedot
 #' @example inst/examples/loadInternalRapp.r
 #' @seealso \code{
@@ -33,6 +40,7 @@ setGeneric(
   ),
   def = function(
     id,
+    strict = FALSE,
     ...
   ) {
     standardGeneric("loadInternalRapp")       
@@ -62,34 +70,49 @@ setMethod(
   ), 
   definition = function(
     id,
+    strict,
     ...
   ) {
   
   path_parent <- "apps"
   if (!file.exists(path_parent)) {
-    rapp::signalCondition(
-      condition = "InvalidProjectStructure",
-      msg = c(
-        "Invalid project structure",
-        Reason = "expecting 'apps' directory but not found",
-        "Working directory" = getwd()
-      ),
-      ns = "rapp",
-      type = "error"
-    )
+    if (!strict) {
+    ## Try to restore working directory 
+      setwd(getRappOption(".rte/wd_prime"))
+      loadInternalRapp(id = id, strict = TRUE)
+      return(TRUE)
+    } else {
+      rapp::signalCondition(
+        condition = "InvalidProjectStructure",
+        msg = c(
+          "Invalid project structure",
+          Reason = "expecting 'apps' directory but not found",
+          "Working directory" = getwd()
+        ),
+        ns = "rapp",
+        type = "error"
+      )
+    }
   }
   path_app <- file.path(path_parent, id)
   if (!file.exists(path_app)) {
-    rapp::signalCondition(
-      condition = "InvalidInternalApplicationID",
-      msg = c(
-        "Invalid internal application ID",
-        Reason = paste0("expecting app '", id, "' below 'apps' but not found"),
-        "Working directory" = getwd()
-      ),
-      ns = "rapp",
-      type = "error"
-    )
+    if (!strict) {
+    ## Try to restore working directory 
+      setwd(getRappOption(".rte/wd_prime"))
+      loadInternalRapp(id = id, strict = TRUE)
+      return(TRUE)
+    } else {
+      rapp::signalCondition(
+        condition = "InvalidInternalApplicationID",
+        msg = c(
+          "Invalid internal application ID",
+          Reason = paste0("expecting app '", id, "' below 'apps' but not found"),
+          "Working directory" = getwd()
+        ),
+        ns = "rapp",
+        type = "error"
+      )
+    }
   }
   
   ## Change working directory

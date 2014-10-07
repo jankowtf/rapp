@@ -52,7 +52,8 @@ test_that("ensureRappRuntime", {
   getNsRappOption(id = "is_internal")
   getNsRappOption(ns = "test.package", id = "is_internal")
   getNsRappOption(ns = "test.package", id = "global_dir")
-  expected <- sort(c("github_name", "global_dir", "is_internal", "ns"))
+  expected <- sort(c("github_name", "global_dir", "is_internal", "ns",
+                     "option_1", "option_2", "option_3"))
   expect_equal(sort(ls(getOption(".rapp")$test.package, all.names=TRUE)), expected)
   
   setwd(wd_0)

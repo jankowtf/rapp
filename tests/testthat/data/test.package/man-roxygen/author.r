@@ -1,1 +1,1 @@
-#' @author Who to complain to \email{yourfault@somewhere.net}
+#' @author Who to complain to \email{yourfault@@somewhere.net}

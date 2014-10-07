@@ -134,6 +134,9 @@ setMethod(
   
   ## Overwrite if option file exists //
   path_opts <- file.path(path, "options/options_runtime.r")
+  if (!file.exists(path_opts)) {
+    stop(paste0("Option file not available: ", path_opts))
+  }
   opts <- readRappOptionFile(path = path_opts, strict = FALSE)
   if (length(opts)) {
     if ("global_dir" %in% names(opts)) {
@@ -233,6 +236,8 @@ setMethod(
   ## Ensure namespace option container for project options //
   if (isPackageProject() || hasOptionFile()) {    
     initializeNamespaceRappOptions()
+# ls(getOption(".rapp"), all.names = TRUE)    
+# ls(getOption(".rapp")[[devtools::as.package(".")$package]], all.names = TRUE)    
     mergeNamespaceRappOptions()
   } 
 

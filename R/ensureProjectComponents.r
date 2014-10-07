@@ -124,8 +124,11 @@ setMethod(
       path = file.path(path, "inst/examples")
     )
     ensureRoxygenTemplates(path = path, github_name = github_name)
-    ensureRappComponents(path = path, github_name = github_name, 
-                         overwrite = overwrite)
+    ensureRappComponents(
+      path = path, 
+      github_name = github_name, 
+      overwrite = overwrite
+    )
     out <- TRUE
   } else {
     if (!strict) {

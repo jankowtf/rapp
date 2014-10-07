@@ -105,8 +105,10 @@ setMethod(
     )
   )    
   path_opts_runtime <- file.path(path, "options_runtime.r")
-  write(rapp::tidySource(input = expr, name = "options"), 
-    file = path_opts_runtime)
+  if (!file.exists(path_opts_runtime) || overwrite) {
+    write(rapp::tidySource(input = expr, name = "options"), 
+      file = path_opts_runtime)
+  }
   expr <- substitute(
     list(
       ns = libr::asPackage(x = ".")$package, ## Primary key for runtime --> do not change this!
@@ -119,8 +121,11 @@ setMethod(
     )
   )
   path_opts_rapp <- file.path(path, "options_ns.r")
-  write(rapp::tidySource(input = expr, name = "options"), 
-    file = path_opts_rapp)
+  if (!file.exists(path_opts_runtime) || overwrite) {
+    write(rapp::tidySource(input = expr, name = "options"), 
+      file = path_opts_rapp)
+  }
+  
   out <- c(path_opts_runtime, path_opts_rapp)
   
   return(out)

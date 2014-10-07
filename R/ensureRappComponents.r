@@ -119,8 +119,11 @@ setMethod(
     sapply(dirs, dir.create, recursive = TRUE, showWarnings = FALSE)
 
     ## Create test rapp //
-    createRappProject(id = "test", path = file.path(path, "apps"), 
-      github_name = github_name)
+    createRappProject(
+      id = "test", 
+      path = file.path(path, "apps"), 
+      github_name = github_name
+    )
     
     ## Ensure option files //
     ensureRappOptionFiles(path = file.path(path, "options"))

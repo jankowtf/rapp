@@ -9,9 +9,6 @@ path_pkg <- file.path(tempdir(), "test.package")
 ## Don't forget to reset at the end!
 wd_0 <- setwd(path_pkg)
 
-## Ensure rapp runtime //
-ensureRappRuntime()
-
 ## Inspect package project //
 filesystr::openRessource()
 ## --> we will load the internal R app 'test' in directory '/apps'

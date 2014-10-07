@@ -1,3 +1,11 @@
+# Version 0.2.6
+ - fixes #7
+ - Merge branch 'master' into develop
+ - Merge branch 'release-0.2.5'
+ - build commit
+
+----------
+
 # Version 0.2.5
  - fixes #6
  - Merge branch 'master' into develop

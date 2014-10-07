@@ -291,12 +291,18 @@ setMethod(
   idx <- intersect(names(opts), names(opts_0))
   if (length(idx)) {
     sapply(idx, function(ii) {
-      setNamespaceRappOption(
+      setNsRappOption(
         ns = ns, 
         id = ii, 
         value = opts[[ii]]
       )
     })
+  }
+  
+  ## Ensure namespace-specific subdirectory //
+  global_dir <- getNsRappOption(ns = ns, id = "global_dir")
+  if (!is.na(global_dir)) {
+    ensureGlobalDirectory(path = global_dir)
   }
   
   ## Special options //
@@ -306,7 +312,7 @@ setMethod(
   ## TODO: make reactive
   
   if (FALSE) {
-    setNamespaceRappOption(
+    setNsRappOption(
       ns = ns,
       id = "global_dir",
       value = fun,

@@ -1,1 +1,1 @@
-#' @references \url{http://githumb.com/Rappster/rapp}
+#' @references \url{http://github.com/jankothyson/rapp}

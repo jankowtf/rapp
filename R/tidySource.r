@@ -107,13 +107,29 @@ setMethod(
 #   expr <- paste0(name, " <- ", expr[1], 
 #      "(\n\t", paste(expr[2:length(expr)], collapse=",\n\t"), "\n)")
 #   expr
-
+# ii=4
+    
+  .tidyInner <- function(input) {
+    tmp <- input
+    if (length(tmp) > 1) {
+      tmp <- c(
+        paste0(tmp[1]),
+        paste0("\t", tmp[2:length(tmp)])
+      )
+      tmp <- paste(tmp, collapse = "\n")
+    }
+    tmp
+  }  
+    
   nms <- names(input)    
   expr <- c(
     paste0(deparse(input[[1]]), "("),
     sapply(2:length(nms), function(ii) {
-      paste0("\t", nms[ii], " = ", deparse(input[[ii]]),
-             ifelse (ii < length(nms), ",", ""))
+      paste0("\t", nms[ii], " = ", 
+#         paste(deparse(input[[ii]]), collapse = "\n"),
+        .tidyInner(input=deparse(input[[ii]])),
+        ifelse (ii < length(nms), ",", "")
+      )
     }),
     ")"
   )

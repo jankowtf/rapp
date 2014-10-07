@@ -155,7 +155,7 @@ setMethod(
       )
     }
   }    
-    
+  
   ## Patterns/info to look for //    
   pattern_dirs <- c(
     "batch",
@@ -184,7 +184,8 @@ setMethod(
   bnames <- basename(files)
   
   ## Existence check //
-  idx <- c(pattern_dirs, pattern_files) %in% bnames
+  to_check <- c(pattern_dirs, pattern_files)
+  idx <- to_check %in% bnames
   if (!all(idx)) {
     if (!strict) {
       return(FALSE)
@@ -195,6 +196,7 @@ setMethod(
         msg = c(
           "R application check was negative",
           Details = "missing application components",
+          Components = paste(to_check[!idx], collapse = ", "),
           Path = path
         ),
         ns = "rapp",

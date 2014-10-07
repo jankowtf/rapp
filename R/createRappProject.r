@@ -222,9 +222,6 @@ setMethod(
     path_options <- file.path(path_app, "options")
     dir.create(path_options, showWarnings = FALSE)
     
-    ## Ensure option files //
-    ensureRappOptionFiles(path = path_options)
-    
     ## Rapp info file //
     vsn <- unname(read.dcf(system.file("DESCRIPTION"), field = "Version")[,1])
     rapp_info <- list(version = vsn)
@@ -234,6 +231,9 @@ setMethod(
     if (packrat) {
       packrat::init(project = path_app)
     }
+    
+    ## Ensure option files //
+    ensureRappOptionFiles(path = path_options)
   }
   return(path_app)
 

@@ -96,6 +96,7 @@ setMethod(
     ...
   ) {
       
+  ## Internal runtime options //    
   expr <- substitute(
     list(
       global_dir = file.path(Sys.getenv("HOME"), "rapp"),
@@ -109,17 +110,44 @@ setMethod(
     write(rapp::tidySource(input = expr, name = "options"), 
       file = path_opts_runtime)
   }
-  expr <- substitute(
-    list(
-      ns = libr::asPackage(x = ".")$package, ## Primary key for runtime --> do not change this!
-      global_dir = file.path(Sys.getenv("HOME"), "rapp/ns", 
-                             libr::asPackage(x = ".")$package),
-      github_name = NA_character_,
-      option_1 = "your option value here (can be any R object)",
-      option_2 = "your option value here (can be any R object)",
-      option_3 = "your option value here (can be any R object)"
+  
+  ## Namespace-specific options //
+  if (!isRapp(dirname(path))) {
+    expr <- substitute(
+      list(
+        ns = libr::asPackage(".")$package,
+        is_internal = TRUE,
+        global_dir = file.path(Sys.getenv("HOME"), "rapp/ns", 
+            libr::asPackage(".")$package),
+        github_name = NA_character_,
+        option_1 = "your option value here (can be any R object)",
+        option_2 = "your option value here (can be any R object)",
+        option_3 = "your option value here (can be any R object)"
+      )
     )
-  )
+  } else {
+    expr <- substitute(
+      list(
+        ns = libr::asPackage(".")$package,
+        is_internal = TRUE,
+        global_dir = if (getNsRappOption(id = "is_internal")) {
+          file.path(
+            getNsRappOption(ns = getRappOption(".rte/ns_prime"),
+              id = "global_dir"), 
+            libr::asPackage(".")$package
+          )
+        } else {
+          file.path(Sys.getenv("HOME"), "rapp/ns", 
+            libr::asPackage(".")$package)
+        },
+        github_name = NA_character_,
+        option_1 = "your option value here (can be any R object)",
+        option_2 = "your option value here (can be any R object)",
+        option_3 = "your option value here (can be any R object)"
+      )
+    )
+  }
+#   path=tempdir()
   path_opts_rapp <- file.path(path, "options_ns.r")
   if (!file.exists(path_opts_rapp) || overwrite) {
     write(rapp::tidySource(input = expr, name = "options"), 

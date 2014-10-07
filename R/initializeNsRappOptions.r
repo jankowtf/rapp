@@ -156,16 +156,20 @@ setMethod(
     value = new.env()
   )
   setRappOption(
-    id = file.path(ns, "ns"),
-    value = ns
-  )
-  setRappOption(
     id = file.path(ns, "github_name"),
     value = NA_character_
   )
   setRappOption(
     id = file.path(ns, "global_dir"),
     value = NA_character_
+  )
+  setRappOption(
+    id = file.path(ns, "ns"),
+    value = ns
+  )
+  setRappOption(
+    id = file.path(ns, "is_internal"),
+    value = TRUE
   )
  
   return(container)

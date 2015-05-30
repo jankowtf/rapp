@@ -49,7 +49,7 @@ setGeneric(
 #' @template author
 #' @template references
 #' @export
-#' @import repositr
+#' @import reposr
 setMethod(
   f = "processRepositoryData", 
   signature = signature(
@@ -70,7 +70,7 @@ setMethod(
     getRappOption(id = ".rte/repos_live_global")
   )
   sapply(repos_global_list, 
-     repositr::ensureRepository
+     reposr::ensureRepository
   )
   repos_pkg_list <- c(
     getRappOption(id = ".rte/repos_dev_pkg"),
@@ -78,7 +78,7 @@ setMethod(
     getRappOption(id = ".rte/repos_live_pkg")
   )
   sapply(repos_pkg_list, 
-     repositr::ensureRepository
+     reposr::ensureRepository
   )
   
   repos_list <- unique(c(

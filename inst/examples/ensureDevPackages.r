@@ -7,7 +7,7 @@ opts_old <- getOption(".rapp")
 ## with valid subrepositories!
 ## This might not work if you have not used the rapp framework's features
 ## for package building 
-## (in particular 'repositr::buildIntoRepositoryInfrastructure()')
+## (in particular 'reposr::buildIntoRepositoryInfrastructure()')
 ensureGlobalDirectory("q:/home/rapp")
 ensureDevPackages()
                

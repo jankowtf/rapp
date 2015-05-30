@@ -7,9 +7,10 @@ Runtime environment for package development and application deployment in the co
 
 ```
 require("devtools")
+devtools::install_github("Rappster/conditionr")
 devtools::install_github("Rappster/examplr")
 devtools::install_github("Rappster/libr")
-devtools::install_github("Rappster/repositr")
+devtools::install_github("Rappster/reposr")
 require("rapp")
 ```
 

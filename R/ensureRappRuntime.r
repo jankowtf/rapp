@@ -23,10 +23,10 @@
 #'        \item{Ensure latest development packages}: } {
 #'          Ensures that the latest versions of development packages are loaded:
 #'          \code{require("examplr") (in order to being able to 
-#'          ensure example files) and \code{require("repositr")
+#'          ensure example files) and \code{require("reposr")
 #'          (in order to enable integration with the \code{rapp} framework's
 #'          local repository conventions 
-#'          (main function: \code{\link[repositr]{buildIntoRepositoryInfrastructure}}).)
+#'          (main function: \code{\link[reposr]{buildIntoRepositoryInfrastructure}}).)
 #'        }
 #'        \item{\code{require("testthat")}: } {
 #'          in order to manually run unit tests within the actual test files

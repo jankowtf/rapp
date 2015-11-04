@@ -17,6 +17,6 @@ Imports:
     devtools,
     examplr,
     libr,
-    repositr
+    reposr
 Suggests:
     packrat
